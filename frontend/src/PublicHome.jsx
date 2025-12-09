@@ -15,6 +15,4 @@ function PublicHome() {
     </>
   );
 }
-
-
 export default PublicHome
