@@ -10,7 +10,6 @@ function PublicHome() {
     <>
       <NavBar />
       {/* <button onClick={aa}>button</button> */}
-
     </>
   );
 }
