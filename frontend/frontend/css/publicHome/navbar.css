@@ -1,26 +1,35 @@
+/* NAVBAR WRAPPER */
 #navBar {
   height: 12vh;
   width: 100%;
-  background-color: var(--main-green);
+  background-color: #2f4433;  /* Dark green like your screenshot */
   display: flex;
   align-items: center;
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
+
+/* LOGO */
 #logoId {
-  height: 70px;     
+  height: 70px;        /* Matches your screenshot proportions */
   width: auto;
 }
+
+/* NAV LINKS */
 #navText .nav-link {
   color: white;
   font-weight: 500;
-  margin-left: 32px; 
+  margin-left: 32px;  /* Space like your screenshot */
   font-size:15px;
 }
+
+/* NAV LINKS HOVER */
 #navText .nav-link:hover {
   color: #d2d2d2;
 }
+
+/* LOGIN BUTTON */
 #navText button {
-  background-color: var(--main-yellow);     
+  background-color: #d29824;      /* Golden color */
   border: none;
   border-radius: 20px;
   padding: 6px 20px;
@@ -31,11 +40,5 @@
 }
 
 #navText button:hover {
-  background-color: var(--main-yellow);
-} 
-.navbar-collapse.show {
-  background-color: var(--main-green);
-  padding: 15px 20px;
-  border-radius: 0 0 10px 10px;
+  background-color: #b8821d;
 }
-

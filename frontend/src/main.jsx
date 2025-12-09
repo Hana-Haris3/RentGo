@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import {  createBrowserRouter, RouterProvider } from "react-router";
-import PublicHome from '../../frontend/src/publicHome.jsx'
+import PublicHome from '../../frontend/src/PublicHome.jsx'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 

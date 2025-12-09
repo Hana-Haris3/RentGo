@@ -8,8 +8,11 @@ function PublicHome() {
   // }
   return (
     <>
-      <NavBar/>
+      <NavBar />
+      {/* <button onClick={aa}>button</button> */}
     </>
   );
 }
+
+
 export default PublicHome
