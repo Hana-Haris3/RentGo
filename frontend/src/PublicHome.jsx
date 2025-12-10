@@ -1,3 +1,4 @@
+import { Outlet } from 'react-router';
 import NavBar from './components/publichome/navbar'
 function PublicHome() {
   // async function aa() {
@@ -8,7 +9,9 @@ function PublicHome() {
   // }
   return (
     <>
-      <NavBar/>
+      <NavBar />
+      {/* <button onClick={aa}>button</button> */}
+      <Outlet/>
     </>
   );
 }

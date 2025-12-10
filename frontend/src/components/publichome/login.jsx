@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react"; 
-import "./css/login.css";
+import "../../../css/publicHome/login.css";
+import { Link } from "react-router";
+
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -42,7 +44,7 @@ export default function Login() {
         {/* Register link */}
         <p className="text-center register-text">
           Don’t have an account yet?{" "}
-          <span className="register-link">Register</span>
+          <Link className="register-link" as={Link} to="/signup">Register</Link>
         </p>
       </div>
     </div>
