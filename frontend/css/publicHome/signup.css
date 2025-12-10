@@ -48,11 +48,11 @@ h2 {
   display: none;
 }
 
-.signup-form {
+/* .signup-form {
   display: flex;
   gap: 50px;
   flex-wrap: wrap;
-}
+} */
 
 .left, .right {
   flex: 1;
