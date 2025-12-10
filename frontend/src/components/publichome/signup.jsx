@@ -1,148 +1,84 @@
-import React from "react";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import React, { useState } from "react";
+import '../../../css/root.css'
+import "../../../css/publicHome/signup.css";
+import { Form } from "react-router";
+
 
 export default function SignUp() {
-  return (
-    <div style={{ background: "#e6dfb3", minHeight: "100vh", paddingTop: 40 }}>
-      <Container className="p-4 rounded" style={{ maxWidth: "900px" }}>
-        
-        <h3 className="text-center mb-4" style={{ fontWeight: 600 }}>
-          Create Your Account
-        </h3>
+  const [profileImage, setProfileImage] = useState(null);
+ 
 
-        {/* Profile Icon */}
-        <div className="d-flex justify-content-center mb-4">
-          <div
-            style={{
-              width: 70,
-              height: 70,
-              borderRadius: "50%",
-              border: "2px solid #666",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: 26,
-            }}
-          >
-            👤
-          </div>
+  const handleProfileChange = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      setProfileImage(URL.createObjectURL(e.target.files[0]));
+    }
+  };
+
+  return (
+    <Form method="post" encType="multipart/form-data" className="signup-form"> 
+    <div className="signup-wrapper">
+      <div className="signup-container">
+        <h2>Create Your Account</h2>
+
+        <div className="profile-section">
+          
+          <label htmlFor="profileUpload" className="profile-circle">
+            {/* {profileImage ? (
+              <img src={profileImage} alt="Profile" />
+            ) : ( */}
+              <span className="profile-icon">👤</span>
+            {/* )} */}
+          </label>
+          <input
+            id="profileUpload"
+            type="file"
+            accept="image/*"
+            onChange={handleProfileChange}
+            className="hidden-input"
+            required
+          />
         </div>
 
-        <Form>
-          <Row>
-            <Col md={6}>
-              <Form.Group className="mb-3">
-                <Form.Label>Full Name</Form.Label>
-                <Form.Control type="text" placeholder="Enter full name"/>
-              </Form.Group>
+          <div className="left">
+            <input type="text" placeholder="Full Name" required />
+            <input type="email" placeholder="Email" required />
+            <input type="text" placeholder="Phone Number" required />
+            <input type="password" placeholder="Password" required />
 
-              <Form.Group className="mb-3">
-                <Form.Label>Email</Form.Label>
-                <Form.Control type="email" placeholder="Enter email"/>
-              </Form.Group>
+   
 
-              <Form.Group className="mb-3">
-                <Form.Label>Phone Number</Form.Label>
-                <Form.Control type="text" placeholder="Enter phone number"/>
-              </Form.Group>
+            <input type="text" placeholder="Gender" required />
+            <input type="text" placeholder="Address" required />
+          </div>
 
-              <Form.Group className="mb-3">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Enter password"/>
-              </Form.Group>
+          <div className="right">
+            <input type="text" placeholder="Driving Licence Number" required />
 
-              <Form.Label>Date of Birth</Form.Label>
-              <Row>
-                <Col>
-                  <Form.Select className="mb-3">
-                    <option>DD</option>
-                  </Form.Select>
-                </Col>
-                <Col>
-                  <Form.Select className="mb-3">
-                    <option>MM</option>
-                  </Form.Select>
-                </Col>
-                <Col>
-                  <Form.Select className="mb-3">
-                    <option>YYYY</option>
-                  </Form.Select>
-                </Col>
-              </Row>
+            <label>Driving Licence Validity</label>
+            <div className="dob-row">
+              <select required>
+                <option>DD</option>
+              </select>
+              <select required>
+                <option>MM</option>
+              </select>
+              <select required>
+                <option>YYYY</option>
+              </select>
+            </div>
 
-              <Form.Group className="mb-3">
-                <Form.Label>Gender</Form.Label>
-                <Form.Control type="text" placeholder="Enter gender" />
-              </Form.Group>
+            <input type="text" placeholder="Aadhaar Number" required />
 
-              <Form.Group className="mb-3">
-                <Form.Label>Address</Form.Label>
-                <Form.Control type="text" placeholder="Enter address"/>
-              </Form.Group>
-            </Col>
+            <label>Upload Driving Licence</label>
+            <input type="file" accept="image/*" />
 
-            {/* Right Section */}
-            <Col md={6}>
-              <Form.Group className="mb-3">
-                <Form.Label>Driving Licence Number</Form.Label>
-                <Form.Control type="text" placeholder="Enter DL number"/>
-              </Form.Group>
+            <label>Upload Aadhaar</label>
+            <input type="file" accept="image/*" />
 
-              <Form.Label>Driving Licence Validity</Form.Label>
-              <Row className="mb-3">
-                <Col>
-                  <Form.Select>
-                    <option>DD</option>
-                  </Form.Select>
-                </Col>
-                <Col>
-                  <Form.Select>
-                    <option>MM</option>
-                  </Form.Select>
-                </Col>
-                <Col>
-                  <Form.Select>
-                    <option>YYYY</option>
-                  </Form.Select>
-                </Col>
-              </Row>
-
-              <Form.Group className="mb-3">
-                <Form.Label>Aadhaar Number</Form.Label>
-                <Form.Control type="text" placeholder="Enter Aadhaar"/>
-              </Form.Group>
-
-              <Row className="mt-3">
-                <Col>
-                  <Form.Group className="mb-3">
-                    <Form.Label>Upload Driving Licence</Form.Label>
-                    <Form.Control type="file" accept="image/*" />
-                  </Form.Group>
-                </Col>
-                <Col>
-                  <Form.Group className="mb-3">
-                    <Form.Label>Upload Aadhaar</Form.Label>
-                    <Form.Control type="file" accept="image/*" />
-                  </Form.Group>
-                </Col>
-              </Row>
-
-              <div className="mt-4 text-center">
-                <Button
-                  style={{
-                    width: "200px",
-                    background: "#d89b2c",
-                    border: "none",
-                    fontWeight: "bold"
-                  }}
-                >
-                  Create
-                </Button>
-              </div>
-            </Col>
-          </Row>
-        </Form>
-      </Container>
+            <button className="create-btn">Create</button>
+          </div>
+      </div>
     </div>
+    </Form>
   );
 }

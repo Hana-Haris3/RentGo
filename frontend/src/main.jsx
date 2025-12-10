@@ -1,10 +1,10 @@
 import { createRoot } from 'react-dom/client'
 import {  createBrowserRouter, RouterProvider } from "react-router";
 import PublicHome from './PublicHome'
-import PublicHome from '../../frontend/src/PublicHome.jsx'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './components/publichome/login';
 import SignUp from './components/publichome/signup';
+
 
 
 const appRoutes = createBrowserRouter([
@@ -19,7 +19,8 @@ const appRoutes = createBrowserRouter([
       {
         path:'/signup',
         element:<SignUp/>,
-      }
+      },
+    
     ]
   }
 ])
