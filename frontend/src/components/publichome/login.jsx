@@ -9,7 +9,7 @@ export default function Login() {
 
   return (
     <div className="login-page d-flex justify-content-center align-items-center">
-      <div className="login-card p-4 rounded shadow">
+      <div className="login-card p-4 shadow">
         <h2 className="text-center mb-4">Login</h2>
 
         {/* Email */}
