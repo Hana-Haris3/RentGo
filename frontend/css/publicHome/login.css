@@ -1,13 +1,14 @@
 /* PAGE BACKGROUND */
 .login-page {
-  width: 100vw;
-  height: 100vh;
+  height: 88vh;
+  width: 100%;
   background: #e6dfbb;
 }
 
 /* CARD */
 .login-card {
   width: 350px;
+  height: 380px;
   background: #d9d2b0;
 }
 
@@ -15,7 +16,7 @@
 .password-icon {
   position: absolute;
   right: 12px;
-  top: 12px;
+  top: 7px;
   cursor: pointer;
   color: #555;
 }
@@ -47,4 +48,5 @@
   color: #d49728;
   cursor: pointer;
   font-weight: 500;
+  text-decoration: none;
 }
