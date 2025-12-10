@@ -7,7 +7,7 @@ import '../../../css/root.css'
 import '../../../css/publicHome/navbar.css'
 
 
-const NavBar = () => {
+const AdminNavBar = () => {
   return (
     <Navbar collapseOnSelect expand="lg" id="navBar">
       <Container>
@@ -26,10 +26,12 @@ const NavBar = () => {
             className="ms-lg-auto d-flex flex-column flex-lg-row align-items-lg-center"
           >
             <Nav.Link as={Link} to="/">Home</Nav.Link>
-            <Nav.Link as={Link} to="/usercars">Cars</Nav.Link>
-            <Nav.Link as={Link} to="/aboutus">About Us</Nav.Link>
-            <Nav.Link as={Link} to="/login">
-              <button className="loginBtn">LOGIN</button>
+            <Nav.Link as={Link} to="/addcars">Add Cars</Nav.Link>
+            <Nav.Link as={Link} to="/admincars">Cars</Nav.Link>
+            <Nav.Link as={Link} to="/bookings">Bookings</Nav.Link>
+            <Nav.Link as={Link} to="/adminreviews">Review</Nav.Link>
+            <Nav.Link as={Link} to="/logout">
+              <button className="logout">LOGOUT</button>
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
@@ -38,4 +40,4 @@ const NavBar = () => {
   )
 }
 
-export default NavBar
+export default AdminNavBar

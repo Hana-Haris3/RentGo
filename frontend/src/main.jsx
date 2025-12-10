@@ -22,6 +22,21 @@ const appRoutes = createBrowserRouter([
       },
     
     ]
+  },
+  {
+     path:'/admin',
+    element:<PublicHome/>,
+    children:[
+      {
+        path:'/login',
+        element:<Login/>,
+      },
+      {
+        path:'/signup',
+        element:<SignUp/>,
+      },
+    
+    ]
   }
 ])
 createRoot(document.getElementById('root')).render(

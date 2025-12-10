@@ -7,7 +7,7 @@ import '../../../css/root.css'
 import '../../../css/publicHome/navbar.css'
 
 
-const NavBar = () => {
+const UserNavBar = () => {
   return (
     <Navbar collapseOnSelect expand="lg" id="navBar">
       <Container>
@@ -27,9 +27,10 @@ const NavBar = () => {
           >
             <Nav.Link as={Link} to="/">Home</Nav.Link>
             <Nav.Link as={Link} to="/usercars">Cars</Nav.Link>
+            <Nav.Link as={Link} to="/userbookings">Bookings</Nav.Link>
             <Nav.Link as={Link} to="/aboutus">About Us</Nav.Link>
-            <Nav.Link as={Link} to="/login">
-              <button className="loginBtn">LOGIN</button>
+            <Nav.Link as={Link} to="/userprofile">
+              <img src=""></img>
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
@@ -38,4 +39,4 @@ const NavBar = () => {
   )
 }
 
-export default NavBar
+export default UserNavBar
