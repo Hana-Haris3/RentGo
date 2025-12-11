@@ -26,12 +26,9 @@
     "react-day-picker": "^9.12.0",
     "react-dom": "^19.2.0",
     "react-icons": "^5.5.0",
-<<<<<<< HEAD
-    "react-router": "^7.10.1"
-=======
+
     "react-router": "^7.10.1",
     "tailwind-merge": "^3.4.0"
->>>>>>> ec66d78a7c00b6def9719435110abb7ff5e9f9a1
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
