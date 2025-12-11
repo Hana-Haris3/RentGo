@@ -6,6 +6,7 @@ import Login from './components/publichome/login';
 import SignUp from './components/publichome/signup';
 import PublicHomepage from './components/publichome/publichomePage';
 import ViewAllCars from './components/common/viewallcars';
+import UserHome from './userHome';
 
 
 
@@ -15,11 +16,11 @@ const appRoutes = createBrowserRouter([
     element:<PublicHome/>,
     children:[
       {
-        path:'login',
+        path:'/login',
         element:<Login/>,
       },
       {
-        path:'signup',
+        path:'/signup',
         element:<SignUp/>,
       },
       {
@@ -34,19 +35,8 @@ const appRoutes = createBrowserRouter([
     ]
   },
   {
-    path:'/admin',
-    element:<PublicHome/>,
-    children:[
-      // {
-      //   path:'/login',
-      //   element:<Login/>,
-      // },
-      // {
-      //   path:'/signup',
-      //   element:<SignUp/>,
-      // },
-    
-    ]
+    path:('/user'),
+    element:<UserHome/>
   }
 ])
 createRoot(document.getElementById('root')).render(
