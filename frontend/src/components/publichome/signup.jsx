@@ -192,7 +192,7 @@ export default function SignUp() {
               <label>Upload Aadhaar</label>
               <input type="file" accept="image/*" required/>
 
-              <button className="create-btn">Create</button>
+              <button type="submit"className="create-btn">Create</button>
             </div>
           </div>
         </div>

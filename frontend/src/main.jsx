@@ -4,6 +4,7 @@ import PublicHome from './PublicHome'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './components/publichome/login';
 import SignUp from './components/publichome/signup';
+import PublicHomepage from './components/publichome/publichomePage';
 
 
 
@@ -13,28 +14,32 @@ const appRoutes = createBrowserRouter([
     element:<PublicHome/>,
     children:[
       {
-        path:'/login',
+        path:'login',
         element:<Login/>,
       },
       {
-        path:'/signup',
+        path:'signup',
         element:<SignUp/>,
       },
-    
+      {
+        index:true,
+        // path:'/homepage',
+        element:<PublicHomepage/>
+      }
     ]
   },
   {
-     path:'/admin',
+    path:'/admin',
     element:<PublicHome/>,
     children:[
-      {
-        path:'/login',
-        element:<Login/>,
-      },
-      {
-        path:'/signup',
-        element:<SignUp/>,
-      },
+      // {
+      //   path:'/login',
+      //   element:<Login/>,
+      // },
+      // {
+      //   path:'/signup',
+      //   element:<SignUp/>,
+      // },
     
     ]
   }
