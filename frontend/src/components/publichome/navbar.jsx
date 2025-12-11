@@ -26,7 +26,7 @@ const NavBar = () => {
             className="ms-lg-auto d-flex flex-column flex-lg-row align-items-lg-center"
           >
             <Nav.Link as={Link} to="/">Home</Nav.Link>
-            <Nav.Link as={Link} to="/usercars">Cars</Nav.Link>
+            <Nav.Link as={Link} to="/cars">Cars</Nav.Link>
             <Nav.Link as={Link} to="/aboutus">About Us</Nav.Link>
             <Nav.Link as={Link} to="/login">
               <button className="loginBtn">LOGIN</button>

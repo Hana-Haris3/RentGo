@@ -90,3 +90,100 @@
     margin-top: 0;
   }
 }
+
+
+
+
+
+ 
+
+/* HowItWorks.css */
+.how-section {
+background: var(--main-beige);
+padding: 4rem 0;
+}
+
+
+.how-title {
+font-size: 50px;
+font-weight: bolder;
+color: var(--main-green);
+}
+
+
+.how-img {
+width: 100%;
+max-width: 420px;
+border-radius: 12px;
+aspect-ratio: 1;
+}
+
+
+.step {
+display: flex;
+align-items: flex-start;
+gap: 1rem;
+margin-bottom: 1.5rem;
+}
+
+
+.step-number {
+width: 32px;
+height: 32px;
+border-radius: 50%;
+background: var(--main-green);
+color: white;
+display: flex;
+align-items: center;
+justify-content: center;
+font-weight: 700;
+}
+
+
+.step-title {
+font-size: 1.2rem;
+font-weight: bold;
+}
+
+
+.step-desc {
+color: #555;
+margin-top: -4px;
+max-width: 340px;
+}
+
+
+
+
+/* WhyChooseUs.css */
+.why-section {
+  background: var(--secondary-yellow);
+  padding: 4rem 0;
+}
+
+.why-title {
+  font-size: 50px;
+  font-weight: bolder;
+}
+
+.icon-block {
+  font-size: 2.4rem;
+  margin-bottom: 1rem;
+}
+
+.red-icon { color: #9e322e; }
+.black-icon { color: #000; }
+.blue-icon { color: #233ea3; }
+
+.why-heading {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.why-desc {
+  color: #333;
+  max-width: 300px;
+  margin: 0 auto;
+  font-size: 18px;
+}
+    

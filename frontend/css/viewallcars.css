@@ -1,0 +1,116 @@
+/* --- GENERAL LAYOUT --- */
+
+.page-container {
+  height: calc(100vh - 12vh); /* navbar + footer */
+  overflow: hidden;
+}
+
+/* ---- NAVBAR ---- */
+.navbar-custom {
+  height: 70px;
+  background: white;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-title {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+/* ---- SIDEBAR ---- */
+.sidebar-container {
+  background: var(--main-beige);
+  height: calc(100vh - 14vh); /* never overlap footer or navbar */
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.filters-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.filter-section h6 {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* ---- CAR GRID ---- */
+.cards-container {
+  overflow-y: auto;
+  height: calc(100vh - 14vh);
+  padding: 20px;
+  background: white;
+}
+
+.car-card {
+  background: #f7f4ec;
+  border-radius: 12px;
+}
+
+/* ---- FOOTER ---- */
+.footer-brands {
+  height: 70px;
+  border-top: 1px solid #ccc;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  font-size: 20px;
+}
+
+.car-type-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* radio pill style */
+.car-type-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 9px;
+  border-radius: 25px;
+  border: 1.5px solid black;
+  background: transparent;
+  cursor: pointer;
+  transition: 0.3s ease;
+  font-size: 14px;
+}
+
+/* hide input */
+.car-type-option input {
+  display: none;
+}
+
+/* selected style */
+.car-type-option.selected {
+  background: black;
+  color: white;
+  border-color: black;
+}
+
+.car-icon {
+  font-size: 16px;
+}
+
+/* mobile */
+@media (max-width: 480px) {
+  .car-type-option {
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+}
+
+.price-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+

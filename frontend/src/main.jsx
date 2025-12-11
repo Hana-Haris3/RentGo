@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './components/publichome/login';
 import SignUp from './components/publichome/signup';
 import PublicHomepage from './components/publichome/publichomePage';
+import ViewAllCars from './components/common/viewallcars';
 
 
 
@@ -25,6 +26,10 @@ const appRoutes = createBrowserRouter([
         index:true,
         // path:'/homepage',
         element:<PublicHomepage/>
+      },
+      {
+        path:'/cars',
+        element:<ViewAllCars/>
       }
     ]
   },

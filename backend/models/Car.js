@@ -13,6 +13,10 @@ const carSchema = mongoose.Schema({
     model:{
         type:String
     },
+    type:{
+        type:String,
+        enum: ["Hatchback", "Sedan", "SUV", "Crossover", "MPV/Minivan", "Coupe", "Convertible", "Wagon"]
+    },
     modelYear:{
         type:Number
     },

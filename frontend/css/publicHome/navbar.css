@@ -4,6 +4,9 @@
   background-color: var(--main-green);
   display: flex;
   align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 3;
   /* box-shadow: 0 2px 8px rgba(0,0,0,0.2); */
 }
 #logoId {
