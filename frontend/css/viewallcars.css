@@ -8,7 +8,6 @@
 /* ---- NAVBAR ---- */
 .navbar-custom {
   height: 70px;
-  background: white;
   padding: 0 20px;
   display: flex;
   align-items: center;
@@ -26,6 +25,10 @@
   height: calc(100vh - 14vh); /* never overlap footer or navbar */
   padding: 20px;
   overflow-y: auto;
+
+  &::-webkit-scrollbar{
+    display: none;
+  }
 }
 
 .filters-wrapper {
@@ -45,6 +48,10 @@
   height: calc(100vh - 14vh);
   padding: 20px;
   background: white;
+
+  &::-webkit-scrollbar{
+    display: none;
+  }
 }
 
 .car-card {
@@ -54,15 +61,21 @@
 
 /* ---- FOOTER ---- */
 .footer-brands {
-  height: 70px;
-  border-top: 1px solid #ccc;
-  background: white;
+  height: 15vh;
+  background: rgb(236, 234, 234);
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  gap: 40px;
   font-size: 20px;
+  gap: 40px;
+
+  span > *{
+    height: 60px;
+    width: auto;
+  }
 }
+
+
 
 .car-type-wrapper {
   display: flex;
@@ -114,3 +127,68 @@
   color: #333;
 }
 
+
+
+
+.search-wrapper {
+  width: 100%;
+}
+
+.search-input-wrapper {
+  position: relative;
+  width: 320px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 16px 10px 38px;
+  border-radius: 12px;
+  border: 1px solid #dcdcdc;
+  font-size: 15px;
+  outline: none;
+}
+
+.search-input:focus {
+  border-color: #6b8f6f;
+  box-shadow: 0 0 0 2px rgba(107, 143, 111, 0.2);
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: #666;
+}
+
+.search-btn {
+  background: #345c3e;
+  color: #fff;
+  border: none;
+  padding: 10px 26px;
+  border-radius: 12px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.search-btn:hover {
+  background: #2a4c32;
+}
+
+@media (max-width: 575px) {
+  .search-wrapper {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .search-input-wrapper {
+    width: 100%;
+    max-width: 90%;
+  }
+
+  .search-btn {
+    width: 90%;
+  }
+}

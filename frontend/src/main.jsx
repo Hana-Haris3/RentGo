@@ -7,7 +7,7 @@ import SignUp from './components/publichome/signup';
 import PublicHomepage from './components/publichome/publichomePage';
 import ViewAllCars from './components/common/viewallcars';
 import UserHome from './userHome';
-
+import ViewCarDetailsPage from './components/common/ViewCarDetailsPage';
 
 
 const appRoutes = createBrowserRouter([
@@ -16,11 +16,11 @@ const appRoutes = createBrowserRouter([
     element:<PublicHome/>,
     children:[
       {
-        path:'/login',
+        path:'login',
         element:<Login/>,
       },
       {
-        path:'/signup',
+        path:'signup',
         element:<SignUp/>,
       },
       {
@@ -29,9 +29,15 @@ const appRoutes = createBrowserRouter([
         element:<PublicHomepage/>
       },
       {
-        path:'/cars',
+        path:'cars',
         element:<ViewAllCars/>
+      },
+      {
+        path:'cars/viewdetails',
+        element:<ViewCarDetailsPage/>
       }
+
+      
     ]
   },
   {
