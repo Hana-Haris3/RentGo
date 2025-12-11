@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router';
 import NavBar from './components/publichome/navbar'
+import Footer from './components/publichome/footer';
 function PublicHome() {
   // async function aa() {
   //   const a = await fetch('http://192.168.29.119:3000/api/data')
@@ -12,6 +13,7 @@ function PublicHome() {
       <NavBar />
       {/* <button onClick={aa}>button</button> */}
       <Outlet/>
+      <Footer/>
     </>
   );
 }

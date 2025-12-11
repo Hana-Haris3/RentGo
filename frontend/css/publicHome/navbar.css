@@ -4,7 +4,7 @@
   background-color: var(--main-green);
   display: flex;
   align-items: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  /* box-shadow: 0 2px 8px rgba(0,0,0,0.2); */
 }
 #logoId {
   height: 70px;     
