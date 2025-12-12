@@ -8,13 +8,11 @@ import PublicHomepage from './components/publichome/publichomePage';
 import ViewAllCars from './components/common/viewallcars';
 import UserHome from './userHome';
 import ViewCarDetailsPage from './components/common/ViewCarDetailsPage';
-<<<<<<< HEAD
 import AboutUs from './components/common/aboutUs';
-=======
 import Admin from './admin';
 import AdminHome from './components/admin/adminhome';
 
->>>>>>> c3f096678607b2a8224c5b76d7980a30eb2204ba
+
 
 
 const appRoutes = createBrowserRouter([
