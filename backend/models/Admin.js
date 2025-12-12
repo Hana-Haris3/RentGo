@@ -1,0 +1,29 @@
+const { name } = require("ejs")
+
+const adminSchema = new mongoose.Schema({
+    id:{
+        type:String,
+    },
+    name:{
+        type:String,
+        default:'Admin'
+    },
+    password:{
+        type:String,
+        select:false
+    }
+})
+
+adminSchema.methods.validatePassword = async function (adminpassword){
+    return await bcryptjs.compare(adminpassword,this.password)
+}
+
+adminSchema.methods.getjwt = function(){
+    const token = jwt.sign({
+        name:this.name,
+        password:this.password
+    },jwtsecret,{ expiresIn: '1hr' })
+    return token
+}
+
+module.exports = mongoose.model('Admin',adminSchema)
