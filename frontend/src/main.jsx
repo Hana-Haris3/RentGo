@@ -8,6 +8,9 @@ import PublicHomepage from './components/publichome/publichomePage';
 import ViewAllCars from './components/common/viewallcars';
 import UserHome from './userHome';
 import ViewCarDetailsPage from './components/common/ViewCarDetailsPage';
+import Admin from './admin';
+import AdminHome from './components/admin/adminhome';
+
 
 
 const appRoutes = createBrowserRouter([
@@ -43,6 +46,15 @@ const appRoutes = createBrowserRouter([
   {
     path:('/user'),
     element:<UserHome/>
+  },{
+    path:('/admin'),
+    element:<Admin/>,
+    children:[
+      {
+        index:true,
+        element:<AdminHome/>
+      }
+    ]
   }
 ])
 createRoot(document.getElementById('root')).render(

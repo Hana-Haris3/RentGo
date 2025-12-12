@@ -25,12 +25,12 @@ const AdminNavBar = () => {
             id="navText"
             className="ms-lg-auto d-flex flex-column flex-lg-row align-items-lg-center"
           >
-            <Nav.Link as={Link} to="/">Home</Nav.Link>
-            <Nav.Link as={Link} to="/addcars">Add Cars</Nav.Link>
-            <Nav.Link as={Link} to="/admincars">Cars</Nav.Link>
-            <Nav.Link as={Link} to="/bookings">Bookings</Nav.Link>
-            <Nav.Link as={Link} to="/adminreviews">Review</Nav.Link>
-            <Nav.Link as={Link} to="/logout">
+            <Nav.Link as={Link} to="/admin">Home</Nav.Link>
+            <Nav.Link as={Link} to="/admin/addcars">Add Cars</Nav.Link>
+            <Nav.Link as={Link} to="/admin/admincars">Cars</Nav.Link>
+            <Nav.Link as={Link} to="/admin/bookings">Bookings</Nav.Link>
+            <Nav.Link as={Link} to="/admin/adminreviews">Review</Nav.Link>
+            <Nav.Link as={Link} to="/admin/logout">
               <button className="logout">LOGOUT</button>
             </Nav.Link>
           </Nav>
