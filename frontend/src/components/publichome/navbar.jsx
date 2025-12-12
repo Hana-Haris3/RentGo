@@ -5,6 +5,7 @@ import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import '../../../css/root.css'
 import '../../../css/publicHome/navbar.css'
+import logo from '../../assets/logo.png'
 
 
 const NavBar = () => {
@@ -12,7 +13,7 @@ const NavBar = () => {
     <Navbar collapseOnSelect expand="lg" id="navBar">
       <Container>
         <Navbar.Brand as={Link} to="/">
-          <img src="./public/logo.png" id="logoId" alt="Logo" />
+          <img src={logo} id="logoId" alt="Logo" />
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />

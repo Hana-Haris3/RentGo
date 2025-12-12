@@ -8,6 +8,7 @@ import PublicHomepage from './components/publichome/publichomePage';
 import ViewAllCars from './components/common/viewallcars';
 import UserHome from './userHome';
 import ViewCarDetailsPage from './components/common/ViewCarDetailsPage';
+import AboutUs from './components/common/aboutUs';
 
 
 const appRoutes = createBrowserRouter([
@@ -35,6 +36,10 @@ const appRoutes = createBrowserRouter([
       {
         path:'cars/viewdetails',
         element:<ViewCarDetailsPage/>
+      },
+      {
+        path:'aboutus',
+        element:<AboutUs/>
       }
 
       
