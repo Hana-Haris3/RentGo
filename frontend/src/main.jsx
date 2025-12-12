@@ -6,11 +6,14 @@ import Login from './components/publichome/login';
 import SignUp from './components/publichome/signup';
 import PublicHomepage from './components/publichome/publichomePage';
 import ViewAllCars from './components/common/viewallcars';
-import UserHome from './userHome';
 import ViewCarDetailsPage from './components/common/ViewCarDetailsPage';
 import AboutUs from './components/common/aboutUs';
 import Admin from './admin';
 import AdminHome from './components/admin/adminhome';
+import UserHome from './userHome';
+import UserHomePage from './components/user/userHomePage';
+import CarBooking from './components/user/carBooking';
+
 
 
 
@@ -51,8 +54,15 @@ const appRoutes = createBrowserRouter([
   },
   {
     path:('/user'),
-    element:<UserHome/>
-  },{
+    element:<UserHome/>,
+    children:[
+      {
+        index:true,
+        element:<UserHomePage/>
+      },
+    ]
+  },
+  {
     path:('/admin'),
     element:<Admin/>,
     children:[
