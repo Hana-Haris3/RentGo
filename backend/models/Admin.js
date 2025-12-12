@@ -1,4 +1,4 @@
-const { name } = require("ejs")
+const mongoose = require('mongoose')
 
 const adminSchema = new mongoose.Schema({
     id:{
@@ -22,7 +22,7 @@ adminSchema.methods.getjwt = function(){
     const token = jwt.sign({
         name:this.name,
         password:this.password
-    },jwtsecret,{ expiresIn: '1hr' })
+    },process.env.jwtsecret,{ expiresIn: '1hr' })
     return token
 }
 

@@ -2,47 +2,66 @@ const { name } = require("ejs");
 const { default: mongoose } = require("mongoose");
 
 const userSchema = mongoose.Schema({
-    id:{
-        type:String
+    id: {
+        type: String
     },
-    name:{
-        type:String
+    name: {
+        type: String
     },
-    password:{
-        type:String,
-        select:false
+    password: {
+        type: String,
+        select: false
     },
-    email:{
-        type:String
+    email: {
+        type: String
     },
-    phoneNumber:{
-        type:String
+    phoneNumber: {
+        type: String
     },
-    dateOfBirth:{
-        type:Date
+    dateOfBirth: {
+        type: Date
     },
-    gender:{
-        type:String
+    gender: {
+        type: String
     },
-    address:{
-        type:String
+    address: {
+        type: String
     },
-    drivingLiscenceNumber:{
-        type:String
+    drivingLiscenceNumber: {
+        type: String
     },
-    drivingLiscenceValidity:{
-        type:Date
+    drivingLiscenceValidity: {
+        type: Date
     },
-    AadharNumber:{
-        type:String
+    AadharNumber: {
+        type: String
     },
-    AadharImage:{
-        type:String
+    AadharImage: {
+        type: String
     },
-    role:{
-        type:String,
-        default:'User'
+    role: {
+        type: String,
+        default: 'User'
     }
 })
+userSchema.pre('save', async function (next) {
+    if (!this.isModified('password')) {
+        return next()
+    }
+    this.password = await bcryptjs.hash(this.password, 5)
+    return next()
+})
 
-module.exports = mongoose.model('User',userSchema)
+userSchema.methods.validatePassword = async function (userPassword) {
+    return await bcryptjs.compare(userPassword, this.password)
+}
+
+userSchema.methods.getjwt = function () {
+    const token = jwt.sign({
+        email: this.email,
+        password: this.password
+    }, process.env.jwtsecret, { expiresIn: '1h' })
+    return token
+}
+
+module.exports = mongoose.model('User', userSchema)

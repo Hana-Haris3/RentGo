@@ -3,9 +3,9 @@ import { Link } from 'react-router'
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
+import Dropdown from 'react-bootstrap/Dropdown'
 import '../../../css/root.css'
 import '../../../css/publicHome/navbar.css'
-
 
 const NavBar = () => {
   return (
@@ -28,9 +28,24 @@ const NavBar = () => {
             <Nav.Link as={Link} to="/">Home</Nav.Link>
             <Nav.Link as={Link} to="/cars">Cars</Nav.Link>
             <Nav.Link as={Link} to="/aboutus">About Us</Nav.Link>
-            <Nav.Link as={Link} to="/login">
-              <button className="loginBtn">LOGIN</button>
-            </Nav.Link>
+
+            {/* LOGIN DROPDOWN */}
+            <Dropdown align="end">
+              <Dropdown.Toggle className="loginBtn">
+                LOGIN
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu>
+                <Dropdown.Item as={Link} to="/login/user">
+                  User Login
+                </Dropdown.Item>
+
+                <Dropdown.Item as={Link} to="/login/admin">
+                  Admin Login
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+
           </Nav>
         </Navbar.Collapse>
       </Container>

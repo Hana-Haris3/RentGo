@@ -8,8 +8,18 @@ const cors = require('cors')
 app.use(express.urlencoded())
 app.use(express.static('public'))
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+    origin: "http://localhost:5173",
+    credentials: true
+}));
 
+const auth = require('./routers/auth')
+const admin = require('./controllers/admin')
+const { adminOnly, userOnly } = require('./middlewares/auth')
+
+app.use('/',auth)
+app.use('/admin',adminOnly)
+app.use('/user',userOnly)
 
 const PORT = process.env.PORT || 3000
 app.listen(PORT,()=>{
