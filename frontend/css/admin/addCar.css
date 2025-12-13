@@ -1,6 +1,4 @@
-/* ===========================
-   ADD CAR PAGE STYLING
-=========================== */
+/* PAGE BACKGROUND */
 .addcar-page {
   background: #e5e5e5;
   min-height: 100vh;
@@ -8,11 +6,21 @@
   font-family: 'Poppins', sans-serif;
 }
 
+/* PAGE TITLE */
 .title {
   font-weight: bold;
   color: #2d3e2f;
 }
 
+/* LABEL TITLES */
+.section-title {
+  margin-top: 20px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* IMAGE BOX */
 .image-box {
   width: 100%;
   height: 200px;
@@ -24,34 +32,62 @@
   font-size: 40px;
   color: #333;
   cursor: pointer;
+  margin-bottom: 10px;
 }
 
+/* INPUT FIELDS */
 .input-box {
-  margin-top: 10px;
-  padding: 10px;
-  border-radius: 8px;
-  border: none;
+  margin-top: 12px;
   background: #c8c8c8;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+}
+#mileage-values {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  margin-top: 3px;
+  color: #444;
 }
 
+/* Make toggle switch wider */
+.form-switch .form-check-input {
+    width: 3.5rem;       /* Increase width */
+    height: 1.5rem;      /* Slightly increase height */
+    background-size: 1.5rem 1.5rem;  
+    cursor: pointer;
+}
+
+
+/* TEXTAREA BOX */
 .textarea-box {
-  height: 80px;
-  margin-top: 10px;
+  margin-top: 12px;
   background: #c8c8c8;
   border: none;
   border-radius: 8px;
   padding: 10px;
+  height: 90px;
 }
 
+/* CHECKBOX / RADIO GROUPS */
+.checkbox-group,
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* ADD CAR BUTTON */
 .add-btn {
   background: #c69628;
   border: none;
   padding: 12px;
   font-weight: bold;
   border-radius: 8px;
+  font-size: 16px;
 }
 
 .add-btn:hover {
   background: #b18422;
 }
-

@@ -10,7 +10,9 @@ import UserHome from './userHome';
 import ViewCarDetailsPage from './components/common/ViewCarDetailsPage';
 import UserLogin from './components/publichome/userLogin';
 import AdminLogin from './components/publichome/adminLogin';
-
+import Admin from './admin';
+import AdminHome from './components/admin/adminhome';
+import AddCarPage from './components/admin/adminAddcar';
 
 const appRoutes = createBrowserRouter([
   {
@@ -48,6 +50,21 @@ const appRoutes = createBrowserRouter([
     element:<UserHome/>
   },
  
+
+  {
+    path:('/admin'),
+    element:<Admin/>,
+    children:[
+      {
+        index:true,
+        element:<AdminHome/>
+      },
+      {
+        path:('/admin/addcars'),
+        element:<AddCarPage/>
+      }
+    ]
+  }
 ])
 createRoot(document.getElementById('root')).render(
   <RouterProvider router={appRoutes}></RouterProvider>

@@ -1,0 +1,62 @@
+/* ===========================
+   STAT CARD
+=========================== */
+.stat-card {
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Card title */
+.stat-card-title {
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+/* Card value number */
+.stat-card-value {
+  font-size: 32px;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+/* Icon style */
+.stat-card-icon {
+  opacity: 0.85;
+}
+
+
+/* ===========================
+   CHART BOXES
+=========================== */
+.chart-box {
+  background: white;
+  padding: 25px;
+  border-radius: 18px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.chart-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Pie chart text */
+.pie-text-value {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.pie-text-label {
+  color: #6c757d;
+}
+
+/* Background full */
+.dashboard-bg {
+  background: #d2cdaa;
+  min-height: 100vh;
+}

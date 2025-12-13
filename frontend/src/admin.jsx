@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router';
 import AdminNavBar from './components/admin/adminNavbar';
 
-function AdminHome() {
+function Admin() {
   return (
     <>
       <AdminNavBar/>
@@ -9,4 +9,4 @@ function AdminHome() {
     </>
   );
 }
-export default AdminHome
+export default Admin
