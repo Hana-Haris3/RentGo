@@ -6,13 +6,14 @@ import Navbar from 'react-bootstrap/Navbar'
 import Dropdown from 'react-bootstrap/Dropdown'
 import '../../../css/root.css'
 import '../../../css/publicHome/navbar.css'
+import logo from '../../assets/logo.png'
 
 const NavBar = () => {
   return (
     <Navbar collapseOnSelect expand="lg" id="navBar">
       <Container>
         <Navbar.Brand as={Link} to="/">
-          <img src="./public/logo.png" id="logoId" alt="Logo" />
+          <img src={logo} id="logoId" alt="Logo" />
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />

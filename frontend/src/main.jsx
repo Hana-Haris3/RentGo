@@ -6,13 +6,25 @@ import Login from './components/publichome/userLogin';
 import SignUp from './components/publichome/signup';
 import PublicHomepage from './components/publichome/publichomePage';
 import ViewAllCars from './components/common/viewallcars';
-import UserHome from './userHome';
 import ViewCarDetailsPage from './components/common/ViewCarDetailsPage';
+<<<<<<< HEAD
 import UserLogin from './components/publichome/userLogin';
 import AdminLogin from './components/publichome/adminLogin';
 import Admin from './admin';
 import AdminHome from './components/admin/adminhome';
 import AddCarPage from './components/admin/adminAddcar';
+=======
+import AboutUs from './components/common/aboutUs';
+import Admin from './admin';
+import AdminHome from './components/admin/adminhome';
+import UserHome from './userHome';
+import UserHomePage from './components/user/userHomePage';
+import CarBooking from './components/user/carBooking';
+
+
+
+
+>>>>>>> 263a189dc0777a6f555bfc71adbad8989677185d
 
 const appRoutes = createBrowserRouter([
   {
@@ -42,15 +54,30 @@ const appRoutes = createBrowserRouter([
       {
         path:'cars/viewdetails',
         element:<ViewCarDetailsPage/>
+      },
+      {
+        path:'aboutus',
+        element:<AboutUs/>
       }
     ]
   },
   {
     path:('/user'),
+<<<<<<< HEAD
     element:<UserHome/>
   },
  
 
+=======
+    element:<UserHome/>,
+    children:[
+      {
+        index:true,
+        element:<UserHomePage/>
+      },
+    ]
+  },
+>>>>>>> 263a189dc0777a6f555bfc71adbad8989677185d
   {
     path:('/admin'),
     element:<Admin/>,

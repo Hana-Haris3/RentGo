@@ -1,15 +1,18 @@
 .car-details-container {
   display: flex;
-  gap: 40px;
+  flex-direction: column;
+  gap: 20px;
   padding: 40px;
   max-width: 1300px;
   margin: auto;
   font-family: Arial, sans-serif;
+  height: auto;
 }
 
 /* LEFT */
 .left-section {
-  width: 65%;
+  width: 50%;
+  padding: 20px;
 }
 
 .car-title {
@@ -25,13 +28,14 @@
 .price-row {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 20px;
 }
 
 .price {
   font-size: 28px;
   font-weight: bold;
-  color: #1e57d6;
+  color: var(--secondary-blue);
 }
 
 .price span {
@@ -40,7 +44,7 @@
 }
 
 .available {
-  color: green;
+  color: var(--secondary-green);
   font-weight: bold;
 }
 
@@ -65,7 +69,8 @@
 
 /* RIGHT */
 .right-section {
-  width: 35%;
+  width: 50%;
+  padding: 20px;
 }
 
 .spec-title {
@@ -95,7 +100,7 @@
 .book-btn {
   width: 100%;
   margin-top: 18px;
-  background: #ffc107;
+  background: var(--main-yellow);
   border: none;
   padding: 12px;
   border-radius: 12px;

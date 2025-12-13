@@ -15,6 +15,8 @@ import {
 } from "react-icons/fa";
 import '../../../css/root.css'
 import "../../../css/publicHome/footer.css"
+import logo from '../../assets/logo.png'
+
 
 const Footer = () => {
   return (
@@ -26,7 +28,7 @@ const Footer = () => {
           <Col md={4}>
             <div className="footer-logo">
               <img
-                src="logo.png" // replace with your logo
+                src={logo} // replace with your logo
                 alt="RentGo Logo"
                 className="footer-logo-img"
               />
