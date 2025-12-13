@@ -1,8 +1,7 @@
 const Admin = require("../models/Admin")
 
 exports.adminLoginPage = (req,res)=>{
-    let msg = ""
-    return res.json(msg)
+    return res.json({msg:""})
 } 
 
 exports.adminLogin = async (req,res)=>{
