@@ -119,7 +119,6 @@
   gap: 8px;
 }
 
-/* Description + Details */
 .description, .details, .damage-notes {
   margin-top: 20px;
 }
@@ -129,7 +128,7 @@ h4 {
   font-weight: 600;
 }
 
-/* RESPONSIVE */
+
 @media (max-width: 992px) {
   .car-details-container {
     flex-direction: column;

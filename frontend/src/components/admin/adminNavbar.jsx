@@ -7,12 +7,14 @@ import '../../../css/root.css'
 import '../../../css/publicHome/navbar.css'
 
 
+
+
 const AdminNavBar = () => {
   return (
     <Navbar collapseOnSelect expand="lg" id="navBar">
       <Container>
         <Navbar.Brand as={Link} to="/">
-          <img src="./public/logo.png" id="logoId" alt="Logo" />
+          <img src="/src/assets/logo.png" id="logoId" alt="Logo" />
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -29,8 +31,8 @@ const AdminNavBar = () => {
             <Nav.Link as={Link} to="/admin/addcars">Add Cars</Nav.Link>
             <Nav.Link as={Link} to="/admin/admincars">Cars</Nav.Link>
             <Nav.Link as={Link} to="/admin/bookings">Bookings</Nav.Link>
-            <Nav.Link as={Link} to="/admin/adminreviews">Review</Nav.Link>
-            <Nav.Link as={Link} to="/admin/logout">
+            <Nav.Link as={Link} to="/admin/reviews">Review</Nav.Link>
+            <Nav.Link as={Link} to="/">
               <button className="logout">LOGOUT</button>
             </Nav.Link>
           </Nav>
@@ -39,5 +41,4 @@ const AdminNavBar = () => {
     </Navbar>
   )
 }
-
 export default AdminNavBar
