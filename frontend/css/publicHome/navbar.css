@@ -42,3 +42,8 @@
   border-radius: 0 0 10px 10px;
 }
 
+.loginBtn {
+  border: none;
+  background-color: #007bff;
+  color: white;
+}

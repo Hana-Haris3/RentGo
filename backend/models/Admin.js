@@ -1,4 +1,6 @@
-const { name } = require("ejs")
+const mongoose = require('mongoose')
+const bcrypt = require('bcryptjs')
+const jwt = require("jsonwebtoken")
 
 const adminSchema = new mongoose.Schema({
     id:{
@@ -15,14 +17,14 @@ const adminSchema = new mongoose.Schema({
 })
 
 adminSchema.methods.validatePassword = async function (adminpassword){
-    return await bcryptjs.compare(adminpassword,this.password)
+    return await bcrypt.compare(adminpassword,this.password)
 }
 
 adminSchema.methods.getjwt = function(){
     const token = jwt.sign({
         name:this.name,
         password:this.password
-    },jwtsecret,{ expiresIn: '1hr' })
+    },process.env.jwtsecret,{ expiresIn: '1hr' })
     return token
 }
 

@@ -5,9 +5,37 @@ import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import '../../../css/root.css'
 import '../../../css/publicHome/navbar.css'
+import { useNavigate } from 'react-router'
 
 
 const AdminNavBar = () => {
+
+  const navigate = useNavigate()
+
+  async function AdminLogout(e) {
+        
+        e.preventDefault();
+
+        try {
+            const res =await fetch("http://localhost:3000/logout/admin",{
+                method:"POST",
+                credentials:"include"
+            })
+
+            const data =await res.json()
+            
+            if (data.success) {
+                alert("do you want to logout?")
+                navigate("/")
+            } else {
+                alert("logout failed!!")
+            }
+        } catch (error) {
+           console.log(error) 
+        }
+    }
+
+
   return (
     <Navbar collapseOnSelect expand="lg" id="navBar">
       <Container>
@@ -30,9 +58,7 @@ const AdminNavBar = () => {
             <Nav.Link as={Link} to="/admin/admincars">Cars</Nav.Link>
             <Nav.Link as={Link} to="/admin/bookings">Bookings</Nav.Link>
             <Nav.Link as={Link} to="/admin/adminreviews">Review</Nav.Link>
-            <Nav.Link as={Link} to="/admin/logout">
-              <button className="logout">LOGOUT</button>
-            </Nav.Link>
+              <button className="logout" onClick={AdminLogout}>LOGOUT</button>
           </Nav>
         </Navbar.Collapse>
       </Container>
