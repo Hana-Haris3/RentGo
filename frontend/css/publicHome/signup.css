@@ -1,6 +1,5 @@
 .signup-wrapper {
   background: #e6dfbb;
-  /* height: 90vh; */
   display: flex;
   justify-content: center;
   padding-top: 20px;
@@ -11,7 +10,6 @@
 .signup-container {
   width: 80%;
   max-width: 900px;
-  /* padding: 30px; */
   border-radius: 20px;
 }
 
@@ -48,13 +46,6 @@ h2 {
 .hidden-input {
   display: none;
 }
-
-/* .signup-form {
-  display: flex;
-  gap: 50px;
-  flex-wrap: wrap;
-} */
-
 .left, .right {
   flex: 1;
   min-width: 260px;

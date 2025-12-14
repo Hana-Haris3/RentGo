@@ -1,18 +1,13 @@
-/* PAGE BACKGROUND */
 .login-page {
   height: 88vh;
   width: 100%;
   background: #e6dfbb;
 }
-
-/* CARD */
 .login-card {
   width: 350px;
   height: 380px;
   background: #d9d2b0;
 }
-
-/* PASSWORD ICON */
 .password-icon {
   position: absolute;
   right: 12px;
@@ -20,32 +15,26 @@
   cursor: pointer;
   color: #555;
 }
-
-/* FORGOT TEXT */
 .forgot {
   font-size: 14px;
   cursor: pointer;
   color: #555;
 }
-
-/* LOGIN BUTTON */
 .login-btn {
-  background: #d49728;
+  background: var(--main-yellow);
   color: white;
   font-weight: 500;
 }
 
 .login-btn:hover {
-  background: #b97d20;
+  background: var(--main-yellow);
 }
-
-/* REGISTER */
 .register-text {
   font-size: 14px;
 }
 
 .register-link {
-  color: #d49728;
+  color: var(--main-yellow);
   cursor: pointer;
   font-weight: 500;
   text-decoration: none;

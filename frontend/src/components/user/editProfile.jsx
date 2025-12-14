@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import '../../../css/root.css';
+// import "../../../css/publicHome/signup.css";
 import "../../../css/publicHome/signup.css";
 import { Form } from "react-router";
 import { ChevronDownIcon } from "lucide-react";
@@ -176,7 +177,6 @@ export default function SignUp() {
                   </Popover>
                 </div>
 
-
               <label for="aadhaarNumber">Aadhaar Number:</label>
               <input type="text" id="aadhaarNumber" name="aadhaarNumber"
                     placeholder="Aadhaar Number"
@@ -192,7 +192,7 @@ export default function SignUp() {
               <label>Upload Aadhaar</label>
               <input type="file" accept="image/*" required/>
 
-              <button type="submit"className="create-btn">Create</button>
+              <button type="submit" className="create-btn" onClick={() => navigate("/view-profile")}>Save</button> 
             </div>
           </div>
         </div>

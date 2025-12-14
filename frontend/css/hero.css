@@ -1,5 +1,4 @@
 
-/* hero.css */
 .hero-container {
   width: 100%;
   height: calc(100vh - 12vh);
@@ -97,7 +96,6 @@
 
  
 
-/* HowItWorks.css */
 .how-section {
 background: var(--main-beige);
 padding: 4rem 0;
@@ -152,10 +150,6 @@ margin-top: -4px;
 max-width: 340px;
 }
 
-
-
-
-/* WhyChooseUs.css */
 .why-section {
   background: var(--secondary-yellow);
   padding: 4rem 0;

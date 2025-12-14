@@ -62,6 +62,7 @@ export default function CarDetails() {
           </div>
 
           <button className="book-btn">Book Now</button>
+          
 
           <div className="equipment">
             <h4>Car Equipment</h4>

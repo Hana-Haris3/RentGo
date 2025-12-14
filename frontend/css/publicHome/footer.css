@@ -6,12 +6,10 @@
 .footer-logo {
   display: flex;
   align-items: start;
-  /* margin-bottom: 10px; */
 }
 
 .footer-logo-img {
   width: 150px;
-  /* margin-right: 10px; */
 }
 
 .footer-title {
@@ -22,7 +20,6 @@
 .footer-desc {
   font-size: 14px;
   max-width: 300px;
-  /* margin-top: 10px; */
 }
 
 .footer-socials {
