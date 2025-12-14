@@ -1,42 +1,48 @@
-import React from 'react'
-import { Link } from 'react-router'
-import Container from 'react-bootstrap/Container'
-import Nav from 'react-bootstrap/Nav'
-import Navbar from 'react-bootstrap/Navbar'
-import '../../../css/root.css'
-import '../../../css/publicHome/navbar.css'
-
+import React from "react";
+import { Link } from "react-router";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import "../../../css/root.css";
+import "../../../css/user/navbar.css"
 
 const UserNavBar = () => {
   return (
     <Navbar collapseOnSelect expand="lg" id="navBar">
       <Container>
-        <Navbar.Brand as={Link} to="/">
-          <img src="./public/logo.png" id="logoId" alt="Logo" />
+        {/* LOGO */}
+        <Navbar.Brand as={Link} to="/user">
+          <img src="/src/assets/logo.png" id="logoId" alt="RentGo Logo" />
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
         <Navbar.Collapse
           id="responsive-navbar-nav"
-          className="justify-content-lg-end text-end w-100"
+          className="justify-content-end w-100"
         >
-          <Nav
-            id="navText"
-            className="ms-lg-auto d-flex flex-column flex-lg-row align-items-lg-center"
-          >
+          <Nav className="align-items-lg-center gap-lg-2">
+
+            {/* NAV LINKS */}
             <Nav.Link as={Link} to="/user">Home</Nav.Link>
-            <Nav.Link as={Link} to="/usercars">Cars</Nav.Link>
-            <Nav.Link as={Link} to="/carbooking">Bookings</Nav.Link>
+            <Nav.Link as={Link} to="cars">Cars</Nav.Link>
+            <Nav.Link as={Link} to="/user/carbooking">Bookings</Nav.Link>
             <Nav.Link as={Link} to="/aboutus">About Us</Nav.Link>
-            <Nav.Link as={Link} to="/userprofile">
-              <img src=""></img>
+
+            {/* PROFILE SECTION */}
+            <Nav.Link as={Link} to="profile" className="profile-wrapper">
+              <img
+                src="/src/assets/profile.png"   // 👈 add default avatar
+                alt="Profile"
+                className="profile-avatar"
+              />
             </Nav.Link>
+
           </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
-  )
-}
+  );
+};
 
-export default UserNavBar
+export default UserNavBar;

@@ -13,9 +13,11 @@ import AddCarPage from './components/admin/adminAddcar';
 import AboutUs from './components/common/aboutUs';
 import Admin from './admin';
 import AdminHome from './components/admin/adminhome';
-import UserHome from './userHome';
+import UserHome from './userhome';
 import UserHomePage from './components/user/userHomePage';
-import CarBooking from './components/user/carBooking';
+// import CarBooking from './components/user/carBooking';
+import UserProfile from './components/user/viewProfile';
+import EditProfile from './components/user/editProfile';
 
 
 const appRoutes = createBrowserRouter([
@@ -61,6 +63,18 @@ const appRoutes = createBrowserRouter([
         index:true,
         element:<UserHomePage/>
       },
+      {
+        path:'cars',
+        element:<ViewAllCars/>
+      },
+      {
+        path:'profile',
+        element:<UserProfile/>
+      },
+      {
+        path:'profile/editprofile',
+        element:<EditProfile/>
+      }
     ]
   },
   {
