@@ -4,7 +4,6 @@ const router = require('express').Router()
 
 router
     .route('/login/admin')
-    .get(adminLoginPage)
     .post(adminLogin)
 
 router
@@ -14,17 +13,16 @@ router
 //userRoutes
 
 router
-    .route('/user/register')
-    .get(userRegisterPage)
-    .post(userRegister)
+    // .route('/user/register')
+    // .get(userRegisterPage)
+    // .post(userRegister)
 
 router
-    .route('/user/login')
-    .get(userLoginPage)
+    .route('/login/user')
     .post(userLogin)
 
 router
-    .route('/logout')
-    .get(userLogout)
+    .route('/logout/user')
+    .post(userLogout)
 
 module.exports = router

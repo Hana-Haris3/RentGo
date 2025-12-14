@@ -22,17 +22,6 @@ export default function AdminLogin() {
     }
 
 
-    useEffect(()=>{
-        try {
-            fetch("http://localhost:3000/login/admin")
-                .then((res)=>res.json()
-                .then((data)=>setbackenddata(data)))   
-        }
-        catch (error) {
-            console.log(error)
-        }
-    },[])
-
     async function postData(e) {
         
         e.preventDefault();

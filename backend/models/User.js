@@ -1,5 +1,7 @@
-const { name } = require("ejs");
 const { default: mongoose } = require("mongoose");
+const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
+
 
 const userSchema = mongoose.Schema({
     id: {
@@ -44,16 +46,18 @@ const userSchema = mongoose.Schema({
         default: 'User'
     }
 })
+
+
 userSchema.pre('save', async function (next) {
     if (!this.isModified('password')) {
         return next()
     }
-    this.password = await bcryptjs.hash(this.password, 5)
+    this.password = await bcrypt.hash(this.password, 5)
     return next()
 })
 
 userSchema.methods.validatePassword = async function (userPassword) {
-    return await bcryptjs.compare(userPassword, this.password)
+    return await bcrypt.compare(userPassword, this.password)
 }
 
 userSchema.methods.getjwt = function () {

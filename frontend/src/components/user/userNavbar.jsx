@@ -8,6 +8,7 @@ import '../../../css/publicHome/navbar.css'
 
 
 const UserNavBar = () => {
+
   return (
     <Navbar collapseOnSelect expand="lg" id="navBar">
       <Container>
