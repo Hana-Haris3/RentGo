@@ -53,7 +53,7 @@ export default function UserLogin() {
       <div className="login-card p-4 shadow">
         <h2 className="text-center mb-4">Login</h2>
         <form method="post" onSubmit={postData}>
-          {/* Email */}
+
           <input
             type="email"
             className="form-control mb-3"
@@ -63,7 +63,6 @@ export default function UserLogin() {
             onChange={handleChange}
           />
 
-          {/* Password */}
           <div className="position-relative mb-2">
             <input
               type={showPassword ? "text" : "password"}
@@ -82,13 +81,11 @@ export default function UserLogin() {
             </span>
           </div>
 
-          {/* Forgot */}
           <p className="text-end forgot">Forgot password?</p>
 
-          {/* Login button */}
           <button className="btn login-btn w-100 mb-3" >Login</button>
         </form>
-        {/* Register link */}
+
         <p className="text-center register-text">
           Don’t have an account yet?{" "}
           <Link className="register-link" as={Link} to="/signup">Register</Link>

@@ -1,33 +1,13 @@
 import React, { useState } from "react";
-import {
-  Container,
-  Row,
-  Col,
-  Button,
-  Card,
-  Offcanvas,
-  Form
-} from "react-bootstrap";
+import { Container, Row, Col, Button, Offcanvas } from "react-bootstrap";
 import "../../../css/root.css";
 import "../../../css/viewallcars.css"; 
 import { Slider } from "@/components/ui/slider";
 import { Checkbox } from "@/components/ui/checkbox";
-import {
-  Field,
-  FieldContent,
-  FieldDescription,
-  FieldGroup,
-  FieldLabel,
-  FieldLegend,
-  FieldSeparator,
-  FieldSet,
-} from "@/components/ui/field"
+import { Field, FieldGroup, FieldLabel } from "@/components/ui/field"
 import { BookmarkIcon } from "lucide-react"
 import { Toggle } from "@/components/ui/toggle"
-import {
-  ButtonGroup,
-  ButtonGroupSeparator,
-} from "@/components/ui/button-group"
+import { ButtonGroup, ButtonGroupSeparator } from "@/components/ui/button-group"
 import carImg  from "../../assets/democar.jpg"
 import { CiSearch } from "react-icons/ci";
 import { IoSettingsSharp } from "react-icons/io5";
@@ -50,7 +30,6 @@ export default function CarPage() {
     { label: "Wagon", icon: "🚙" },
   ];
 
-  // ⭐ States must be FIRST
   const [selected, setSelected] = useState([]);
   const [passenger, setPassenger] = useState([]);
   const [transmission, setTransmission] = useState([]);
@@ -60,7 +39,6 @@ export default function CarPage() {
   const [showFilters, setShowFilters] = useState(false);
   const toggleFilters = () => setShowFilters(!showFilters);
 
-  // ⭐ Now toggle functions AFTER states
   const toggleSelected = (item) => {
     setSelected((prev) =>
       prev.includes(item) ? prev.filter((x) => x !== item) : [...prev, item]
@@ -90,7 +68,6 @@ const FiltersContent = () => (
   <div className="filters-wrapper">
     <h4 className="fw-bold ">Filters</h4>
 
-    {/* CAR TYPE */}
     <div className="filter-section">
       <h6 className="mb-3">Car Type</h6>
 
@@ -112,7 +89,6 @@ const FiltersContent = () => (
       </div>
     </div>
 
-    {/* PASSENGERS */}
     <div className="filter-section">
       <h6 className="mb-3">Passengers</h6>
 
@@ -133,7 +109,6 @@ const FiltersContent = () => (
       </div>
     </div>
 
-    {/* TRANSMISSION */}
     <div className="filter-section">
       <h6 className="mb-3">Transmission</h6>
 
@@ -154,7 +129,6 @@ const FiltersContent = () => (
       </div>
     </div>
 
-    {/* PRICE RANGE */}
     <div className="filter-section">
       <h6 className="mb-3">Price Range (₹)</h6>
 
@@ -173,7 +147,6 @@ const FiltersContent = () => (
       />
     </div>
 
-    {/* FUEL TYPE */}
     <div className="filter-section">
       <h6 className="mb-3">Fuel Type</h6>
 
@@ -233,20 +206,17 @@ const FiltersContent = () => (
       <Container fluid className="page-container">
         <Row className="h-100">
 
-          {/* SIDEBAR (desktop) */}
           <Col lg={3} className="d-none d-lg-block p-0">
             <div className="sidebar-container">
               <FiltersContent />
             </div>
           </Col>
 
-          {/* CAR GRID */}
           <Col lg={9} className="cards-container">
 
             <div className="navbar-custom shadow-sm">
               <div className="navbar-title">Cars for you</div>
 
-              {/* MOBILE FILTER BUTTON */}
               <Button
                 variant="dark"
                 className="d-lg-none"
@@ -312,7 +282,6 @@ const FiltersContent = () => (
         </Row>
       </Container>
 
-      {/* FOOTER */}
       <div className="footer-brands">
         <span><SiJeep className="img-fluid"/></span>
         <span><SiFord className="img-fluid"/></span>
@@ -321,7 +290,6 @@ const FiltersContent = () => (
         <span><SiFerrari className="img-fluid"/></span>
       </div>
 
-      {/* MOBILE FILTERS OFFCANVAS */}
       <Offcanvas show={showFilters} onHide={toggleFilters} placement="start">
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>Filters</Offcanvas.Title>

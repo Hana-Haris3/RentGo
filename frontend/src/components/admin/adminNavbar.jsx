@@ -1,4 +1,3 @@
-import React from 'react'
 import { Link } from 'react-router'
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
@@ -43,11 +42,8 @@ const AdminNavBar = () => {
     <Navbar collapseOnSelect expand="lg" id="navBar">
       <Container>
         <Navbar.Brand as={Link} to="/">
-<<<<<<< HEAD
           <img src={logo} id="logoId" alt="Logo" />
-=======
           <img src="/src/assets/logo.png" id="logoId" alt="Logo" />
->>>>>>> 2d9045f058e0f086c31a56c483d1c8cbfa7c0615
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -64,15 +60,12 @@ const AdminNavBar = () => {
             <Nav.Link as={Link} to="/admin/addcars">Add Cars</Nav.Link>
             <Nav.Link as={Link} to="/admin/admincars">Cars</Nav.Link>
             <Nav.Link as={Link} to="/admin/bookings">Bookings</Nav.Link>
-<<<<<<< HEAD
             <Nav.Link as={Link} to="/admin/reviews">Review</Nav.Link>
             <Nav.Link as={Link} to="/">
               <button className="logout">LOGOUT</button>
             </Nav.Link>
-=======
             <Nav.Link as={Link} to="/admin/adminreviews">Review</Nav.Link>
               <button className="logout" onClick={AdminLogout}>LOGOUT</button>
->>>>>>> e63641d29caad56199d53464e92713ef6b6319d1
           </Nav>
         </Navbar.Collapse>
       </Container>

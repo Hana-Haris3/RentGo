@@ -1,4 +1,3 @@
-import React from 'react'
 import { Link } from 'react-router'
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
@@ -30,7 +29,6 @@ const NavBar = () => {
             <Nav.Link as={Link} to="/cars">Cars</Nav.Link>
             <Nav.Link as={Link} to="/aboutus">About Us</Nav.Link>
 
-            {/* LOGIN DROPDOWN */}
             <Dropdown align="end">
               <Dropdown.Toggle className="loginBtn">
                 LOGIN

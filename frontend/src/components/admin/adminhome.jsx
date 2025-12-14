@@ -1,23 +1,7 @@
 import "../../../css/admin/adminhome.css";
-import { useNavigate } from "react-router";
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  Tooltip,
-  ResponsiveContainer,
-  PieChart,
-  Pie,
-  Cell,
-} from "recharts";
-
-import {
-  FaClipboardList,
-  FaCarAlt,
-  FaTools,
-} from "react-icons/fa";
+import { BarChart, Bar, XAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
+import { FaClipboardList, FaCarAlt, FaTools } from "react-icons/fa";
 import { IoCarSportSharp } from "react-icons/io5";
-import { useEffect } from "react";
 
 const AdminHome = () => {
  

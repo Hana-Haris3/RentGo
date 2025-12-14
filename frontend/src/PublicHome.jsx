@@ -1,6 +1,6 @@
-import { Outlet } from 'react-router';
+import { Outlet } from 'react-router'
 import NavBar from './components/publichome/navbar'
-import Footer from './components/publichome/footer';
+import Footer from './components/publichome/footer'
 function PublicHome() {
   // async function aa() {
   //   const a = await fetch('http://192.168.29.119:3000/api/data')
@@ -15,6 +15,6 @@ function PublicHome() {
       <Outlet/>
       <Footer/>
     </>
-  );
+  )
 }
 export default PublicHome

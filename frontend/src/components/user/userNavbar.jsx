@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
@@ -11,7 +10,7 @@ const UserNavBar = () => {
   return (
     <Navbar collapseOnSelect expand="lg" id="navBar">
       <Container>
-        {/* LOGO */}
+
         <Navbar.Brand as={Link} to="/user">
           <img src="/src/assets/logo.png" id="logoId" alt="RentGo Logo" />
         </Navbar.Brand>
@@ -24,16 +23,14 @@ const UserNavBar = () => {
         >
           <Nav className="align-items-lg-center gap-lg-2">
 
-            {/* NAV LINKS */}
             <Nav.Link as={Link} to="/user">Home</Nav.Link>
             <Nav.Link as={Link} to="cars">Cars</Nav.Link>
             <Nav.Link as={Link} to="/user/carbooking">Bookings</Nav.Link>
             <Nav.Link as={Link} to="/aboutus">About Us</Nav.Link>
 
-            {/* PROFILE SECTION */}
             <Nav.Link as={Link} to="profile" className="profile-wrapper">
               <img
-                src="/src/assets/profile.png"   // 👈 add default avatar
+                src="/src/assets/profile.png" 
                 alt="Profile"
                 className="profile-avatar"
               />
