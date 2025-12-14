@@ -3,13 +3,13 @@ const { adminLoginPage, adminLogin, adminLogout, userLoginPage, userLogin, userL
 const router = require('express').Router()
 
 router
-    .route('/login')
+    .route('/login/admin')
     .get(adminLoginPage)
     .post(adminLogin)
 
 router
-    .route('/logout')
-    .get(adminLogout)
+    .route('/logout/admin')
+    .post(adminLogout)
 
 //userRoutes
 

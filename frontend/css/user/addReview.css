@@ -42,8 +42,8 @@
 }
 
 .submit-btn {
-  width: 180px;
-  background-color: #c58a1a;
+  width: 350px;
+  background-color: var(--main-yellow);
   color: white;
   border: none;
   padding: 10px 0;

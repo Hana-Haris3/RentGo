@@ -21,7 +21,7 @@ app.use('/',auth)
 app.use('/admin',adminOnly)
 app.use('/user',userOnly)
 
-const PORT = process.env.PORT || 3000
+const PORT = 3000
 app.listen(PORT,()=>{
     connectDB()
     console.log('app started!!')

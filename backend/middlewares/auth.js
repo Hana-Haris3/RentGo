@@ -1,10 +1,9 @@
 const jwt = require('jsonwebtoken')
-// const jwtsecret = require('../.env/jwtsecret')
 
 exports.adminOnly = (req,res,next)=>{
     const admin = req.cookies?.admin
     if(!admin){
-        return res.redirect('/admin/login')
+        return res.json({authentication:false})
     }
 
     try {
@@ -14,7 +13,7 @@ exports.adminOnly = (req,res,next)=>{
     } catch (error) {
         console.log(error)
     }
-    return res.redirect('/admin/login')
+    return res.json({authentication:true})
 }
 
 
