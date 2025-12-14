@@ -75,6 +75,7 @@ const AdminBookings = () => {
     <div className="booking-page">
       <Container fluid>
 
+        {/* SEARCH & FILTER */}
         <Row className="search-row align-items-center">
           <Col md={8}>
             <Form.Control
@@ -96,6 +97,8 @@ const AdminBookings = () => {
             </Form.Select>
           </Col>
         </Row>
+
+        {/* BOOKINGS TABLE */}
         <div className="table-wrapper">
           <Table bordered responsive className="booking-table">
             <thead>
@@ -121,7 +124,7 @@ const AdminBookings = () => {
                   <td>{item.pickup}</td>
                   <td>{item.returnDate}</td>
 
-              
+                  {/* STATUS */}
                   <td>
                     <Button
                       className={
@@ -133,9 +136,9 @@ const AdminBookings = () => {
                     </Button>
                   </td>
 
-                  
+                  {/* ACTION */}
                   <td>
-                    <Button className="view-btn">View</Button>
+                    <Button className="view-btn"  as={Link} to="/admin/viewbooking">View</Button>
                   </td>
                 </tr>
               ))}
