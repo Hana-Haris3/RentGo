@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client'
-import {  createBrowserRouter, RouterProvider } from "react-router-dom";
+import {  createBrowserRouter, RouterProvider } from "react-router";
 import PublicHome from './PublicHome'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './components/publichome/userLogin';
@@ -15,9 +15,9 @@ import Admin from './admin';
 import AdminHome from './components/admin/adminhome';
 import UserHome from './userhome';
 import UserHomePage from './components/user/userHomePage';
-// import CarBooking from './components/user/carBooking';
 import UserProfile from './components/user/viewProfile';
 import EditProfile from './components/user/editProfile';
+import CarBooking from './components/user/carBooking';
 
 
 const appRoutes = createBrowserRouter([

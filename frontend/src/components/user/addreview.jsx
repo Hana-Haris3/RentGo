@@ -31,11 +31,7 @@ const AddReview = () => {
               <FaStar
                 size={30}
                 className="star"
-                color={
-                  currentRating <= (hover || rating)
-                    ? "#d4a017"
-                    : "#ccc"
-                }
+                color={ currentRating <= (hover || rating)? "#d4a017": "#ccc"}
                 onMouseEnter={() => setHover(currentRating)}
                 onMouseLeave={() => setHover(null)}
               />
@@ -44,16 +40,8 @@ const AddReview = () => {
         })}
       </div>
 
-      <textarea
-        className="feedback-box"
-        placeholder="Type here..."
-        value={feedback}
-        onChange={(e) => setFeedback(e.target.value)}
-      ></textarea>
-
-      <button className="submit-btn" onClick={handleSubmit}>
-        Submit
-      </button>
+      <textarea className="feedback-box" placeholder="Type here..." value={feedback} onChange={(e) => setFeedback(e.target.value)}></textarea>
+      <button className="submit-btn" onClick={handleSubmit}>Submit</button>
     </div>
   );
 };
