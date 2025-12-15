@@ -1,10 +1,10 @@
-import React from 'react'
 import { Link } from 'react-router'
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import '../../../css/root.css'
 import '../../../css/publicHome/navbar.css'
+import logo from '../../assets/logo.png'
 import { useNavigate } from 'react-router'
 
 
@@ -42,6 +42,7 @@ const AdminNavBar = () => {
     <Navbar collapseOnSelect expand="lg" id="navBar">
       <Container>
         <Navbar.Brand as={Link} to="/">
+          <img src={logo} id="logoId" alt="Logo" />
           <img src="/src/assets/logo.png" id="logoId" alt="Logo" />
         </Navbar.Brand>
 
@@ -63,6 +64,11 @@ const AdminNavBar = () => {
             <Nav.Link as={Link} to="/">
               <button className="logout">LOGOUT</button>
             </Nav.Link>
+<<<<<<< HEAD
+=======
+            <Nav.Link as={Link} to="/admin/adminreviews">Review</Nav.Link>
+              <button className="logout" onClick={AdminLogout}>LOGOUT</button>
+>>>>>>> d9d20a3677085bbc16bb51c94d66ec16a97dc3a0
           </Nav>
         </Navbar.Collapse>
       </Container>

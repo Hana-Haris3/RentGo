@@ -1,18 +1,6 @@
-import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router";
-import {
-  FaFacebookF,
-  FaInstagram,
-  FaTwitter,
-  FaPhoneAlt,
-  FaEnvelope,
-  FaMapMarkerAlt,
-  FaWhatsapp,
-  FaTwitterSquare,
-  FaXing,
-  Fa500Px,
-} from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaTwitter, FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaWhatsapp } from "react-icons/fa";
 import '../../../css/root.css'
 import "../../../css/publicHome/footer.css"
 import logo from '../../assets/logo.png'
@@ -24,11 +12,11 @@ const Footer = () => {
       <Container>
         <Row className="gy-4 ">
 
-          {/* Logo + Description */}
+       
           <Col md={4}>
             <div className="footer-logo">
               <img
-                src={logo} // replace with your logo
+                src={logo} 
                 alt="RentGo Logo"
                 className="footer-logo-img"
               />
@@ -48,7 +36,6 @@ const Footer = () => {
             </div>
           </Col>
 
-          {/* Useful Links */}
           <Col md={4}>
             <h5 className="footer-heading">Useful links</h5>
             <div className="footer-links">
@@ -58,7 +45,6 @@ const Footer = () => {
             </div>
           </Col>
 
-          {/* Contact */}
           <Col md={4}>
             <h5 className="footer-heading">Contact</h5>
 

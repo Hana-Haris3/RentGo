@@ -1,44 +1,10 @@
 import "../../../css/admin/adminhome.css";
-import { useNavigate } from "react-router";
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  Tooltip,
-  ResponsiveContainer,
-  PieChart,
-  Pie,
-  Cell,
-} from "recharts";
-
-import {
-  FaClipboardList,
-  FaCarAlt,
-  FaTools,
-} from "react-icons/fa";
+import { BarChart, Bar, XAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
+import { FaClipboardList, FaCarAlt, FaTools } from "react-icons/fa";
 import { IoCarSportSharp } from "react-icons/io5";
-import { useEffect } from "react";
 
 const AdminHome = () => {
-  const navigate = useNavigate()
-
-  useEffect(() => {
-      try {
-        fetch('http://localhost:3000/admin')
-          .then((res)=>res.json())
-          .then((data)=>{
-            if(!data.authentication){
-              navigate('/login/admin')
-            }
-          })
-      }
-      catch(error){
-        console.log(error)
-      }
-  }, [])
-
-
-
+ 
   const barData = [
     { day: "Sun", rent: 60, revenue: 80 },
     { day: "Mon", rent: 40, revenue: 70 },

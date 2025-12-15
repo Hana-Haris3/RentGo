@@ -1,4 +1,3 @@
-import React from "react";
 import {Link} from "react-router"
 import { Container, Form, Button } from "react-bootstrap";
 import "../../../css/admin/adminViewReview.css";
@@ -34,7 +33,6 @@ const AdminViewReview=()=> {
           responsive and helpful.
         </div>
 
-        {/* ACTION BUTTONS */}
         <div className="action-buttons">
           <Button type="submit" name="action" value="delete" className="delete-btn">
             delete

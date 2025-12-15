@@ -1,4 +1,3 @@
-// export default AddCarPage;
 import React from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import "../../../css/admin/addcar.css";
@@ -7,18 +6,11 @@ const AddCarPage = () => {
   const [mileage, setMileage] = React.useState(0);
 
   const handleSubmit = (e) => {
-    e.preventDefault(); // prevent page reload
+    e.preventDefault();
 
     const formData = new FormData(e.target);
 
-    // Example: check values
     console.log(Object.fromEntries(formData.entries()));
-
-    // 👉 Later you can use fetch() here
-    // fetch("/api/add-car", {
-    //   method: "POST",
-    //   body: formData,
-    // });
   };
 
   return (
@@ -26,11 +18,9 @@ const AddCarPage = () => {
       <Container>
         <h2 id="h2"className="title text-center mb-4">Add New Car</h2>
 
-        {/* 🔥 FORM START */}
         <Form method="post" onSubmit={handleSubmit}>
           <Row className="g-4">
 
-            {/* LEFT SECTION */}
             <Col md={4}>
               <h5>Image</h5>
               <input type="file" name="image" className="image-box" />
@@ -67,7 +57,6 @@ const AddCarPage = () => {
               <Form.Control name="price" className="input-box" placeholder="Price" />
               <Form.Control name="engine" className="input-box" placeholder="Engine" />
 
-              {/* Car Category */}
               <label className="section-title mt-2">Car Category</label>
               <Form.Select name="category" className="input-box">
                 <option value="">Select category</option>
@@ -82,7 +71,6 @@ const AddCarPage = () => {
                 Choose the car classification.
               </small>
 
-              {/* Mileage */}
               <label className="section-title mt-3">
                 Mileage: {mileage} KM
               </label>
@@ -102,7 +90,6 @@ const AddCarPage = () => {
               </div>
             </Col>
 
-            {/* RIGHT SECTION */}
             <Col md={4}>
 
               <h5>Fuel Type</h5>

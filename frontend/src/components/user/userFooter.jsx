@@ -1,18 +1,6 @@
-import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router";
-import {
-  FaFacebookF,
-  FaInstagram,
-  FaTwitter,
-  FaPhoneAlt,
-  FaEnvelope,
-  FaMapMarkerAlt,
-  FaWhatsapp,
-  FaTwitterSquare,
-  FaXing,
-  Fa500Px,
-} from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaTwitter, FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaWhatsapp } from "react-icons/fa";
 import '../../../css/root.css'
 import "../../../css/publicHome/footer.css"
 
@@ -22,11 +10,10 @@ const UserFooter = () => {
       <Container>
         <Row className="gy-4 ">
 
-          {/* Logo + Description */}
           <Col md={4}>
             <div className="footer-logo">
               <img
-                src="logo.png" // replace with your logo
+                src="logo.png"
                 alt="RentGo Logo"
                 className="footer-logo-img"
               />
@@ -46,7 +33,6 @@ const UserFooter = () => {
             </div>
           </Col>
 
-          {/* Useful Links */}
           <Col md={4}>
             <h5 className="footer-heading">Useful links</h5>
             <div className="footer-links">
@@ -57,7 +43,6 @@ const UserFooter = () => {
             </div>
           </Col>
 
-          {/* Contact */}
           <Col md={4}>
             <h5 className="footer-heading">Contact</h5>
 
@@ -74,7 +59,7 @@ const UserFooter = () => {
         </p>
       </Container>
     </footer>
-  );
-};
+  )
+}
 
-export default UserFooter;
+export default UserFooter

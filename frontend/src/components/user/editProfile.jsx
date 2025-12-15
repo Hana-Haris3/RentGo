@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import '../../../css/root.css';
-// import "../../../css/publicHome/signup.css";
 import "../../../css/publicHome/signup.css";
 import { Form } from "react-router";
 import { ChevronDownIcon } from "lucide-react";
@@ -18,7 +17,6 @@ export default function SignUp() {
   const [dobOpen, setDobOpen] = useState(false);
   const [lvOpen, setLvOpen] = useState(false);
 
-  // Format date as DD/MM/YYYY
   const formatDate = (date) => {
     if (!date) return "";
     const d = date.getDate().toString().padStart(2, "0");
@@ -58,23 +56,21 @@ export default function SignUp() {
           </div>
 
           <div className="d-flex gap-5 flex-wrap">
-            {/* Left Side */}
             <div className="left">
               <input type="text" placeholder="Full Name" required />
               <input type="email" placeholder="Email" required />
               <input type="tel" id="phoneInput" placeholder="Phone Number" name="phoneInput" maxlength="10" pattern="[0-9]{10}" inputmode="numeric" required />
               <input type="password" placeholder="Password"  required />
 
-              {/* Date of Birth */}
               <div className="flex gap-3">
                 <Label htmlFor="dob" className="px-1">
                   Date of Birth
                 </Label>
                 <input
                   type="hidden"
-                  name="dateOfBirth" // Use a meaningful name for form data
-                  value={dob ? dob.toISOString() : ''} // Value is empty string if null, which triggers the 'required' flag
-                  required // The native HTML required attribute
+                  name="dateOfBirth" 
+                  value={dob ? dob.toISOString() : ''} 
+                  required
               />
                 <Popover open={dobOpen} onOpenChange={setDobOpen}>
                   <PopoverTrigger asChild>
@@ -98,13 +94,12 @@ export default function SignUp() {
                       }}
                       captionLayout="dropdown"
                       defaultMonth={dob || new Date()}
-                      max={new Date()} // Prevent future dates
+                      max={new Date()} 
                     />
                   </PopoverContent>
                 </Popover>
               </div>
 
-              {/* Gender */}
               <div className="flex gap-3">
                 <Label className="px-1">Gender:</Label>
                 <RadioGroup defaultValue="Female">
@@ -126,7 +121,6 @@ export default function SignUp() {
               <input type="text" placeholder="Address" required />
             </div>
 
-            {/* Right Side */}
             <div className="right">
 
               <label for="dlNumber">Driving License Number:</label>
@@ -138,16 +132,15 @@ export default function SignUp() {
                       required />
 
 
-              {/* Driving Licence Validity */}
                 <div className="flex gap-3">
                   <Label htmlFor="lvdate" className="px-1">
                     Driving Licence Validity
                   </Label>
                   <input
                     type="hidden"
-                    name="liscence validity" // Use a meaningful name for form data
-                    value={lvDate ? lvDate.toISOString() : ''} // Value is empty string if null, which triggers the 'required' flag
-                    required // The native HTML required attribute
+                    name="liscence validity" 
+                    value={lvDate ? lvDate.toISOString() : ''}
+                    required
                 />
                   <Popover open={lvOpen} onOpenChange={setLvOpen}>
                     <PopoverTrigger asChild>
@@ -170,8 +163,8 @@ export default function SignUp() {
                         }}
                         captionLayout="dropdown"
                         defaultMonth={lvDate || new Date()}
-                        min={new Date()} // Cannot be in the past
-                        max={new Date(new Date().setFullYear(new Date().getFullYear() + 10))} // Max 10 years ahead
+                        min={new Date()}
+                        max={new Date(new Date().setFullYear(new Date().getFullYear() + 10))}
                       />
                     </PopoverContent>
                   </Popover>
