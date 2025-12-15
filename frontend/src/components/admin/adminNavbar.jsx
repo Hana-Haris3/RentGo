@@ -1,11 +1,13 @@
-import React from 'react'
 import { Link } from 'react-router'
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import '../../../css/root.css'
 import '../../../css/publicHome/navbar.css'
+import logo from '../../assets/logo.png'
 import { useNavigate } from 'react-router'
+
+
 
 
 const AdminNavBar = () => {
@@ -40,7 +42,8 @@ const AdminNavBar = () => {
     <Navbar collapseOnSelect expand="lg" id="navBar">
       <Container>
         <Navbar.Brand as={Link} to="/">
-          <img src="./public/logo.png" id="logoId" alt="Logo" />
+          <img src={logo} id="logoId" alt="Logo" />
+          <img src="/src/assets/logo.png" id="logoId" alt="Logo" />
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -57,6 +60,10 @@ const AdminNavBar = () => {
             <Nav.Link as={Link} to="/admin/addcars">Add Cars</Nav.Link>
             <Nav.Link as={Link} to="/admin/admincars">Cars</Nav.Link>
             <Nav.Link as={Link} to="/admin/bookings">Bookings</Nav.Link>
+            <Nav.Link as={Link} to="/admin/reviews">Review</Nav.Link>
+            <Nav.Link as={Link} to="/">
+              <button className="logout">LOGOUT</button>
+            </Nav.Link>
             <Nav.Link as={Link} to="/admin/adminreviews">Review</Nav.Link>
               <button className="logout" onClick={AdminLogout}>LOGOUT</button>
           </Nav>
@@ -65,5 +72,4 @@ const AdminNavBar = () => {
     </Navbar>
   )
 }
-
 export default AdminNavBar

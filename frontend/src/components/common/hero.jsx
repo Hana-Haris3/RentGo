@@ -1,12 +1,12 @@
-import React from "react";
 import "../../../css/root.css";
 import "../../../css/hero.css";
-import carImg from "../../assets/hero-img.png"; // replace with actual path
+import carImg from "../../assets/hero-img.png";
 import { FaCar, FaCarSide, FaLocationArrow, FaSearchLocation, FaWallet } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { Link } from "react-router";
 import { Container, Row, Col } from "react-bootstrap";
-import howImg from "../../assets/how-image.jpg"; // replace path
+import howImg from "../../assets/how-image.jpg"; 
+
 
 export default function Hero() {
   return (

@@ -1,11 +1,9 @@
-/* --- GENERAL LAYOUT --- */
-
 .page-container {
-  height: calc(100vh - 12vh); /* navbar + footer */
+  height: calc(100vh - 12vh); 
   overflow: hidden;
 }
 
-/* ---- NAVBAR ---- */
+
 .navbar-custom {
   height: 70px;
   padding: 0 20px;
@@ -19,10 +17,10 @@
   font-size: 24px;
 }
 
-/* ---- SIDEBAR ---- */
+
 .sidebar-container {
   background: var(--main-beige);
-  height: calc(100vh - 14vh); /* never overlap footer or navbar */
+  height: calc(100vh - 14vh); 
   padding: 20px;
   overflow-y: auto;
 
@@ -42,7 +40,6 @@
   margin-bottom: 5px;
 }
 
-/* ---- CAR GRID ---- */
 .cards-container {
   overflow-y: auto;
   height: calc(100vh - 14vh);
@@ -59,7 +56,6 @@
   border-radius: 12px;
 }
 
-/* ---- FOOTER ---- */
 .footer-brands {
   height: 15vh;
   background: rgb(236, 234, 234);
@@ -83,7 +79,6 @@
   gap: 12px;
 }
 
-/* radio pill style */
 .car-type-option {
   display: inline-flex;
   align-items: center;
@@ -97,12 +92,11 @@
   font-size: 14px;
 }
 
-/* hide input */
+
 .car-type-option input {
   display: none;
 }
 
-/* selected style */
 .car-type-option.selected {
   background: black;
   color: white;
@@ -113,7 +107,7 @@
   font-size: 16px;
 }
 
-/* mobile */
+
 @media (max-width: 480px) {
   .car-type-option {
     padding: 8px 14px;

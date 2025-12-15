@@ -9,14 +9,14 @@ export default function AboutUs() {
   return (
     <div className="about-wrapper">
       <Container>
-        {/* TITLE */}
+       
         <Row className="text-center mb-5">
           <Col>
             <h2 className="section-title fw-bolder fs-2">About Us</h2>
           </Col>
         </Row>
 
-        {/* FEATURES */}
+        
         <Row className="mb-5 features-row">
           <Col md={4} className="feature-left">
             <h3 className="feature-main-text fw-bold">
@@ -39,7 +39,7 @@ export default function AboutUs() {
           </Col>
         </Row>
 
-        {/* STATS */}
+        
         <Row className="text-center stats-row mb-5">
           <Col md={4}>
             <h2 className="stat-num">20k+</h2>
@@ -55,7 +55,6 @@ export default function AboutUs() {
           </Col>
         </Row>
 
-        {/* MID SECTION */}
         <Row className="align-items-center mid-row mb-5">
           <Col md={6}>
             <h2 className="mid-title">Unlock unforgettable memories on the road</h2>
@@ -73,7 +72,6 @@ export default function AboutUs() {
           </Col>
         </Row>
 
-        {/* REVIEWS */}
         <Row className="text-center mb-4">
           <Col>
             <h3 className="section-title">Reviews from our customers</h3>
@@ -98,7 +96,6 @@ export default function AboutUs() {
           ))}
         </Row>
 
-        {/* CONTACT */}
         <Row className="text-center mb-3">
           <Col>
             <h3 className="section-title">Contact Us</h3>

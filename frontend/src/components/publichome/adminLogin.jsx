@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import "../../../css/publicHome/login.css";
-import { data, Link } from "react-router";
-import { useEffect } from "react";
 import { useNavigate } from "react-router";
 
 export default function AdminLogin() {
@@ -21,17 +19,6 @@ export default function AdminLogin() {
         });
     }
 
-
-    useEffect(()=>{
-        try {
-            fetch("http://localhost:3000/login/admin")
-                .then((res)=>res.json()
-                .then((data)=>setbackenddata(data)))   
-        }
-        catch (error) {
-            console.log(error)
-        }
-    },[])
 
     async function postData(e) {
         
@@ -62,7 +49,7 @@ export default function AdminLogin() {
             <div className="login-card p-4 shadow">
                 <h2 className="text-center mb-4">Login</h2>
                 <form onSubmit={postData}>
-                    {/* Email */}
+
                     <input
                         type="text"
                         className="form-control mb-3"
@@ -72,7 +59,6 @@ export default function AdminLogin() {
                         onChange={handleChange}
                     />
 
-                    {/* Password */}
                     <div className="position-relative mb-2">
                         <input
                             type={showPassword ? "text" : "password"}
@@ -91,10 +77,8 @@ export default function AdminLogin() {
                         </span>
                     </div>
 
-                    {/* Forgot */}
                     <p className="text-end forgot">Forgot password?</p>
 
-                    {/* Login button */}
                     <button className="btn login-btn w-100 mb-3">Login</button>
 
                     <p id="message">{backenddata.msg}</p>

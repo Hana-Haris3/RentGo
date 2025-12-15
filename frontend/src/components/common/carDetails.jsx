@@ -15,7 +15,7 @@ export default function CarDetails() {
   return (
     <Container fluid className="car-details-container">
       <Row>
-        {/* LEFT SECTION */}
+
         <Col xs={12} lg={6} className="left-section">
           <h2 className="car-title">Ford Mustang GT.</h2>
 
@@ -30,10 +30,8 @@ export default function CarDetails() {
             <span className="available">AVAILABLE</span>
           </div>
 
-          {/* MAIN IMAGE */}
           <img className="main-image" src={mainImage} alt="Car" />
 
-          {/* IMAGE GALLERY */}
           <Row className="image-gallery">
             {galleryImages.map((img, index) => (
               <Col xs={6} sm={3} key={index}>
@@ -48,7 +46,6 @@ export default function CarDetails() {
           </Row>
         </Col>
 
-        {/* RIGHT SECTION */}
         <Col xs={12} lg={6} className="right-section">
           <h4 className="spec-title">Technical Specification</h4>
 
@@ -78,7 +75,6 @@ export default function CarDetails() {
         </Col>
       </Row>
 
-      {/* Description */}
       <Row>
         <Col xs={12} className="description">
           <h4>Description:</h4>
@@ -90,7 +86,6 @@ export default function CarDetails() {
         </Col>
       </Row>
 
-      {/* Details */}
       <Row>
         <Col xs={12} className="details">
           <h4>Details :</h4>
@@ -103,7 +98,6 @@ export default function CarDetails() {
         </Col>
       </Row>
 
-      {/* Damage Notes */}
       <Row>
         <Col xs={12} className="damage-notes">
           <h4>Damage Notes :</h4>

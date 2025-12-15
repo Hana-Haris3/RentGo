@@ -1,14 +1,41 @@
-import React from "react";
 import { Container, Card, Button } from "react-bootstrap";
 import { Link } from "react-router";
 import "../../../css/user/viewProfie.css"
+import { useNavigate } from "react-router";
 
 const UserProfile = () => {
+
+  const navigate = useNavigate()
+
+  async function UserLogout(e) {
+        
+        e.preventDefault();
+
+        try {
+            const res =await fetch("http://localhost:3000/logout/user",{
+                method:"POST",
+                credentials:"include"
+            })
+
+            const data =await res.json()
+            
+            if (data.success) {
+                alert("do you want to logout?")
+                navigate("/")
+            } else {
+                alert("logout failed!!")
+            }
+        } catch (error) {
+           console.log(error) 
+        }
+    }
+
+
+
   return (
     <div className="profile-page">
       <Container className="profile-container">
 
-        {/* PROFILE HEADER */}
         <div className="profile-header text-center">
           <img
             src="/src/assets/profile.png"
@@ -18,7 +45,6 @@ const UserProfile = () => {
           <h4 className="profile-name">Charles Deo</h4>
         </div>
 
-        {/* PERSONAL DETAILS */}
         <Card className="profile-card">
           <Card.Body>
             <h6 className="section-title">Personal Details</h6>
@@ -33,7 +59,6 @@ const UserProfile = () => {
           </Card.Body>
         </Card>
 
-        {/* VERIFICATION DETAILS */}
         <Card className="profile-card">
           <Card.Body>
             <h6 className="section-title">Verification Details</h6>
@@ -52,10 +77,10 @@ const UserProfile = () => {
           </Card.Body>
         </Card>
 
-        {/* ACTION BUTTONS */}
         <div className="profile-actions">
           <Button as={Link} to="/user/deleteaccount" className="delete-btn">Delete Account</Button>
           <Button as={Link} to="/user/profile/editprofile" className="edit-btn">Edit your profile</Button>
+          <Button className="edit-btn" onClick={UserLogout}>LOGOUT</Button>
         </div>
       </Container>
     </div>

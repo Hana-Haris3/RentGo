@@ -24,7 +24,6 @@ const CarBooking = () => {
   return (
     <div className="booking-page container py-4">
 
-      {/* CAR CARD */}
       <div className="card car-card p-3 shadow-sm mb-4">
         <div className="row g-3 align-items-center">
           <div className="col-md-7">
@@ -45,7 +44,6 @@ const CarBooking = () => {
         </div>
       </div>
 
-      {/* DATE PICKERS */}
       <div className="row mb-4">
         <div className="col-md-6 mb-3">
           <label className="form-label fw-semibold">Pick Up Date</label>
@@ -68,10 +66,8 @@ const CarBooking = () => {
         </div>
       </div>
 
-      {/* TIME PICKERS */}
       <div className="row mb-4">
 
-        {/* PICKUP TIME */}
         <div className="col-md-6">
           <p className="fw-semibold">Pick Up Time</p>
 
@@ -119,7 +115,6 @@ const CarBooking = () => {
           </div>
         </div>
 
-        {/* DROP TIME */}
         <div className="col-md-6">
           <p className="fw-semibold">Drop Time</p>
 
@@ -168,7 +163,6 @@ const CarBooking = () => {
         </div>
       </div>
 
-      {/* ORDER SUMMARY */}
       <div className="card shadow-sm p-4 summary-card">
         <h5 className="mb-3">Order Summary</h5>
 
