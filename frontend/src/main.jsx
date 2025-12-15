@@ -9,31 +9,23 @@ import ViewAllCars from './components/common/viewallcars';
 import ViewCarDetailsPage from './components/common/ViewCarDetailsPage';
 import UserLogin from './components/publichome/userLogin';
 import AdminLogin from './components/publichome/adminLogin';
-<<<<<<< HEAD
 import Admin from './admin';
-=======
->>>>>>> e63641d29caad56199d53464e92713ef6b6319d1
 import AddCarPage from './components/admin/adminAddcar';
 import AboutUs from './components/common/aboutUs';
 import AdminHome from './components/admin/adminhome';
 import UserHome from './userhome';
 import UserHomePage from './components/user/userHomePage';
-<<<<<<< HEAD
 import CarBooking from './components/user/carBooking';
 import AdminBookings from './components/admin/adminBookings';
 import AdminViewBooking from './components/admin/adminViewBooking';
 import AdminViewReview from './components/admin/adminViewReview';
 import AdminReview from './components/admin/adminReview';
-
-
-
-=======
 // import CarBooking from './components/user/carBooking';
 import UserProfile from './components/user/viewProfile';
 import EditProfile from './components/user/editProfile';
 
 
->>>>>>> e63641d29caad56199d53464e92713ef6b6319d1
+
 const appRoutes = createBrowserRouter([
   {
     path: '/',
@@ -70,15 +62,9 @@ const appRoutes = createBrowserRouter([
     ]
   },
   {
-<<<<<<< HEAD
     path: ('/user'),
     element: <UserHome />,
-    children: [
-=======
-    path:('/user'),
-    element:<UserHome/>,
-    children:[
->>>>>>> e63641d29caad56199d53464e92713ef6b6319d1
+       children: [                         
       {
         index: true,
         element: <UserHomePage />

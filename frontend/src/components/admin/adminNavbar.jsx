@@ -59,15 +59,10 @@ const AdminNavBar = () => {
             <Nav.Link as={Link} to="/admin/addcars">Add Cars</Nav.Link>
             <Nav.Link as={Link} to="/admin/admincars">Cars</Nav.Link>
             <Nav.Link as={Link} to="/admin/bookings">Bookings</Nav.Link>
-<<<<<<< HEAD
             <Nav.Link as={Link} to="/admin/reviews">Review</Nav.Link>
             <Nav.Link as={Link} to="/">
               <button className="logout">LOGOUT</button>
             </Nav.Link>
-=======
-            <Nav.Link as={Link} to="/admin/adminreviews">Review</Nav.Link>
-              <button className="logout" onClick={AdminLogout}>LOGOUT</button>
->>>>>>> e63641d29caad56199d53464e92713ef6b6319d1
           </Nav>
         </Navbar.Collapse>
       </Container>

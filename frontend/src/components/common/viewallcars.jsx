@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import CarCard from "./carCard";
 import {
   Container,
   Row,
@@ -9,7 +10,7 @@ import {
   Form
 } from "react-bootstrap";
 import "../../../css/root.css";
-import "../../../css/viewallcars.css"; 
+import "../../../css/viewallcars.css";
 import { Slider } from "@/components/ui/slider";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
@@ -28,7 +29,7 @@ import {
   ButtonGroup,
   ButtonGroupSeparator,
 } from "@/components/ui/button-group"
-import carImg  from "../../assets/democar.jpg"
+import carImg from "../../assets/democar.jpg"
 import { CiSearch } from "react-icons/ci";
 import { IoSettingsSharp } from "react-icons/io5";
 import { BsFillFuelPumpDieselFill } from "react-icons/bs";
@@ -85,7 +86,7 @@ export default function CarPage() {
     );
   };
 
-  
+
 const FiltersContent = () => (
   <div className="filters-wrapper">
     <h4 className="fw-bold ">Filters</h4>
@@ -209,7 +210,7 @@ const FiltersContent = () => (
        Available
     </Toggle>
 
-   
+
 
     <ButtonGroup>
       <Button variant="success" size="sm">
@@ -220,9 +221,9 @@ const FiltersContent = () => (
         Clear
       </Button>
     </ButtonGroup>
-  
 
-  
+
+
 
   </div>
 );
@@ -275,7 +276,7 @@ const FiltersContent = () => (
                 <Col md={6} lg={4} key={i}>
                   <div className="rental-card">
                         <img src={carImg} alt="Car" className="rental-img" />
-        
+
                         <div className="card-body">
                         <div className="car-name-price">
                             <div>
@@ -287,21 +288,21 @@ const FiltersContent = () => (
                             <p className="per-day">per day</p>
                             </div>
                         </div>
-        
+
                         <p className="available">Available</p>
-        
+
                         <div className="features">
                             <span><IoSettingsSharp/> Manual</span>
                             <span><BsFillFuelPumpDieselFill/> Deisel</span>
                         </div>
-        
+
                         <div className="features mt-1">
                             <span><MdWindPower/> Air Conditioner</span>
                             <span><MdEventSeat/> 4 Seats</span>
                         </div>
-        
+
                             <Link as={Link} to="/cars/viewdetails" className="details-btn">View Details</Link>
-                        
+
                         </div>
                     </div>
                 </Col>
@@ -333,3 +334,5 @@ const FiltersContent = () => (
     </>
   );
 }
+
+
