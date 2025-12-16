@@ -13,9 +13,8 @@ router
 //userRoutes
 
 router
-    // .route('/user/register')
-    // .get(userRegisterPage)
-    // .post(userRegister)
+    .route('/register/user')
+    .post(userRegister)
 
 router
     .route('/login/user')

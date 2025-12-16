@@ -1,5 +1,6 @@
 const Admin = require("../models/Admin")
 const User = require("../models/User")
+const fileUploadToCloudinary=require('../config/fileUpload')
 
 exports.adminLogin = async (req, res) => {
     try {
@@ -35,25 +36,32 @@ exports.adminLogout = (req, res) => {
 //userLoginSignup
 
 
-// exports.userRegister = async (req, res) => {
-//     const { name, email, password, phoneNumber, dateOfBirth, gender, address, drivingLiscenceNumber, drivingLiscenceValidity, AadharNumber, AadharImage, role } = req.body
+exports.userRegister = async (req, res) => {
+    const { name, email, password, phoneNumber, dateOfBirth, gender, address, drivingLiscenceNumber, AadharNumber, role } = req.body
+    let profilePhoto = await fileUploadToCloudinary(req.files.profilePhoto)
+    let AadharImage = await fileUploadToCloudinary(req.files.AadharImage)
+    let drivingLiscenceImg = await fileUploadToCloudinary(req.files.drivingLiscenceImg)
 
-//     await User.create({
-//         id: Date.now(),
-//         name: name,
-//         email: email,
-//         password: password,
-//         phoneNumber: phoneNumber,
-//         dateOfBirth: dateOfBirth,
-//         gender: gender,
-//         address: address,
-//         drivingLiscenceNumber: drivingLiscenceNumber,
-//         drivingLiscenceValidity: drivingLiscenceValidity,
-//         AadharNumber: AadharNumber,
-//         AadharImage: AadharImage,
-//         role: role
-//     })
-// }
+    console.log(req.body)
+    await User.create({
+        id: Date.now(),
+        name: name,
+        email: email,
+        profilePhoto:profilePhoto.public_id,
+        password: password,
+        phoneNumber: phoneNumber,
+        dateOfBirth:dateOfBirth,
+        gender: gender,
+        address: address,
+        drivingLiscenceNumber: drivingLiscenceNumber,
+        drivingLiscenceImg:drivingLiscenceImg.public_id,
+        AadharNumber: AadharNumber,
+        AadharImage: AadharImage.public_id,
+        role: "user"
+    })
+    console.log('user created sucessfully.')
+    return res.json({success:true})
+}
 
 // exports.userLoginPage = (req, res) => {
 //     return res.json(msg)

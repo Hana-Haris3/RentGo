@@ -14,6 +14,9 @@ const userSchema = mongoose.Schema({
         type: String,
         select: false
     },
+    profilePhoto:{
+        type:String
+    },
     email: {
         type: String
     },
@@ -21,7 +24,7 @@ const userSchema = mongoose.Schema({
         type: String
     },
     dateOfBirth: {
-        type: Date
+        type: String
     },
     gender: {
         type: String
@@ -32,8 +35,8 @@ const userSchema = mongoose.Schema({
     drivingLiscenceNumber: {
         type: String
     },
-    drivingLiscenceValidity: {
-        type: Date
+    drivingLiscenceImg:{
+        type:String
     },
     AadharNumber: {
         type: String
@@ -48,12 +51,12 @@ const userSchema = mongoose.Schema({
 })
 
 
-userSchema.pre('save', async function (next) {
+userSchema.pre('save', async function () {
     if (!this.isModified('password')) {
-        return next()
+        return 
     }
     this.password = await bcrypt.hash(this.password, 5)
-    return next()
+    return 
 })
 
 userSchema.methods.validatePassword = async function (userPassword) {

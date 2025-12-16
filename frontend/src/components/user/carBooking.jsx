@@ -1,13 +1,25 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "../../../css/user/carBooking.css";
 
 const CarBooking = () => {
   const [pickupDate, setPickupDate] = useState("");
   const [dropDate, setDropDate] = useState("");
 
-  const [pickupTime, setPickupTime] = useState({ hour: "", minute: "", period: "AM" });
-  const [dropTime, setDropTime] = useState({ hour: "", minute: "", period: "AM" });
+  const [pickupTime, setPickupTime] = useState({
+    hour: "",
+    minute: "",
+    period: "AM",
+  });
+
+  const [dropTime, setDropTime] = useState({
+    hour: "",
+    minute: "",
+    period: "AM",
+  });
+
+  const [paymentMethod, setPaymentMethod] = useState("");
 
   return (
     <div className="booking-page container py-4">
@@ -15,13 +27,19 @@ const CarBooking = () => {
       <div className="card car-card p-3 shadow-sm mb-4">
         <div className="row g-3 align-items-center">
           <div className="col-md-7">
-            <img src="/assets/car.png" alt="Car" className="img-fluid rounded car-image" />
+            <img
+              src="/assets/car.png"
+              alt="Car"
+              className="img-fluid rounded car-image"
+            />
           </div>
 
           <div className="col-md-5">
             <h5 className="mb-1">Mercedes</h5>
             <p className="text-muted mb-1">Sedan</p>
-            <p className="car-price">$25 <span className="text-muted">per day</span></p>
+            <p className="car-price">
+              $25 <span className="text-muted">per day</span>
+            </p>
           </div>
         </div>
       </div>
@@ -153,11 +171,55 @@ const CarBooking = () => {
         <p>Price:</p>
 
         <div className="d-flex justify-content-between align-items-center mt-4">
-          <button className="btn btn-success px-4">Pay</button>
+          
+          {/* PAY DROPDOWN */}
+          <div className="dropdown">
+            <button
+              className="btn btn-success dropdown-toggle px-4"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Pay
+            </button>
+
+            <ul className="dropdown-menu">
+              <li>
+                <button
+                  className="dropdown-item"
+                  onClick={() => setPaymentMethod("Cash")}
+                >
+                  Cash
+                </button>
+              </li>
+              <li>
+                <button
+                  className="dropdown-item"
+                  onClick={() => setPaymentMethod("UPI")}
+                >
+                  UPI
+                </button>
+              </li>
+              <li>
+                <button
+                  className="dropdown-item"
+                  onClick={() => setPaymentMethod("Card")}
+                >
+                  Card
+                </button>
+              </li>
+            </ul>
+          </div>
+
           <button className="btn confirm-btn px-4">Confirm</button>
         </div>
-      </div>
 
+        {paymentMethod && (
+          <p className="mt-3 text-success">
+            Payment Method: <strong>{paymentMethod}</strong>
+          </p>
+        )}
+      </div>
     </div>
   );
 };

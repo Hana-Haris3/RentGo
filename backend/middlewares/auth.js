@@ -5,7 +5,6 @@ exports.adminOnly = (req,res,next)=>{
     if(!admin){
         return res.status(401).json({ authentication: false });
     }
-
     try {
         const verified = jwt.verify(admin,process.env.jwtsecret)
         req.admin = verified
@@ -15,13 +14,11 @@ exports.adminOnly = (req,res,next)=>{
     }
 }
 
-
 exports.userOnly = (req,res,next)=>{
     const user = req.cookies?.user
     if(!user){
         return res.status(401).json({ authentication: false });
     }
-    
     try {
         const verified = jwt.verify(user,process.env.jwtsecret)
         req.user = verified

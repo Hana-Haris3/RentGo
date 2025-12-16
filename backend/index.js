@@ -5,6 +5,8 @@ const connectDB = require('./config/db')
 const app = express()
 const cors = require('cors')
 const cookiepparser = require('cookie-parser')
+const connectCloudinary = require('./config/cloudinary')
+const fileUpload = require('express-fileupload')
 
 app.use(cors({
     origin: "http://localhost:5173",
@@ -15,6 +17,12 @@ app.use(express.urlencoded())
 app.use(cookiepparser())
 app.use(express.static('public'))
 app.use(express.json())
+app.use(fileUpload(
+    {
+    useTempFiles : true,
+    tempFileDir : '/tmp/'
+}
+));
 
 
 const auth = require('./routers/auth')
@@ -29,5 +37,6 @@ app.use('/user',userOnly,user)
 const PORT = 3000
 app.listen(PORT,()=>{
     connectDB()
+    connectCloudinary()
     console.log('app started!!')
 })
