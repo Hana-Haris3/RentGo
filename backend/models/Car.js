@@ -60,7 +60,8 @@ const carSchema = mongoose.Schema({
         type:Boolean
     },
     maintenance:{
-        type:Boolean
+        type:Boolean,
+        default:False
     },
     description:{
         type:String
@@ -76,5 +77,4 @@ const carSchema = mongoose.Schema({
         type:String
     }
 })
-
 module.exports = mongoose.model('Car',carSchema)

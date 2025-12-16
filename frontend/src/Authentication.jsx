@@ -20,7 +20,5 @@ function Authentication({backendURL,pageURL}){
       }, [navigate])
     
     return <Outlet/>
-    
 }
-
 export default Authentication

@@ -57,7 +57,7 @@ const AdminNavBar = () => {
           >
             <Nav.Link as={Link} to="/admin">Home</Nav.Link>
             <Nav.Link as={Link} to="/admin/addcars">Add Cars</Nav.Link>
-            <Nav.Link as={Link} to="/admin/admincars">Cars</Nav.Link>
+            <Nav.Link as={Link} to="/admin/cars">Cars</Nav.Link>
             <Nav.Link as={Link} to="/admin/bookings">Bookings</Nav.Link>
             <Nav.Link as={Link} to="/admin/reviews">Review</Nav.Link>
               <button className="logout" onClick={AdminLogout}>LOGOUT</button>
