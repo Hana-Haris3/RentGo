@@ -1,18 +1,6 @@
 import React, { useState } from "react";
-<<<<<<< HEAD
 import CarCard from "./carCard";
-import {
-  Container,
-  Row,
-  Col,
-  Button,
-  Card,
-  Offcanvas,
-  Form
-} from "react-bootstrap";
-=======
 import { Container, Row, Col, Button, Offcanvas } from "react-bootstrap";
->>>>>>> d9d20a3677085bbc16bb51c94d66ec16a97dc3a0
 import "../../../css/root.css";
 import "../../../css/viewallcars.css";
 import { Slider } from "@/components/ui/slider";
@@ -20,16 +8,8 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Field, FieldGroup, FieldLabel } from "@/components/ui/field"
 import { BookmarkIcon } from "lucide-react"
 import { Toggle } from "@/components/ui/toggle"
-<<<<<<< HEAD
-import {
-  ButtonGroup,
-  ButtonGroupSeparator,
-} from "@/components/ui/button-group"
-import carImg from "../../assets/democar.jpg"
-=======
 import { ButtonGroup, ButtonGroupSeparator } from "@/components/ui/button-group"
 import carImg  from "../../assets/democar.jpg"
->>>>>>> d9d20a3677085bbc16bb51c94d66ec16a97dc3a0
 import { CiSearch } from "react-icons/ci";
 import { IoSettingsSharp } from "react-icons/io5";
 import { BsFillFuelPumpDieselFill } from "react-icons/bs";
@@ -38,8 +18,51 @@ import { Link } from "react-router";
 import { SiAudi, SiBmw, SiFerrari, SiFord, SiJeep, SiTesla } from "react-icons/si";
 
 
+export default function CarPage({role}) {
+  const getActionButtons = (id) => {
+  switch (role) {
+    case "admin":
+      return (
+        <>
+          <Link
+            to={`/admin/cars/viewdetails/${id}`}
+            className="details-btn"
+          >
+            View Details
+          </Link>
 
-export default function CarPage() {
+          <Link
+            to={`/admin/editcars`}
+            className="details-btn"
+          >
+            Edit Details
+          </Link>
+        </>
+      );
+
+    case "user":
+      return (
+        <Link
+          to={`/user/cars/viewdetails/${id}`}
+          className="details-btn"
+        >
+          View Details
+        </Link>
+      );
+
+    default: 
+      return (
+        <Link
+          to={`/cars/viewdetails/${id}`}
+          className="details-btn"
+        >
+          View Details
+        </Link>
+      );
+  }
+};
+
+
   const carTypes = [
     { label: "Hatchback", icon: "🚗" },
     { label: "Sedan", icon: "🚙" },
@@ -264,37 +287,11 @@ const FiltersContent = () => (
             <Row className="g-4">
               {Array.from({ length: 6 }).map((_, i) => (
                 <Col md={6} lg={4} key={i}>
-                  <div className="rental-card">
-                        <img src={carImg} alt="Car" className="rental-img" />
-
-                        <div className="card-body">
-                        <div className="car-name-price">
-                            <div>
-                            <h4 className="car-name">Mercedes</h4>
-                            <p className="car-type">Sedan</p>
-                            </div>
-                            <div className="price-block">
-                            <span className="price">$25</span>
-                            <p className="per-day">per day</p>
-                            </div>
-                        </div>
-
-                        <p className="available">Available</p>
-
-                        <div className="features">
-                            <span><IoSettingsSharp/> Manual</span>
-                            <span><BsFillFuelPumpDieselFill/> Deisel</span>
-                        </div>
-
-                        <div className="features mt-1">
-                            <span><MdWindPower/> Air Conditioner</span>
-                            <span><MdEventSeat/> 4 Seats</span>
-                        </div>
-
-                            <Link as={Link} to="/cars/viewdetails" className="details-btn">View Details</Link>
-
-                        </div>
-                    </div>
+                  <CarCard
+                      actionButton={
+                        getActionButtons()
+                      }
+                    />
                 </Col>
               ))}
             </Row>

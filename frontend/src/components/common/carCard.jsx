@@ -1,51 +1,41 @@
-import { Link } from "react-router";
+import { BsFillFuelPumpDieselFill } from "react-icons/bs";
+import { IoSettingsSharp } from "react-icons/io5";
+import { MdEventSeat, MdWindPower } from "react-icons/md";
 
-const CarCard = ({ image, name, type, price, children }) => {
-  return (
-    <div className="rental-card">
-      <img src={image} alt={name} className="rental-img" />
 
-      <div className="card-body">
-        <div className="car-name-price">
-          <div>
-            <h4 className="car-name">{name}</h4>
-            <p className="car-type">{type}</p>
+
+export default function CarCard({carImg,carname,carType,price,available,transmission,fuelType,actionButton}){
+  return(
+     <div className="rental-card">
+          <img src={carImg} alt="Car" className="rental-img" />
+
+          <div className="card-body">
+          <div className="car-name-price">
+              <div>
+              <h4 className="car-name">{carname}</h4>
+              <p className="car-type">{carType}</p>
+              </div>
+              <div className="price-block">
+              <span className="price">${price}</span>
+              <p className="per-day">per day</p>
+              </div>
           </div>
 
-          <div className="price-block">
-            <span className="price">₹{price}</span>
-            <p className="per-day">per day</p>
+          <p className="available">{available}</p>
+
+          <div className="features">
+              <span><IoSettingsSharp/> {transmission}</span>
+              <span><BsFillFuelPumpDieselFill/> {fuelType}</span>
           </div>
-        </div>
 
-        <p className="available">Available</p>
-
-        <div className="features">
-          <span>⚙ Manual</span>
-          <span>⛽ Diesel</span>
-        </div>
-
-        <div className="features mt-1">
-          <span>❄ AC</span>
-          <span>🪑 4 Seats</span>
-        </div>
-
-        {/* DEFAULT USER BUTTON */}
-        {!children && (
-          <Link to="/cars/viewdetails" className="details-btn">
-            View Details
-          </Link>
-        )}
-
-        {/* ADMIN BUTTONS */}
-        {children && (
-          <div className="mt-3 d-flex gap-2">
-            {children}
+          <div className="features mt-1">
+              <span><MdWindPower/> Air Conditioner</span>
+              <span><MdEventSeat/> 4 Seats</span>
           </div>
-        )}
+
+            {actionButton}
+
+          </div>
       </div>
-    </div>
-  );
-};
-
-export default CarCard;
+  )
+}

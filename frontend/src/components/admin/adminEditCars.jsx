@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import "../../../css/admin/addcar.css";
 
-const AddCarPage = () => {
+const EditCar = () => {
   const [mileage, setMileage] = React.useState(0);
 
   const handleSubmit = (e) => {
@@ -16,7 +16,7 @@ const AddCarPage = () => {
   return (
     <div className="addcar-page">
       <Container>
-        <h2 id="h2"className="title text-center mb-4">Add New Car</h2>
+        <h2 id="h2"className="title text-center mb-4">Edit Car</h2>
 
         <Form method="post" onSubmit={handleSubmit}>
           <Row className="g-4">
@@ -67,9 +67,7 @@ const AddCarPage = () => {
                 <option value="Sport">Sport</option>
               </Form.Select>
 
-              <small className="text-muted">
-                Choose the car classification.
-              </small>
+             
 
               <label className="section-title mt-3">
                 Mileage: {mileage} KM
@@ -129,6 +127,13 @@ const AddCarPage = () => {
                   className="toggle-btn long-toggle"
                 />
 
+                <Form.Check
+                  type="switch"
+                  name="maintenance"
+                  value="true"
+                  label="Under Maintenance"
+                  className="toggle-btn long-toggle"
+                />
               </div>
 
               <h5 className="section-title">Notes</h5>
@@ -146,7 +151,7 @@ const AddCarPage = () => {
               />
 
               <Button type="submit" className="add-btn w-100 mt-3">
-                Add Car
+                Edit Car
               </Button>
             </Col>
           </Row>
@@ -156,4 +161,4 @@ const AddCarPage = () => {
   );
 };
 
-export default AddCarPage;
+export default EditCar;

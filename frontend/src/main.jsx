@@ -14,27 +14,16 @@ import AboutUs from './components/common/aboutUs';
 import AdminHome from './components/admin/adminhome';
 import UserHome from './userhome';
 import UserHomePage from './components/user/userHomePage';
-<<<<<<< HEAD
 import CarBooking from './components/user/carBooking';
-=======
 import Authentication from './Authentication';
->>>>>>> d9d20a3677085bbc16bb51c94d66ec16a97dc3a0
 import AdminBookings from './components/admin/adminBookings';
 import AdminViewBooking from './components/admin/adminViewBooking';
 import AdminViewReview from './components/admin/adminViewReview';
 import AdminReview from './components/admin/adminReview';
-<<<<<<< HEAD
 // import CarBooking from './components/user/carBooking';
-=======
->>>>>>> d9d20a3677085bbc16bb51c94d66ec16a97dc3a0
 import UserProfile from './components/user/viewProfile';
 import EditProfile from './components/user/editProfile';
-
-
-<<<<<<< HEAD
-
-=======
->>>>>>> d9d20a3677085bbc16bb51c94d66ec16a97dc3a0
+import EditCar from './components/admin/adminEditCars';
 const appRoutes = createBrowserRouter([
   {
     path: '/',
@@ -58,7 +47,7 @@ const appRoutes = createBrowserRouter([
       },
       {
         path: 'cars',
-        element: <ViewAllCars />
+        element: <ViewAllCars role="public"/>
       },
       {
         path: 'cars/viewdetails',
@@ -70,16 +59,10 @@ const appRoutes = createBrowserRouter([
       }
     ]
   },
-  {
-<<<<<<< HEAD
-    path: ('/user'),
-    element: <UserHome />,
-       children: [                         
-=======
+  {                     
     path:('/user'),
     element:<Authentication backendURL="http://localhost:3000/user/check" pageURL="/login/user" />,
     children:[
->>>>>>> d9d20a3677085bbc16bb51c94d66ec16a97dc3a0
       {
         element:<UserHome/>,
         children:[
@@ -89,7 +72,11 @@ const appRoutes = createBrowserRouter([
           },
           {
             path:'cars',
-            element:<ViewAllCars/>
+            element:<ViewAllCars role="user"/>
+          },
+          {
+            path: 'cars/viewdetails',
+            element: <ViewCarDetailsPage />
           },
           {
             path:'profile',
@@ -119,9 +106,17 @@ const appRoutes = createBrowserRouter([
             element:<AddCarPage/>
           },  
           {
-            path: ('addcars'),
-            element: <AddCarPage />
+            path: ('cars'),
+            element: <ViewAllCars role="admin"/>
           },
+          {
+            path: 'cars/viewdetails',
+            element: <ViewCarDetailsPage />
+          },
+          {
+            path:('editcars'),
+            element:<EditCar/>
+          },  
           {
             path: ('bookings'),
             element: <AdminBookings />
@@ -143,7 +138,6 @@ const appRoutes = createBrowserRouter([
     ]
   }
 ])
-
 
 createRoot(document.getElementById('root')).render(
   <RouterProvider router={appRoutes}></RouterProvider>

@@ -43,7 +43,6 @@ const AdminNavBar = () => {
       <Container>
         <Navbar.Brand as={Link} to="/">
           <img src={logo} id="logoId" alt="Logo" />
-          <img src="/src/assets/logo.png" id="logoId" alt="Logo" />
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -58,17 +57,10 @@ const AdminNavBar = () => {
           >
             <Nav.Link as={Link} to="/admin">Home</Nav.Link>
             <Nav.Link as={Link} to="/admin/addcars">Add Cars</Nav.Link>
-            <Nav.Link as={Link} to="/admin/admincars">Cars</Nav.Link>
+            <Nav.Link as={Link} to="/admin/cars">Cars</Nav.Link>
             <Nav.Link as={Link} to="/admin/bookings">Bookings</Nav.Link>
             <Nav.Link as={Link} to="/admin/reviews">Review</Nav.Link>
-            <Nav.Link as={Link} to="/">
-              <button className="logout">LOGOUT</button>
-            </Nav.Link>
-<<<<<<< HEAD
-=======
-            <Nav.Link as={Link} to="/admin/adminreviews">Review</Nav.Link>
               <button className="logout" onClick={AdminLogout}>LOGOUT</button>
->>>>>>> d9d20a3677085bbc16bb51c94d66ec16a97dc3a0
           </Nav>
         </Navbar.Collapse>
       </Container>
