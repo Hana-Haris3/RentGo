@@ -22,6 +22,7 @@ import AdminReview from './components/admin/adminReview';
 import UserProfile from './components/user/viewProfile';
 import EditProfile from './components/user/editProfile';
 import EditCar from './components/admin/adminEditCars';
+import CarBooking from './components/user/carBooking';
 
 
 const appRoutes = createBrowserRouter([
@@ -51,7 +52,7 @@ const appRoutes = createBrowserRouter([
       },
       {
         path: 'cars/viewdetails/:id',
-        element: <ViewCarDetailsPage />
+        element: <ViewCarDetailsPage role="public"/>
       },
       {
         path: 'aboutus',
@@ -76,7 +77,7 @@ const appRoutes = createBrowserRouter([
           },
           {
             path: 'cars/viewdetails',
-            element: <ViewCarDetailsPage />
+            element: <ViewCarDetailsPage role="user"/>
           },
           {
             path:'profile',
@@ -85,6 +86,10 @@ const appRoutes = createBrowserRouter([
           {
             path:'profile/editprofile',
             element:<EditProfile/>
+          },
+          {
+            path:'car/viewdetails/booking',
+            element:<CarBooking role="user"/>
           }
         ]
       } 
@@ -111,7 +116,7 @@ const appRoutes = createBrowserRouter([
           },
           {
             path: 'cars/viewdetails',
-            element: <ViewCarDetailsPage />
+            element: <ViewCarDetailsPage role="admin"/>
           },
           {
             path:('editcars'),

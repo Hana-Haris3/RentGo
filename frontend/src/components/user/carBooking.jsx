@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "../../../css/user/carBooking.css";
 
-const CarBooking = () => {
+export default function CarBooking () {
   const [pickupDate, setPickupDate] = useState("");
   const [dropDate, setDropDate] = useState("");
 
@@ -224,4 +224,3 @@ const CarBooking = () => {
   );
 };
 
-export default CarBooking;
