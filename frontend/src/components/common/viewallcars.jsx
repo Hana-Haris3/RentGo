@@ -29,7 +29,6 @@ export default function CarPage({ role }) {
         console.error(error);
       }
     }
-
     getCarData();
   }, []);
 
@@ -47,12 +46,12 @@ export default function CarPage({ role }) {
               View Details
             </Link>
 
-            <Link
+            {/* <Link
               to={`/admin/editcars`}
               className="details-btn"
             >
               Edit Details
-            </Link>
+            </Link> */}
           </>
         );
 
