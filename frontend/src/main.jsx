@@ -21,9 +21,8 @@ import AdminViewReview from './components/admin/adminViewReview';
 import AdminReview from './components/admin/adminReview';
 import UserProfile from './components/user/viewProfile';
 import EditProfile from './components/user/editProfile';
+import EditCar from './components/admin/adminEditCars';
 import CarBooking from './components/user/carBooking';
-
-
 const appRoutes = createBrowserRouter([
   {
     path: '/',
@@ -47,10 +46,10 @@ const appRoutes = createBrowserRouter([
       },
       {
         path: 'cars',
-        element: <ViewAllCars />
+        element: <ViewAllCars role="public"/>
       },
       {
-        path: 'cars/viewdetails',
+        path: 'cars/viewdetails/:id',
         element: <ViewCarDetailsPage />
       },
       {
@@ -59,7 +58,7 @@ const appRoutes = createBrowserRouter([
       }
     ]
   },
-  {
+  {                     
     path:('/user'),
     element:<Authentication backendURL="http://localhost:3000/user/check" pageURL="/login/user" />,
     children:[
@@ -72,7 +71,11 @@ const appRoutes = createBrowserRouter([
           },
           {
             path:'cars',
-            element:<ViewAllCars/>
+            element:<ViewAllCars role="user"/>
+          },
+          {
+            path: 'cars/viewdetails',
+            element: <ViewCarDetailsPage />
           },
           {
             path:'profile',
@@ -101,10 +104,18 @@ const appRoutes = createBrowserRouter([
             path:('addcars'),
             element:<AddCarPage/>
           },  
-          // {
-          //   path: ('viewcars'),
-          //   element: <View />
-          // },
+          {
+            path: ('cars'),
+            element: <ViewAllCars role="admin"/>
+          },
+          {
+            path: 'cars/viewdetails',
+            element: <ViewCarDetailsPage />
+          },
+          {
+            path:('editcars'),
+            element:<EditCar/>
+          },  
           {
             path: ('bookings'),
             element: <AdminBookings />
@@ -126,7 +137,6 @@ const appRoutes = createBrowserRouter([
     ]
   }
 ])
-
 
 createRoot(document.getElementById('root')).render(
   <RouterProvider router={appRoutes}></RouterProvider>

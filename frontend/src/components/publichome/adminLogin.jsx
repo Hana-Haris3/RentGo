@@ -83,7 +83,6 @@ export default function AdminLogin() {
 
                     <p id="message">{backenddata.msg}</p>
                 </form>
-              
             </div>
         </div>
     );

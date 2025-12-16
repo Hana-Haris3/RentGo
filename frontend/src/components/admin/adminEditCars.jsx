@@ -1,0 +1,164 @@
+import React from "react";
+import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import "../../../css/admin/addcar.css";
+
+const EditCar = () => {
+  const [mileage, setMileage] = React.useState(0);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+
+    console.log(Object.fromEntries(formData.entries()));
+  };
+
+  return (
+    <div className="addcar-page">
+      <Container>
+        <h2 id="h2"className="title text-center mb-4">Edit Car</h2>
+
+        <Form method="post" onSubmit={handleSubmit}>
+          <Row className="g-4">
+
+            <Col md={4}>
+              <h5>Image</h5>
+              <input type="file" name="image" className="image-box" />
+
+              <h5 className="section-title">Capacity</h5>
+              <Form.Control name="seats" className="input-box" placeholder="Number of seats" />
+              <Form.Control name="doors" className="input-box" placeholder="Number of doors" />
+              <Form.Control name="luggage" className="input-box" placeholder="Luggage capacity" />
+
+              <h5 className="section-title">Transmission</h5>
+              <div className="radio-group">
+                <Form.Check type="radio" label="Manual" name="transmission" value="manual" />
+                <Form.Check
+                  type="radio"
+                  label="Automatic"
+                  name="transmission"
+                  value="automatic"
+                  defaultChecked
+                />
+              </div>
+            </Col>
+
+          
+            <Col md={4}>
+              <h5>Details</h5>
+
+              <Form.Control name="name" className="input-box" placeholder="Name" />
+              <Form.Control name="brand" className="input-box" placeholder="Brand" />
+              <Form.Control name="color" className="input-box" placeholder="Color" />
+              <Form.Control name="modelName" className="input-box" placeholder="Model Name" />
+              <Form.Control name="modelYear" className="input-box" placeholder="Model Year" />
+              <Form.Control name="manufactureYear" className="input-box" placeholder="Year of manufacture" />
+              <Form.Control name="registration" className="input-box" placeholder="Registration number" />
+              <Form.Control name="price" className="input-box" placeholder="Price" />
+              <Form.Control name="engine" className="input-box" placeholder="Engine" />
+
+              <label className="section-title mt-2">Car Category</label>
+              <Form.Select name="category" className="input-box">
+                <option value="">Select category</option>
+                <option value="SUV">SUV</option>
+                <option value="Sedan">Sedan</option>
+                <option value="Hatchback">Hatchback</option>
+                <option value="Luxury">Luxury</option>
+                <option value="Sport">Sport</option>
+              </Form.Select>
+
+             
+
+              <label className="section-title mt-3">
+                Mileage: {mileage} KM
+              </label>
+
+              <Form.Range
+                name="mileage"
+                min={0}
+                max={50}
+                step={1}
+                value={mileage}
+                onChange={(e) => setMileage(e.target.value)}
+              />
+
+              <div className="mileage-values">
+                <span>0 KM</span>
+                <span>50 KM</span>
+              </div>
+            </Col>
+
+            <Col md={4}>
+
+              <h5>Fuel Type</h5>
+              <div className="checkbox-group">
+                {["CNG", "Petrol", "Diesel", "Electrical", "Hybrid"].map((x) => (
+                  <Form.Check
+                    key={x}
+                    type="checkbox"
+                    name="fuelType"
+                    value={x}
+                    label={x}
+                  />
+                ))}
+              </div>
+
+              <h5 className="section-title">Equipments</h5>
+              <div className="checkbox-group">
+                {["ABS", "Air Bag", "Air Conditioner", "Reverse Camera", "Hybrid"].map(
+                  (x) => (
+                    <Form.Check
+                      key={x}
+                      type="checkbox"
+                      name="equipments"
+                      value={x}
+                      label={x}
+                    />
+                  )
+                )}
+              </div>
+
+              <div className="toggle-group">
+                <Form.Check
+                  type="switch"
+                  name="available"
+                  value="true"
+                  label="Available"
+                  className="toggle-btn long-toggle"
+                />
+
+                <Form.Check
+                  type="switch"
+                  name="maintenance"
+                  value="true"
+                  label="Under Maintenance"
+                  className="toggle-btn long-toggle"
+                />
+              </div>
+
+              <h5 className="section-title">Notes</h5>
+              <Form.Control
+                as="textarea"
+                name="description"
+                className="textarea-box"
+                placeholder="Description"
+              />
+              <Form.Control
+                as="textarea"
+                name="damageNotes"
+                className="textarea-box"
+                placeholder="Damage Notes"
+              />
+
+              <Button type="submit" className="add-btn w-100 mt-3">
+                Edit Car
+              </Button>
+            </Col>
+          </Row>
+        </Form>
+      </Container>
+    </div>
+  );
+};
+
+export default EditCar;

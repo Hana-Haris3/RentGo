@@ -28,9 +28,11 @@ app.use(fileUpload(
 const auth = require('./routers/auth')
 const admin = require('./routers/admin')
 const user = require('./routers/user')
+const public = require('./routers/public')
 const { adminOnly, userOnly } = require('./middlewares/auth')
 
 app.use('/',auth)
+app.use('/public',public)
 app.use('/admin',adminOnly,admin)
 app.use('/user',userOnly,user)
 
