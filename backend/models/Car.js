@@ -61,7 +61,7 @@ const carSchema = mongoose.Schema({
     },
     maintenance:{
         type:Boolean,
-        default:False
+        default:false
     },
     description:{
         type:String

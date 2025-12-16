@@ -1,5 +1,4 @@
 import { createRoot } from 'react-dom/client'
-import {  createBrowserRouter, RouterProvider } from "react-router";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import PublicHome from './PublicHome'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -15,7 +14,6 @@ import AboutUs from './components/common/aboutUs';
 import AdminHome from './components/admin/adminhome';
 import UserHome from './userhome';
 import UserHomePage from './components/user/userHomePage';
-import CarBooking from './components/user/carBooking';
 import Authentication from './Authentication';
 import AdminBookings from './components/admin/adminBookings';
 import AdminViewBooking from './components/admin/adminViewBooking';
@@ -24,13 +22,8 @@ import AdminReview from './components/admin/adminReview';
 // import CarBooking from './components/user/carBooking';
 import UserProfile from './components/user/viewProfile';
 import EditProfile from './components/user/editProfile';
-<<<<<<< HEAD
 import EditCar from './components/admin/adminEditCars';
-=======
 import CarBooking from './components/user/carBooking';
-
-
->>>>>>> 8d6395389e85a22aa56f4cfbf10e8c2afecca1a2
 const appRoutes = createBrowserRouter([
   {
     path: '/',
@@ -112,17 +105,10 @@ const appRoutes = createBrowserRouter([
             path:('addcars'),
             element:<AddCarPage/>
           },  
-<<<<<<< HEAD
           {
             path: ('cars'),
             element: <ViewAllCars role="admin"/>
           },
-=======
-          // {
-          //   path: ('viewcars'),
-          //   element: <View />
-          // },
->>>>>>> 8d6395389e85a22aa56f4cfbf10e8c2afecca1a2
           {
             path: 'cars/viewdetails',
             element: <ViewCarDetailsPage />

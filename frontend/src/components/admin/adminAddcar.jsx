@@ -117,22 +117,8 @@ const navigate=useNavigate()
                   <Form.Check key={eq} type="checkbox" name="equipments" value={eq} label={eq} />
                 ))}
               </div>
-
-<<<<<<< HEAD
-              <div className="toggle-group">
-                <Form.Check
-                  type="switch"
-                  name="available"
-                  value="true"
-                  label="Available"
-                  className="toggle-btn long-toggle"
-                />
-
-=======
               <div className="toggle-group mb-3">
                 <Form.Check type="switch" name="available" value="true" label="Available" className="toggle-btn long-toggle" />
-                <Form.Check type="switch" name="maintenance" value="true" label="Under Maintenance" className="toggle-btn long-toggle" />
->>>>>>> 8d6395389e85a22aa56f4cfbf10e8c2afecca1a2
               </div>
 
               <h5>Notes</h5>
@@ -147,6 +133,5 @@ const navigate=useNavigate()
       </Container>
     </div>
   );
-};
-
+}
 export default AddCarPage;
