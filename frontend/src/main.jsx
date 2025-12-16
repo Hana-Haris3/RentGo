@@ -19,7 +19,6 @@ import AdminBookings from './components/admin/adminBookings';
 import AdminViewBooking from './components/admin/adminViewBooking';
 import AdminViewReview from './components/admin/adminViewReview';
 import AdminReview from './components/admin/adminReview';
-// import CarBooking from './components/user/carBooking';
 import UserProfile from './components/user/viewProfile';
 import EditProfile from './components/user/editProfile';
 import EditCar from './components/admin/adminEditCars';
@@ -50,7 +49,7 @@ const appRoutes = createBrowserRouter([
         element: <ViewAllCars role="public"/>
       },
       {
-        path: 'cars/viewdetails',
+        path: 'cars/viewdetails/:id',
         element: <ViewCarDetailsPage />
       },
       {
