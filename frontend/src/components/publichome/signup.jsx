@@ -8,30 +8,91 @@ import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { useNavigate } from "react-router";
 
 export default function SignUp() {
-  const [profileImage, setProfileImage] = useState(null);
+  const navigate = useNavigate()
+  
+  const [profileImage, setProfileImage] = useState();
   const [dob, setDob] = useState(null);
-  const [lvDate, setLvDate] = useState(null);
   const [dobOpen, setDobOpen] = useState(false);
-  const [lvOpen, setLvOpen] = useState(false);
+  const [gender, setGender] = useState("Female");
 
   const formatDate = (date) => {
     if (!date) return "";
-    const d = date.getDate().toString().padStart(2, "0");
-    const m = (date.getMonth() + 1).toString().padStart(2, "0");
-    const y = date.getFullYear();
-    return `${d}/${m}/${y}`;
+
+    const fixedDate = new Date(date);
+    fixedDate.setDate(fixedDate.getDate() + 1); // ✅ add 1 day
+
+    const y = fixedDate.getFullYear();
+    const m = String(fixedDate.getMonth() + 1).padStart(2, "0");
+    const d = String(fixedDate.getDate()).padStart(2, "0");
+
+    return `${y}-${m}-${d}`;
   };
+
 
   const handleProfileChange = (e) => {
-    if (e.target.files && e.target.files[0]) {
-      setProfileImage(URL.createObjectURL(e.target.files[0]));
-    }
-  };
+      const file = e.target.files[0];
+      if (!file) return;
+
+      setProfileImage(URL.createObjectURL(file));
+    };
+
+   
+  // const [formData, setFormData] = useState({
+  //         name: "",
+  //         password: "",
+  //         // profilePhoto:"",
+  //         email:"",
+  //         phoneNumber:"",
+  //         dateOfBirth:"",
+  //         gender:"",
+  //         address:"",
+  //         drivingLiscenceNumber:"",
+  //         drivingLiscenceImg:"",
+  //         AadharNumber:"",
+  //         AadharImage:""
+  //     });
+  
+      // function handleChange(e) {
+      //     setFormData({
+      //         ...formData,
+      //         [e.target.name]: e.target.value
+      //     });
+      // }
+  
+  
+      async function postData(e) {
+          
+          e.preventDefault();
+
+           const formData = new FormData(e.target);
+            // formData.append("gender", gender);
+            // formData.append("dateOfBirth", dob ? dob.toISOString() : "");
+          
+          try {
+              const res =await fetch("http://localhost:3000/register/user",{
+                  method:"POST",
+                  credentials:"include",
+                  body:formData
+              })
+  
+              const data =await res.json()
+              
+              if (data.success) {
+                  alert('user created')
+                  navigate("/login/user")
+              } else {
+                  navigate("/register/user")
+              }
+          } catch (error) {
+             console.log(error) 
+          }
+      }
 
   return (
-    <Form method="post" encType="multipart/form-data" className="signup-form">
+    <form method="post" encType="multipart/form-data" className="signup-form" onSubmit={postData}>
       <div className="signup-wrapper">
         <div className="signup-container">
           <h2>Create Your Account</h2>
@@ -47,6 +108,7 @@ export default function SignUp() {
             <input
               id="profileUpload"
               type="file"
+              name="profilePhoto"
               accept="image/*"
               onChange={handleProfileChange}
               className="hidden-input"
@@ -57,10 +119,10 @@ export default function SignUp() {
           <div className="d-flex gap-5 flex-wrap">
 
             <div className="left">
-              <input type="text" placeholder="Full Name" required />
-              <input type="email" placeholder="Email" required />
-              <input type="tel" id="phoneInput" placeholder="Phone Number" name="phoneInput" maxlength="10" pattern="[0-9]{10}" inputmode="numeric" required />
-              <input type="password" placeholder="Password"  required />
+              <input type="text" placeholder="Full Name" required name="name"/>
+              <input type="email" placeholder="Email" required name="email"/>
+              <input type="tel" id="phoneInput" placeholder="Phone Number" name="phoneNumber" maxlength="10" pattern="[0-9]{10}" inputmode="numeric" required />
+              <input type="password" placeholder="Password"  required name="password"/>
 
               <div className="flex gap-3">
                 <Label htmlFor="dob" className="px-1">
@@ -69,7 +131,7 @@ export default function SignUp() {
                 <input
                   type="hidden"
                   name="dateOfBirth" 
-                  value={dob ? dob.toISOString() : ''} 
+                  value={dob ? dob.toISOString().split("T")[0] : ''} 
                   required 
               />
                 <Popover open={dobOpen} onOpenChange={setDobOpen}>
@@ -102,29 +164,29 @@ export default function SignUp() {
 
               <div className="flex gap-3">
                 <Label className="px-1">Gender:</Label>
-                <RadioGroup defaultValue="Female">
+                <RadioGroup defaultValue="Female" name="gender" required>
                   <div className="flex items-center gap-3">
-                    <RadioGroupItem value="Female" id="r1" />
+                    <RadioGroupItem value="Female" id="r1" onChange={() => setGender("Female")}/>
                     <Label htmlFor="r1">Female</Label>
                   </div>
                   <div className="flex items-center gap-3">
-                    <RadioGroupItem value="Male" id="r2" />
+                    <RadioGroupItem value="Male" id="r2" onChange={() => setGender("Male")}/>
                     <Label htmlFor="r2">Male</Label>
                   </div>
                   <div className="flex items-center gap-3">
-                    <RadioGroupItem value="Other" id="r3" />
+                    <RadioGroupItem value="Other" id="r3" onChange={() => setGender("Other")}/>
                     <Label htmlFor="r3">Other</Label>
                   </div>
                 </RadioGroup>
               </div>
 
-              <input type="text" placeholder="Address" required />
+              <input type="text" placeholder="Address" required name="address"/>
             </div>
 
             <div className="right">
 
               <label for="dlNumber">Driving License Number:</label>
-                <input type="text" id="dlNumber" name="dlNumber"
+                <input type="text" id="dlNumber" name="drivingLiscenceNumber"
                       placeholder="e.g., KL1420210123456"
                       maxlength="15"
                       pattern="^(([A-Z]{2}[0-9]{2})( )|([A-Z]{2}-[0-9]{2}))?((19|20)[0-9][0-9])[0-9]{7}$|^[A-Z]{2}[0-9]{13}$"
@@ -132,47 +194,8 @@ export default function SignUp() {
                       required />
 
 
-                <div className="flex gap-3">
-                  <Label htmlFor="lvdate" className="px-1">
-                    Driving Licence Validity
-                  </Label>
-                  <input
-                    type="hidden"
-                    name="liscence validity" 
-                    value={lvDate ? lvDate.toISOString() : ''} 
-                    required
-                />
-                  <Popover open={lvOpen} onOpenChange={setLvOpen}>
-                    <PopoverTrigger asChild>
-                      <Button
-                        variant="outline"
-                        id="lvdate"
-                        className="w-48 justify-between font-normal border rounded-5"
-                      >
-                        {lvDate ? formatDate(lvDate) : "Select date"}
-                        <ChevronDownIcon />
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-auto overflow-visible p-0" align="start">
-                      <Calendar
-                        mode="single"
-                        selected={lvDate}
-                        onSelect={(date) => {
-                          setLvDate(date);
-                          setLvOpen(false);
-                        }}
-                        captionLayout="dropdown"
-                        defaultMonth={lvDate || new Date()}
-                        min={new Date()} 
-                        max={new Date(new Date().setFullYear(new Date().getFullYear() + 10))} 
-                      />
-                    </PopoverContent>
-                  </Popover>
-                </div>
-
-
               <label for="aadhaarNumber">Aadhaar Number:</label>
-              <input type="text" id="aadhaarNumber" name="aadhaarNumber"
+              <input type="text" id="aadhaarNumber" name="AadharNumber"
                     placeholder="Aadhaar Number"
                     maxlength="12"
                     pattern="^[2-9]{1}[0-9]{3}\s?[0-9]{4}\s?[0-9]{4}$"
@@ -181,16 +204,16 @@ export default function SignUp() {
                     required />
 
               <label>Upload Driving Licence</label>
-              <input type="file" accept="image/*" required/>
+              <input type="file" accept="image/*" required name="drivingLiscenceImg"/>
 
               <label>Upload Aadhaar</label>
-              <input type="file" accept="image/*" required/>
+              <input type="file" accept="image/*" required name="AadharImage"/>
 
               <button type="submit"className="create-btn">Create</button>
             </div>
           </div>
         </div>
       </div>
-    </Form>
+    </form>
   );
 }

@@ -100,10 +100,10 @@ const appRoutes = createBrowserRouter([
             path:('addcars'),
             element:<AddCarPage/>
           },  
-          {
-            path: ('addcars'),
-            element: <AddCarPage />
-          },
+          // {
+          //   path: ('viewcars'),
+          //   element: <View />
+          // },
           {
             path: ('bookings'),
             element: <AdminBookings />

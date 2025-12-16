@@ -10,7 +10,7 @@ const carSchema = mongoose.Schema({
     brand:{
         type:String
     },
-    model:{
+    modelName:{
         type:String
     },
     type:{
@@ -33,14 +33,11 @@ const carSchema = mongoose.Schema({
         type:String
     },
     mileage:{
-        type:Date
+        type:Number
     },
     images:{
         type:Array,
         default:[]
-    },
-    thumbnail:{
-        type:String
     },
     seats:{
         type:Number
@@ -48,7 +45,7 @@ const carSchema = mongoose.Schema({
     doors:{
         type:Number
     },
-    luggageCapacity:{
+    luggage:{
         type:Number
     },
     transmission:{
@@ -59,7 +56,7 @@ const carSchema = mongoose.Schema({
         type:String,
         values: ["CNG", "Petrol", "Diesel", "Electrical", "Hybrid"]
     },
-    availability:{
+    available:{
         type:Boolean
     },
     maintenance:{
@@ -72,10 +69,10 @@ const carSchema = mongoose.Schema({
         type:String
     },
     equipments:{
-        type:String,
+        type:Array,
         values: ["ABS", "Air Bag", "Air Conditioner", "Reverse Camera", "Hybrid"]
     },
-    colour:{
+    color:{
         type:String
     }
 })
