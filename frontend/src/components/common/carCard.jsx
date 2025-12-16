@@ -5,6 +5,49 @@ import { MdEventSeat, MdWindPower } from "react-icons/md";
 
 
 export default function CarCard({ carImg, carname, carType, price, available, transmission, fuelType,equipment,seats, actionButton }) {
+
+  // const getActionButtons = (id) => {
+  //   switch (role) {
+  //     case "admin":
+  //       return (
+  //         <>
+  //           <Link
+  //             to={`/admin/cars/viewdetails/${id}`}
+  //             className="details-btn"
+  //           >
+  //             View Details
+  //           </Link>
+
+  //           <Link
+  //             to={`/admin/editcars`}
+  //             className="details-btn"
+  //           >
+  //             Edit Details
+  //           </Link>
+  //         </>
+  //       );
+
+  //     case "user":
+  //       return (
+  //         <Link
+  //           to={`/user/cars/viewdetails/${id}`}
+  //           className="details-btn"
+  //         >
+  //           View Details
+  //         </Link>
+  //       );
+
+  //     default:
+  //       return (
+  //         <Link
+  //           to={`/cars/viewdetails/${id}`}
+  //           className="details-btn"
+  //         >
+  //           View Details
+  //         </Link>
+  //       );
+  //   }
+  // };
   return (
     <div className="rental-card">
       <img src={carImg} alt="Car" style={{

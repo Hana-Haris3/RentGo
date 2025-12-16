@@ -4,6 +4,7 @@ import "../../../css/root.css";
 import "../../../css/carDetails.css";
 
 export default function CarDetails() {
+
   const [mainImage, setMainImage] = useState(
     "https://via.placeholder.com/700x400"
   );

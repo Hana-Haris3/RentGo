@@ -1,11 +1,11 @@
 import CarDetails from "./carDetails"
 import PopularCars from "./popularCar"
 
-function ViewCarDetailsPage(){
+function ViewCarDetailsPage({role}){
     return(
         <>
-            <CarDetails/>
-            <PopularCars/>
+            <CarDetails role={role}/>
+            <PopularCars role={role}/>
         </>
     )
 

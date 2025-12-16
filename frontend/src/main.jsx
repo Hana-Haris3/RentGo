@@ -67,15 +67,15 @@ const appRoutes = createBrowserRouter([
         children:[
           {
             index:true,
-            element:<UserHomePage/>
+            element:<UserHomePage role="user"/>
           },
           {
             path:'cars',
             element:<ViewAllCars role="user"/>
           },
           {
-            path: 'cars/viewdetails',
-            element: <ViewCarDetailsPage />
+            path: 'cars/viewdetails/:id',
+            element: <ViewCarDetailsPage role="user"/>
           },
           {
             path:'profile',

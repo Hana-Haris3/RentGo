@@ -35,7 +35,6 @@ export default function CarPage({ role }) {
         console.error(error);
       }
     }
-
     getCarData();
   }, []);
 
