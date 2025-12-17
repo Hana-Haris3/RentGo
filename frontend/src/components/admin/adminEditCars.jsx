@@ -1,32 +1,53 @@
 import React from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import "../../../css/admin/addcar.css";
+import { useParams } from "react-router";
+import { useEffect } from "react";
+import { useState } from "react";
 
-const EditCar = () => {
-  const [mileage, setMileage] = React.useState(0);
+export default function EditCar () {
+  const [mileage, setMileage] = useState(0);
+  const [carData, setCarData] = useState()
+  const {id} = useParams()
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const formData = new FormData(e.target);
 
-    console.log(Object.fromEntries(formData.entries()));
+    // console.log(Object.fromEntries(formData.entries()));
   };
+
+  useEffect(() => {
+      async function getCarData() {
+        try {
+          const res = await fetch(`http://localhost:3000/public/carDetails/${id}`);
+          const data = await res.json();
+          const car = data.car[0]
+          setCarData(car);
+       
+        } catch (error) {
+          console.error(error);
+        }
+      }
+  
+      getCarData();
+    }, [id]);
 
   return (
     <div className="addcar-page">
       <Container>
         <h2 id="h2"className="title text-center mb-4">Edit Car</h2>
 
-        <Form method="post" onSubmit={handleSubmit}>
+        <Form method="post" onSubmit={handleSubmit} encType="multipart/form-data">
           <Row className="g-4">
 
             <Col md={4}>
               <h5>Image</h5>
-              <input type="file" name="image" className="image-box" />
+              <input type="file" name="image" className="image-box" required multiple/>
 
               <h5 className="section-title">Capacity</h5>
-              <Form.Control name="seats" className="input-box" placeholder="Number of seats" />
+              <Form.Control name="seats" className="input-box" placeholder="Number of seats" required />
               <Form.Control name="doors" className="input-box" placeholder="Number of doors" />
               <Form.Control name="luggage" className="input-box" placeholder="Luggage capacity" />
 
@@ -47,7 +68,7 @@ const EditCar = () => {
             <Col md={4}>
               <h5>Details</h5>
 
-              <Form.Control name="name" className="input-box" placeholder="Name" />
+              <Form.Control name="name" className="input-box"  defaultValue={carData?.name} required/>
               <Form.Control name="brand" className="input-box" placeholder="Brand" />
               <Form.Control name="color" className="input-box" placeholder="Color" />
               <Form.Control name="modelName" className="input-box" placeholder="Model Name" />
@@ -161,4 +182,3 @@ const EditCar = () => {
   );
 };
 
-export default EditCar;

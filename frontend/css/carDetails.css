@@ -43,15 +43,16 @@
   color: #444;
 }
 
-.available {
-  color: var(--secondary-green);
-  font-weight: bold;
-}
+.maintenance { color: orange; }
+.available {color: var(--secondary-green);font-weight: bold;}
+.not-available { color: red; }
 
 .main-image {
   width: 100%;
   border-radius: 12px;
   margin: 20px 0;
+  aspect-ratio: 1/1;
+  object-fit: cover;
 }
 
 .image-gallery {
@@ -99,6 +100,8 @@
 
 .book-btn {
   width: 100%;
+  text-align: center;
+  display: inline-block;
   margin-top: 18px;
   background: var(--main-yellow);
   border: none;
@@ -106,6 +109,8 @@
   border-radius: 12px;
   font-size: 18px;
   font-weight: 600;
+  text-decoration: none;
+  color: white;
   cursor: pointer;
 }
 

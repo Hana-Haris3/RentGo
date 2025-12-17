@@ -5,6 +5,7 @@ import { MdEventSeat, MdWindPower } from "react-icons/md";
 
 
 export default function CarCard({ carImg, carname, carType, price, available, transmission, fuelType,equipment,seats, actionButton }) {
+
   return (
     <div className="rental-card">
       <img src={carImg} alt="Car" style={{

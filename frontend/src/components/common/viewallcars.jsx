@@ -9,15 +9,10 @@ import { Field, FieldGroup, FieldLabel } from "@/components/ui/field"
 import { BookmarkIcon } from "lucide-react"
 import { Toggle } from "@/components/ui/toggle"
 import { ButtonGroup, ButtonGroupSeparator } from "@/components/ui/button-group"
-import carImg from "../../assets/democar.jpg"
 import { CiSearch } from "react-icons/ci";
-import { IoSettingsSharp } from "react-icons/io5";
-import { BsFillFuelPumpDieselFill } from "react-icons/bs";
-import { MdEventSeat, MdWindPower } from "react-icons/md";
 import { Link } from "react-router";
 import { SiAudi, SiBmw, SiFerrari, SiFord, SiJeep, SiTesla } from "react-icons/si";
 import { useEffect } from "react";
-import { useParams } from "react-router";
 
 
 export default function CarPage({ role }) {
@@ -29,13 +24,11 @@ export default function CarPage({ role }) {
       try {
         const res = await fetch("http://localhost:3000/public/cars");
         const data = await res.json();
-
         setCarData(data.cars);
       } catch (error) {
         console.error(error);
       }
     }
-
     getCarData();
   }, []);
 
@@ -53,12 +46,12 @@ export default function CarPage({ role }) {
               View Details
             </Link>
 
-            <Link
+            {/* <Link
               to={`/admin/editcars`}
               className="details-btn"
             >
               Edit Details
-            </Link>
+            </Link> */}
           </>
         );
 
@@ -310,17 +303,16 @@ export default function CarPage({ role }) {
               {carData.map((car, i) => (
                 <Col md={6} lg={4} key={car._id || i}>
                   <CarCard
-                    actionButton={getActionButtons(car._id)}
+                    actionButton={getActionButtons(car.id)}
                     carImg={`https://res.cloudinary.com/dyokhs4yf/image/upload/${car.images?.[0]}`}   // Cloudinary URL
                     carname={car.name}
                     carType={car.category}
                     price={car.pricePerDay}
-                    available={car.available?'Available':'Not available'}
+                    available={car.maintenance?"MAINTENANCE":car.available?"AVAILABLE": "NOT AVAILABLE"}
                     transmission={car.transmission}
                     fuelType={car.fuelType}
                     equipment={car.equipments[0]}
                     seats={car.seats}
-
                   />
                 </Col>
               ))}

@@ -72,7 +72,7 @@ const AdminBookings = () => {
   };
 
   return (
-    <div className="booking-page">
+    <div className="booking-page w-100">
       <Container fluid>
 
         <Row className="search-row align-items-center">

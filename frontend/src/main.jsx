@@ -23,6 +23,8 @@ import UserProfile from './components/user/viewProfile';
 import EditProfile from './components/user/editProfile';
 import EditCar from './components/admin/adminEditCars';
 import CarBooking from './components/user/carBooking';
+
+
 const appRoutes = createBrowserRouter([
   {
     path: '/',
@@ -50,7 +52,7 @@ const appRoutes = createBrowserRouter([
       },
       {
         path: 'cars/viewdetails/:id',
-        element: <ViewCarDetailsPage />
+        element: <ViewCarDetailsPage role="public"/>
       },
       {
         path: 'aboutus',
@@ -67,15 +69,15 @@ const appRoutes = createBrowserRouter([
         children:[
           {
             index:true,
-            element:<UserHomePage/>
+            element:<UserHomePage role="user"/>
           },
           {
             path:'cars',
             element:<ViewAllCars role="user"/>
           },
           {
-            path: 'cars/viewdetails',
-            element: <ViewCarDetailsPage />
+            path: 'cars/viewdetails/:id',
+            element: <ViewCarDetailsPage role="user"/>
           },
           {
             path:'profile',
@@ -84,6 +86,10 @@ const appRoutes = createBrowserRouter([
           {
             path:'profile/editprofile',
             element:<EditProfile/>
+          },
+          {
+            path:'car/viewdetails/booking',
+            element:<CarBooking role="user"/>
           }
         ]
       } 
@@ -109,11 +115,11 @@ const appRoutes = createBrowserRouter([
             element: <ViewAllCars role="admin"/>
           },
           {
-            path: 'cars/viewdetails',
-            element: <ViewCarDetailsPage />
+            path: 'cars/viewdetails/:id',
+            element: <ViewCarDetailsPage role="admin"/>
           },
           {
-            path:('editcars'),
+            path:('editcars/:id'),
             element:<EditCar/>
           },  
           {
