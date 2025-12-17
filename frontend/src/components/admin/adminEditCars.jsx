@@ -21,10 +21,11 @@ export default function EditCar () {
   useEffect(() => {
       async function getCarData() {
         try {
-          const res = await fetch(`http://localhost:3000/public/carDetails/${id}`);
+          const res = await fetch(`http://localhost:3000/admin/carDetails/${id}`);
           const data = await res.json();
           const car = data.car[0]
           setCarData(car);
+          console.log(carData)
        
         } catch (error) {
           console.error(error);
@@ -181,4 +182,3 @@ export default function EditCar () {
     </div>
   );
 };
-

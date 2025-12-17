@@ -1,18 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router";
-
 import { Container, Row, Col, Table, Form, Button, InputGroup, Dropdown } from "react-bootstrap";
 import "../../../css/admin/adminReview.css";
+import { useNavigate } from "react-router";
 
-const AdminReview=()=> {
-  const reviews = [
-    { id: 1, name: "Michael", email: "abc@gmail.com", date: "04/17/23" },
-    { id: 2, name: "Anna", email: "abc@gmail.com", date: "04/17/23" },
-    { id: 3, name: "Thomas", email: "abc@gmail.com", date: "04/17/23" },
-    { id: 4, name: "Michelle", email: "abc@gmail.com", date: "04/17/23" },
-    { id: 5, name: "Andrea", email: "abc@gmail.com", date: "04/17/23" },
-    { id: 6, name: "Philip", email: "abc@gmail.com", date: "04/17/23" },
-  ];
+export default function AdminReview() {
+  const [userreview,setuserreview]= useState()
+  const navigate = useNavigate()
+  // const reviews = [
+  //   { id: 1, name: "Michael", email: "abc@gmail.com", date: "04/17/23" },
+  //   { id: 2, name: "Anna", email: "abc@gmail.com", date: "04/17/23" },
+  //   { id: 3, name: "Thomas", email: "abc@gmail.com", date: "04/17/23" },
+  //   { id: 4, name: "Michelle", email: "abc@gmail.com", date: "04/17/23" },
+  //   { id: 5, name: "Andrea", email: "abc@gmail.com", date: "04/17/23" },
+  //   { id: 6, name: "Philip", email: "abc@gmail.com", date: "04/17/23" },
+  // ];
+
+
+  useEffect(()=>{
+    const getReviews = async()=> {
+      try {
+          const res = await fetch(`http://localhost:3000/admin/reviews`);
+          const data = await res.json();
+          const reviews = data.reviews
+          setuserreview(reviews)
+          console.log(reviews)
+          if(data.success){
+            navigate('/admin/reviews')
+          }else{
+            alert("something went wrong!!!")
+          }
+      } catch (error) {
+          console.log(error)
+      } 
+    }
+    getReviews()
+  },[])
+
 
   return (
     <div className="review-page">
@@ -54,7 +78,7 @@ const AdminReview=()=> {
             </thead>
 
             <tbody>
-              {reviews.map((item) => (
+              {userreview?.map((item) => (
                 <tr key={item.id}>
                   <td>{item.id}</td>
                   <td>{item.name}</td>
@@ -72,4 +96,3 @@ const AdminReview=()=> {
     </div>
   );
 }
-export default AdminReview

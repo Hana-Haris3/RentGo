@@ -1,4 +1,4 @@
-const  {userAuth, getUserProfile}  = require('../controllers/user')
+const  {userAuth, getUserProfile, submitreview}  = require('../controllers/user')
 const { userOnly } = require('../middlewares/auth')
 
 const router = require('express').Router()
@@ -8,7 +8,12 @@ router
     .get(userAuth)
 
 router
-    .get("/profile",userOnly,getUserProfile)
+    .route("/profile")
+    .get(getUserProfile)
+
+router
+    .route('/submitreview')
+    .post(submitreview)
 
 
 module.exports = router

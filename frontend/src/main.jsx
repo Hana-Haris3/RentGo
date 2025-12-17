@@ -9,7 +9,6 @@ import ViewCarDetailsPage from './components/common/ViewCarDetailsPage';
 import UserLogin from './components/publichome/userLogin';
 import AdminLogin from './components/publichome/adminLogin';
 import Admin from './admin';
-import AddCarPage from './components/admin/adminAddcar';
 import AboutUs from './components/common/aboutUs';
 import AdminHome from './components/admin/adminhome';
 import UserHome from './userhome';
@@ -23,6 +22,7 @@ import UserProfile from './components/user/viewProfile';
 import EditProfile from './components/user/editProfile';
 import EditCar from './components/admin/adminEditCars';
 import CarBooking from './components/user/carBooking';
+import AddCarPage from './components/admin/adminAddcar';
 
 
 const appRoutes = createBrowserRouter([
@@ -90,6 +90,10 @@ const appRoutes = createBrowserRouter([
           {
             path:'car/viewdetails/booking',
             element:<CarBooking role="user"/>
+          },
+          {
+            path:'aboutus',
+            element:<AboutUs/>
           }
         ]
       } 

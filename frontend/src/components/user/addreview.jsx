@@ -1,18 +1,48 @@
 import React, { useState } from "react";
 import { FaStar } from "react-icons/fa";
 import "../../../css/user/addreview.css";
+import { useNavigate } from "react-router";
 
-const AddReview = () => {
+export default function AddReview () {
   const [rating, setRating] = useState(null);
   const [hover, setHover] = useState(null);
   const [feedback, setFeedback] = useState("");
+  const navigate = useNavigate()
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert(`Rating: ${rating}\nFeedback: ${feedback}`);
-  };
+  async function postReview(e) {
+        
+        e.preventDefault();
+
+        const reviewData = {
+          rating: rating,
+          review: feedback,
+        }
+
+        try {
+            const res =await fetch("http://localhost:3000/user/submitreview",{
+                method:"POST",
+                credentials:"include",
+                headers: { "Content-Type": "application/json" },
+                body:JSON.stringify(reviewData)
+            })
+
+            const data =await res.json()
+            
+            if (data.success) {
+                alert(`Rating: ${rating}\nFeedback: ${feedback}`)
+                navigate("/user")
+            } else {
+                console.log("submission failed!!!")
+            }
+        } catch (error) {
+            console.log(error) 
+        }
+    }
+
+  
 
   return (
+    <form method="POST" onSubmit={postReview}>
     <div className="rating-container">
       <h4 className="title">Rate Your Experience</h4>
 
@@ -40,10 +70,10 @@ const AddReview = () => {
         })}
       </div>
 
-      <textarea className="feedback-box" placeholder="Type here..." value={feedback} onChange={(e) => setFeedback(e.target.value)}></textarea>
-      <button className="submit-btn" onClick={handleSubmit}>Submit</button>
+      <textarea className="feedback-box" name="review" placeholder="Type here..." value={feedback} onChange={(e) => setFeedback(e.target.value)}></textarea>
+      <button className="submit-btn">Submit</button>
     </div>
+    </form>
   );
 };
 
-export default AddReview;

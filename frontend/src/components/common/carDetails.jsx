@@ -3,12 +3,13 @@ import { Container, Row, Col } from "react-bootstrap";
 import "../../../css/root.css";
 import "../../../css/carDetails.css";
 import { useEffect } from "react";
-import { data, Link, useParams } from "react-router";
+import { data, Link, useNavigate, useParams } from "react-router";
 
 export default function CarDetails({role}) {
   const [carData, setCarData] = useState([]);
   const [mainImage, setMainImage] = useState();
   const {id} = useParams() 
+  const navigate = useNavigate()
   
     useEffect(() => {
       async function getCarData() {
@@ -31,20 +32,22 @@ export default function CarDetails({role}) {
     async function deleteCar(e) {
         
         e.preventDefault();
+        alert("do you want to delete?")
 
         try {
-            const res =await fetch("http://localhost:3000/admin/deletecar",{
+            const res =await fetch(`http://localhost:3000/admin/deletecar/${id}`,{
                 method:"POST",
                 credentials:"include"
+
             })
 
             const data =await res.json()
             
             if (data.success) {
-                alert("do you want to logout?")
-                navigate("/")
+                navigate("/admin/cars")
             } else {
-                alert("logout failed!!")
+                alert("deletion failed!!")
+                navigate("/admin/cars")
             }
         } catch (error) {
            console.log(error) 
@@ -57,7 +60,7 @@ export default function CarDetails({role}) {
           case "admin":
             return (
               <>
-                <Link to={`/admin/editcars/${id}}`} className="book-btn">Edit Details</Link>
+                {/* <Link to={`/admin/editcars/${id}}`} className="book-btn" cardetails={carData}>Edit Details</Link> */}
                 <button onClick={deleteCar} className="book-btn">Delete Car</button>
               </>
             );

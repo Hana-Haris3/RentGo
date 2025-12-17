@@ -46,9 +46,9 @@ useEffect(() => {
           <Nav className="align-items-lg-center gap-lg-2">
 
             <Nav.Link as={Link} to="/user">Home</Nav.Link>
-            <Nav.Link as={Link} to="cars">Cars</Nav.Link>
+            <Nav.Link as={Link} to="/user/cars">Cars</Nav.Link>
             <Nav.Link as={Link} to="/user/carbooking">Bookings</Nav.Link>
-            <Nav.Link as={Link} to="/aboutus">About Us</Nav.Link>
+            <Nav.Link as={Link} to="/user/aboutus">About Us</Nav.Link>
 
             <Nav.Link as={Link} to="/user/profile" className="profile-wrapper">
   {user?.profilePhoto && (

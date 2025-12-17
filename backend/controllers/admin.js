@@ -1,5 +1,6 @@
 const fileUploadToCloudinary=require('../config/fileUpload')
 const Car = require('../models/Car')
+const Review = require('../models/review')
 
 
 exports.adminAuth = (req, res) => {
@@ -54,6 +55,37 @@ exports.addCar =async (req,res)=>{
         console.log("car creation failed!!")
         console.log(error)
     }
-   
+}
 
+exports.editDetails = async (req,res)=>{
+    try {
+        const id = req.params.id
+        const car = await Car.findById(id)
+        return res.json({car:car,success:true})
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
+exports.deleteCar = async(req,res)=>{
+    try {
+        const {id} = req.params
+        await Car.deleteOne({id:id})
+        console.log("deleted!!!!!!!!!")
+        return res.json({success:true})
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
+exports.viewReviews = async(req,res)=>{
+    try {
+        const reviews = await Review.find()
+        console.log(reviews)
+        return res.json({reviews:reviews,success:true})
+    } catch (error) {
+        console.log(error)
+    }
 }
