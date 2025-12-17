@@ -13,7 +13,7 @@ const UserFooter = () => {
           <Col md={4}>
             <div className="footer-logo">
               <img
-                src="logo.png"
+                src="/src/assets/logo.png"
                 alt="RentGo Logo"
                 className="footer-logo-img"
               />

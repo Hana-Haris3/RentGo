@@ -22,7 +22,7 @@ export default function SignUp() {
     if (!date) return "";
 
     const fixedDate = new Date(date);
-    fixedDate.setDate(fixedDate.getDate() + 1); // ✅ add 1 day
+    fixedDate.setDate(fixedDate.getDate() + 1); 
 
     const y = fixedDate.getFullYear();
     const m = String(fixedDate.getMonth() + 1).padStart(2, "0");

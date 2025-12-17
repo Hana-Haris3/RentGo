@@ -14,16 +14,15 @@ exports.adminOnly = (req,res,next)=>{
     }
 }
 
-exports.userOnly = (req,res,next)=>{
-    const user = req.cookies?.user
-    if(!user){
-        return res.status(401).json({ authentication: false });
-    }
-    try {
-        const verified = jwt.verify(user,process.env.jwtsecret)
-        req.user = verified
-        return next()
-    } catch (error) {
-        return res.status(401).json({ authentication: false });
-    }
+exports.userOnly = (req, res, next) => {
+  const token = req.cookies?.user;
+  if (!token) return res.status(401).json({ success: false });
+
+  try {
+    const decoded = jwt.verify(token, process.env.jwtsecret);
+    req.user = decoded; 
+    next();
+  } catch {
+    res.status(401).json({ success: false });
+  }
 }

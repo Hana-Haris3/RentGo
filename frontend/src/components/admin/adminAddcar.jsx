@@ -117,10 +117,6 @@ const navigate=useNavigate()
                   <Form.Check key={eq} type="checkbox" name="equipments" value={eq} label={eq} />
                 ))}
               </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> 9607f2410870efabd2ff1324c2f23806d01b7a0b
               <div className="toggle-group mb-3">
                 <Form.Check type="switch" name="available" value="true" label="Available" className="toggle-btn long-toggle" />
               </div>
