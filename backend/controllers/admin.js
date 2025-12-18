@@ -1,5 +1,6 @@
 const fileUploadToCloudinary=require('../config/fileUpload')
 const Car = require('../models/Car')
+const Booking=require('../models/Booking')
 
 
 exports.adminAuth = (req, res) => {

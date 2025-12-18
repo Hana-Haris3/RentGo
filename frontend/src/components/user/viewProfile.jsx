@@ -39,6 +39,32 @@ const UserProfile = () => {
     }
   }
 
+//   async function deleteUserAccount(e) {
+//     e.preventDefault();
+    
+//     if (!window.confirm("Do you really want to delete your account?")) return;
+
+//     try {
+//         const res = await fetch(`http://localhost:3000/user/delete/${userId}`, {
+//             method: "DELETE",       // better to use DELETE method
+//             credentials: "include"
+//         });
+
+//         const data = await res.json();
+
+//         if (data.success) {
+//             alert("Account deleted successfully!");
+//             navigate("/"); // redirect to home or login page
+//         } else {
+//             alert("Deletion failed!");
+//         }
+//     } catch (error) {
+//         console.log(error);
+//         alert("Something went wrong!");
+//     }
+// }
+
+
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -53,6 +79,18 @@ const UserProfile = () => {
     }
     fetchProfile();
   }, []);
+
+
+
+
+
+
+
+
+
+
+
+  
 
   return (
     <div className="profile-page">
@@ -125,9 +163,9 @@ const UserProfile = () => {
         </Card>
 
         <div className="profile-actions">
-          <Button as={Link} to="/user/deleteaccount" className="delete-btn">
+          {/* <Button onClick={deleteUserAccount} className="delete-btn">
             Delete Account
-          </Button>
+          </Button> */}
           <Button as={Link} to="/user/profile/editprofile" className="edit-btn">
             Edit your profile
           </Button>

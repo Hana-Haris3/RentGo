@@ -44,6 +44,9 @@ const userSchema = mongoose.Schema({
     AadharImage: {
         type: String
     },
+    price:{
+        type:String
+    },
     role: {
         type: String,
         default: 'User'
@@ -63,13 +66,6 @@ userSchema.methods.validatePassword = async function (userPassword) {
     return await bcrypt.compare(userPassword, this.password)
 }
 
-// userSchema.methods.getjwt = function () {
-//     const token = jwt.sign({
-//         email: this.email,
-//         password: this.password
-//     }, process.env.jwtsecret, { expiresIn: '1h' })
-//     return token
-// }
 
 userSchema.methods.getjwt = function () {
   return jwt.sign(

@@ -1,15 +1,27 @@
-const  {userAuth, getUserProfile}  = require('../controllers/user')
-const { userOnly } = require('../middlewares/auth')
+import express from "express";
+import { userAuth, getUserProfile, updateUserProfile } from '../controllers/user.js';
 
-const router = require('express').Router()
+
+
+const router = express.Router()
 
 router
     .route('/check')
     .get(userAuth)
 
 router
-    .get("/profile",userOnly,getUserProfile)
+    .route("/profile")
+    .get(getUserProfile)
+router
+    .route("/profile")
+    .post(updateUserProfile)
+// router
+//     .route("/delete/:id")
+//     .post(deleteUser)
 
 
-module.exports = router
+// module.exports = router;
+export default router
+
+
    

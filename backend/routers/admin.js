@@ -1,13 +1,15 @@
-const { adminAuth, addCars, addCar } = require('../controllers/admin')
+import express from "express";
+import { adminAuth, addCar } from "../controllers/admin.js";
 
-const router = require('express').Router()
-
-router
-    .route('/check')
-    .get(adminAuth)
+const router = express.Router();
 
 router
-    .route('/addcar')
-    .post(addCar)
-    
-module.exports = router
+  .route("/check")
+  .get(adminAuth);
+
+router
+  .route("/addcar")
+  .post(addCar);
+
+export default router;
+// module.exports = router
