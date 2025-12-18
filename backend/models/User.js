@@ -70,7 +70,7 @@ userSchema.methods.validatePassword = async function (userPassword) {
 userSchema.methods.getjwt = function () {
   return jwt.sign(
     {
-      id: this._id,   // ✅ ADD THIS
+      id: this._id, 
       email: this.email
     },
     process.env.jwtsecret,

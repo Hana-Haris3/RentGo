@@ -3,7 +3,7 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import "../../../css/admin/addcar.css";
 import { useNavigate } from "react-router";
 
-const AddCarPage = () => {
+export default function AddCarPage()  {
   const [mileage, setMileage] = useState(0);
    const categories = ["Hatchback", "Sedan", "SUV", "Crossover", "MPV/Minivan", "Coupe", "Convertible", "Wagon"];
     const fuelTypes = ["CNG", "Petrol", "Diesel", "Electrical", "Hybrid"];
@@ -134,4 +134,3 @@ const navigate=useNavigate()
     </div>
   );
 }
-export default AddCarPage;

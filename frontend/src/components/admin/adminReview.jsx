@@ -1,18 +1,45 @@
-import React from "react";
-import { Link } from "react-router";
-
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Container, Row, Col, Table, Form, Button, InputGroup, Dropdown } from "react-bootstrap";
 import "../../../css/admin/adminReview.css";
+import { useNavigate } from "react-router-dom";
 
-const AdminReview=()=> {
-  const reviews = [
-    { id: 1, name: "Michael", email: "abc@gmail.com", date: "04/17/23" },
-    { id: 2, name: "Anna", email: "abc@gmail.com", date: "04/17/23" },
-    { id: 3, name: "Thomas", email: "abc@gmail.com", date: "04/17/23" },
-    { id: 4, name: "Michelle", email: "abc@gmail.com", date: "04/17/23" },
-    { id: 5, name: "Andrea", email: "abc@gmail.com", date: "04/17/23" },
-    { id: 6, name: "Philip", email: "abc@gmail.com", date: "04/17/23" },
-  ];
+export default function AdminReview() {
+  const [userreview,setuserreview]= useState([])
+  const navigate = useNavigate()
+  // const reviews = [
+  //   { id: 1, name: "Michael", email: "abc@gmail.com", date: "04/17/23" },
+  //   { id: 2, name: "Anna", email: "abc@gmail.com", date: "04/17/23" },
+  //   { id: 3, name: "Thomas", email: "abc@gmail.com", date: "04/17/23" },
+  //   { id: 4, name: "Michelle", email: "abc@gmail.com", date: "04/17/23" },
+  //   { id: 5, name: "Andrea", email: "abc@gmail.com", date: "04/17/23" },
+  //   { id: 6, name: "Philip", email: "abc@gmail.com", date: "04/17/23" },
+  // ];
+
+
+  useEffect(()=>{
+    const getReviews = async()=> {
+      try {
+          const res = await fetch(`http://localhost:3000/admin/reviews`,
+            {credentials: "include"}
+          );
+          const data = await res.json();
+          const reviews = data.reviews
+          setuserreview(reviews)
+          console.log(reviews)
+          if(!data.success){
+            alert("something went wrong!!!")
+          }
+          // else{
+          //   alert("something went wrong!!!")
+          // }
+      } catch (error) {
+          console.log(error)
+      } 
+    }
+    getReviews()
+  },[])
+
 
   return (
     <div className="review-page">
@@ -45,7 +72,7 @@ const AdminReview=()=> {
           <Table responsive borderless className="review-table align-middle">
             <thead>
               <tr>
-                <th>ID</th>
+                {/* <th>ID</th> */}
                 <th>Customer</th>
                 <th>Email</th>
                 <th>date</th>
@@ -54,14 +81,14 @@ const AdminReview=()=> {
             </thead>
 
             <tbody>
-              {reviews.map((item) => (
+              {userreview?.map((item) => (
                 <tr key={item.id}>
-                  <td>{item.id}</td>
+                  {/* <td>{item.id}</td> */}
                   <td>{item.name}</td>
                   <td>{item.email}</td>
                   <td>{item.date}</td>
                   <td>
-                    <Button className="view-btn" as={Link} to="/admin/viewreviews">View</Button>
+                    <Link className="view-btn" as={Link} to={`/admin/viewreviews/${item.id}`}>View</Link>
                   </td>
                 </tr>
               ))}
@@ -72,4 +99,3 @@ const AdminReview=()=> {
     </div>
   );
 }
-export default AdminReview

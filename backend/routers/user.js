@@ -1,5 +1,5 @@
 import express from "express";
-import { userAuth, getUserProfile, updateUserProfile } from '../controllers/user.js';
+import { userAuth, getUserProfile, updateUserProfile, submitreview, getcardetailbooking, submitUserBooking } from '../controllers/user.js';
 
 
 
@@ -12,6 +12,7 @@ router
 router
     .route("/profile")
     .get(getUserProfile)
+
 router
     .route("/profile")
     .post(updateUserProfile)
@@ -21,7 +22,22 @@ router
 
 
 // module.exports = router;
-export default router
 
+
+router
+    .route('/submitreview')
+    .post(submitreview)
+
+router
+    .route('/booking/:id')
+    .get(getcardetailbooking)
+    .post(submitUserBooking)
+
+// router  
+//     .route('/viewBooking')
+//     .get()
+
+
+export default router
 
    

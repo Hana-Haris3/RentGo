@@ -46,8 +46,8 @@ const UserFooter = () => {
           <Col md={4}>
             <h5 className="footer-heading">Contact</h5>
 
-            <a href="tel:+1234567890" class="footer-contact"><FaPhoneAlt />+1234567890</a>
-            <a href="mailto:laputa@gmail.com" class="footer-contact"><FaEnvelope />rentgo@gmail.com</a>
+            <a href="tel:+1234567890" className="footer-contact"><FaPhoneAlt />+1234567890</a>
+            <a href="mailto:laputa@gmail.com" className="footer-contact"><FaEnvelope />rentgo@gmail.com</a>
             <p className="footer-contact"><FaMapMarkerAlt /> Oxford Ave. Cary, NC 27511</p>
           </Col>
         </Row>

@@ -1,66 +1,38 @@
-import React, { useState } from "react";
-import { Link } from "react-router";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router";
 import { Container, Table, Button, Form, Row, Col } from "react-bootstrap";
 import "../../../css/admin/adminBookings.css";
 
 const AdminBookings = () => {
-  const [bookings, setBookings] = useState([
-    {
-      id: 1,
-      customer: "Michael",
-      car: "Toyota Corolla",
-      price: "$20.00",
-      pickup: "04/17/23 at 8:25 PM",
-      returnDate: "04/17/23 at 8:25 PM",
-      status: true, 
-    },
-    {
-      id: 2,
-      customer: "Anna",
-      car: "Honda Civic",
-      price: "$20.00",
-      pickup: "04/17/23 at 8:25 PM",
-      returnDate: "04/17/23 at 8:25 PM",
-      status: true,
-    },
-    {
-      id: 3,
-      customer: "Thomas",
-      car: "Hyundai Elantra",
-      price: "$20.00",
-      pickup: "04/17/23 at 8:25 PM",
-      returnDate: "04/17/23 at 8:25 PM",
-      status: true,
-    },
-    {
-      id: 4,
-      customer: "Michelle",
-      car: "Nissan Altima",
-      price: "$20.00",
-      pickup: "04/17/23 at 8:25 PM",
-      returnDate: "04/17/23 at 8:25 PM",
-      status: true,
-    },
-    {
-      id: 5,
-      customer: "Andrea",
-      car: "Hyundai i20",
-      price: "$20.00",
-      pickup: "04/17/23 at 8:25 PM",
-      returnDate: "04/17/23 at 8:25 PM",
-      status: true,
-    },
-    {
-      id: 6,
-      customer: "Philip",
-      car: "Ford Figo",
-      price: "$20.00",
-      pickup: "04/17/23 at 8:25 PM",
-      returnDate: "04/17/23 at 8:25 PM",
-      status: true,
-    },
-  ]);
+   const [bookings,setbookings]= useState([])
+    const navigate = useNavigate()
+ 
 
+
+  useEffect(()=>{
+    const getAdminBookings = async()=> {
+      try {
+          const res = await fetch(`http://localhost:3000/admin/bookings`,
+            {credentials: "include"}
+          );
+          const data = await res.json();
+          const bookings = data.bookings
+          setbookings(bookings)
+          console.log(bookings)
+          if(!data.success){
+            alert("something went wrong!!!")
+          }
+          // else{
+          //   alert("something went wrong!!!")
+          // }
+      } catch (error) {
+          console.log(error)
+      } 
+    }
+    getAdminBookings()
+  },[])
+
+  
   const handleStatusClick = (index) => {
     if (bookings[index].status === true) {
       alert("cancel current booking?");
@@ -116,10 +88,10 @@ const AdminBookings = () => {
               {bookings.map((item, index) => (
                 <tr key={item.id}>
                   <td>{item.id}</td>
-                  <td>{item.customer}</td>
-                  <td>{item.car}</td>
-                  <td>{item.price}</td>
-                  <td>{item.pickup}</td>
+                  <td>{item.name}</td>
+                  <td>{item.carName}</td>
+                  <td>{item.totalPrice}</td>
+                  <td>{item.pickupDate}</td>
                   <td>{item.returnDate}</td>
 
                   <td>

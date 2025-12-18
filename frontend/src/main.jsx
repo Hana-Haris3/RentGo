@@ -9,7 +9,6 @@ import ViewCarDetailsPage from './components/common/ViewCarDetailsPage';
 import UserLogin from './components/publichome/userLogin';
 import AdminLogin from './components/publichome/adminLogin';
 import Admin from './admin';
-import AddCarPage from './components/admin/adminAddcar';
 import AboutUs from './components/common/aboutUs';
 import AdminHome from './components/admin/adminhome';
 import UserHome from './userhome';
@@ -23,6 +22,8 @@ import UserProfile from './components/user/viewProfile';
 import EditProfile from './components/user/editProfile';
 import EditCar from './components/admin/adminEditCars';
 import CarBooking from './components/user/carBooking';
+import AddCarPage from './components/admin/adminAddcar';
+import UserViewBooking from './components/user/userviewBookings';
 
 
 const appRoutes = createBrowserRouter([
@@ -88,8 +89,16 @@ const appRoutes = createBrowserRouter([
             element:<EditProfile/>
           },
           {
-            path:'car/viewdetails/booking',
+            path:'car/viewdetails/booking/:id',
             element:<CarBooking role="user"/>
+          },
+          {
+            path:'aboutus',
+            element:<AboutUs/>
+          },
+          {
+            path:'carbooking',
+            element:<UserViewBooking/>
           }
         ]
       } 
@@ -135,7 +144,7 @@ const appRoutes = createBrowserRouter([
             element:< AdminReview />
           },
           {
-            path:('viewreviews'),
+            path:('viewreviews/:id'),
             element:< AdminViewReview />
           }
         ]

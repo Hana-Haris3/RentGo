@@ -1,9 +1,75 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "../../../css/user/carBooking.css";
+import { useNavigate, useParams } from "react-router";
 
-export default function CarBooking () {
+
+
+export default function CarBooking() {
+
+  const {id} = useParams()
+  const [carData,setcarData] = useState([])
+  const navigate = useNavigate()
+
+  useEffect(()=>{
+    async function getcardetails() {
+      try {
+        const res = await fetch(`http://localhost:3000/user/booking/${id}`,{credentials: "include"})
+        const data =await res.json()
+        const car = data.car
+        console.log(car)
+        setcarData(car)
+      } catch (error) {
+        console.log(error)
+      }
+      
+    }
+    getcardetails()
+  },[id])
+
+
+  async function submitBooking(e) {
+  e.preventDefault();
+
+  const bookingData = {
+    id, // custom car id
+    carName: carData?.name,
+    Model: carData?.type,
+    Year: carData?.year,
+    pickupDate,
+    pickupTime: `${pickupTime.hour}:${pickupTime.minute} ${pickupTime.period}`,
+    returnDate: dropDate,
+    returnTime: `${dropTime.hour}:${dropTime.minute} ${dropTime.period}`,
+    payment: paymentMethod,
+    price: totalPrice,
+  };
+
+  try {
+    const res = await fetch(`http://localhost:3000/user/booking/${id}`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(bookingData),
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+      alert("Booking submitted successfully");
+      // navigate("/user/profile");
+    } else {
+      alert(data.message || "Booking failed");
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+
+
   const [pickupDate, setPickupDate] = useState("");
   const [dropDate, setDropDate] = useState("");
 
@@ -21,29 +87,83 @@ export default function CarBooking () {
 
   const [paymentMethod, setPaymentMethod] = useState("");
 
+  const pricePerDay = carData?.pricePerDay;
+
+  // 🔹 Helper function
+  function convertTo24Hour(hour, minute, period) {
+    let h = parseInt(hour || 0);
+    let m = parseInt(minute || 0);
+
+    if (period === "PM" && h !== 12) h += 12;
+    if (period === "AM" && h === 12) h = 0;
+
+    return { h, m };
+  }
+
+  // 🔹 Automatic calculations
+  let totalHours = 0;
+  let totalDays = 0;
+  let totalPrice = 0;
+
+  if (
+    pickupDate &&
+    dropDate &&
+    pickupTime.hour &&
+    dropTime.hour
+  ) {
+    const pick = convertTo24Hour(
+      pickupTime.hour,
+      pickupTime.minute,
+      pickupTime.period
+    );
+
+    const drop = convertTo24Hour(
+      dropTime.hour,
+      dropTime.minute,
+      dropTime.period
+    );
+
+    const pickupDateTime = new Date(pickupDate);
+    pickupDateTime.setHours(pick.h, pick.m);
+
+    const dropDateTime = new Date(dropDate);
+    dropDateTime.setHours(drop.h, drop.m);
+
+    const diffMs = dropDateTime - pickupDateTime;
+
+    if (diffMs > 0) {
+      totalHours = diffMs / (1000 * 60 * 60);
+      totalDays = Math.ceil(totalHours / 24);
+      totalPrice = totalDays * pricePerDay;
+    }
+  }
+
   return (
     <div className="booking-page container py-4">
 
+      {/* CAR CARD */}
       <div className="card car-card p-3 shadow-sm mb-4">
         <div className="row g-3 align-items-center">
           <div className="col-md-7">
             <img
-              src="/assets/car.png"
+              src={`https://res.cloudinary.com/dyokhs4yf/image/upload/${carData?.images?.[0]}`}
               alt="Car"
               className="img-fluid rounded car-image"
             />
           </div>
 
           <div className="col-md-5">
-            <h5 className="mb-1">Mercedes</h5>
-            <p className="text-muted mb-1">Sedan</p>
+            <h5 className="mb-1">{carData?.name}</h5>
+            <p className="text-muted mb-1">{carData?.type}</p>
             <p className="car-price">
-              $25 <span className="text-muted">per day</span>
+              ₹{carData?.pricePerDay}  <span className="text-muted">per day</span>
             </p>
           </div>
         </div>
       </div>
 
+      <form action="POST" onSubmit={submitBooking}>
+      {/* DATES */}
       <div className="row mb-4">
         <div className="col-md-6 mb-3">
           <label className="form-label fw-semibold">Pick Up Date</label>
@@ -66,14 +186,15 @@ export default function CarBooking () {
         </div>
       </div>
 
+      {/* TIMES */}
       <div className="row mb-4">
 
+        {/* PICKUP TIME */}
         <div className="col-md-6">
           <p className="fw-semibold">Pick Up Time</p>
 
           <div className="time-box p-3 rounded">
             <div className="d-flex align-items-center justify-content-between">
-
               <input
                 type="number"
                 placeholder="HH"
@@ -108,19 +229,16 @@ export default function CarBooking () {
               </select>
             </div>
 
-            <div className="d-flex justify-content-between mt-3">
-              <button className="btn btn-light btn-sm">Cancel</button>
-              <button className="btn btn-dark btn-sm">OK</button>
-            </div>
+           
           </div>
         </div>
 
+        {/* DROP TIME */}
         <div className="col-md-6">
           <p className="fw-semibold">Drop Time</p>
 
           <div className="time-box p-3 rounded">
             <div className="d-flex align-items-center justify-content-between">
-
               <input
                 type="number"
                 placeholder="HH"
@@ -155,63 +273,48 @@ export default function CarBooking () {
               </select>
             </div>
 
-            <div className="d-flex justify-content-between mt-3">
-              <button className="btn btn-light btn-sm">Cancel</button>
-              <button className="btn btn-dark btn-sm">OK</button>
-            </div>
+          
           </div>
         </div>
       </div>
 
+      {/* SUMMARY */}
       <div className="card shadow-sm p-4 summary-card">
         <h5 className="mb-3">Order Summary</h5>
 
-        <p>Total Time:</p>
-        <p>Total Days:</p>
-        <p>Price:</p>
+        <p>Total Time: <strong>{totalHours.toFixed(1)} hrs</strong></p>
+        <p>Total Days: <strong>{totalDays}</strong></p>
+        <p>Price: <strong>₹{totalPrice}</strong></p>
 
         <div className="d-flex justify-content-between align-items-center mt-4">
-          
-          {/* PAY DROPDOWN */}
           <div className="dropdown">
-            <button
+            <div
               className="btn btn-success dropdown-toggle px-4"
-              type="button"
               data-bs-toggle="dropdown"
-              aria-expanded="false"
             >
               Pay
-            </button>
+            </div>
 
             <ul className="dropdown-menu">
               <li>
-                <button
-                  className="dropdown-item"
-                  onClick={() => setPaymentMethod("Cash")}
-                >
+                <div className="dropdown-item" onClick={() => setPaymentMethod("Cash")}>
                   Cash
-                </button>
+                </div>
               </li>
               <li>
-                <button
-                  className="dropdown-item"
-                  onClick={() => setPaymentMethod("UPI")}
-                >
+                <div className="dropdown-item" onClick={() => setPaymentMethod("UPI")}>
                   UPI
-                </button>
+                </div>
               </li>
               <li>
-                <button
-                  className="dropdown-item"
-                  onClick={() => setPaymentMethod("Card")}
-                >
+                <div className="dropdown-item" onClick={() => setPaymentMethod("Card")}>
                   Card
-                </button>
+                </div>
               </li>
             </ul>
           </div>
 
-          <button className="btn confirm-btn px-4">Confirm</button>
+          <button type="submit" className="btn confirm-btn px-4">Confirm</button>
         </div>
 
         {paymentMethod && (
@@ -220,7 +323,9 @@ export default function CarBooking () {
           </p>
         )}
       </div>
-    </div>
-  );
-};
+      </form>
 
+    </div>
+    
+  );
+}

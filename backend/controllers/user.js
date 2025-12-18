@@ -1,6 +1,12 @@
 import User from "../models/User.js";
 // import User from"../models/User"
 import { v2 as cloudinary } from "cloudinary";
+// const User = require("../models/User");
+// const cloudinary = require("cloudinary").v2;
+// const Review = require('../models/review')
+import Review from "../models/review.js";
+import Car from "../models/Car.js";
+import Booking from "../models/Booking.js"
 
 
 export const userAuth = (req, res) => { 
@@ -39,6 +45,8 @@ export const updateUserProfile = async (req, res) => {
 };
 
 export const submitreview = async(req,res)=>{
+
+// exports.submitreview = async(req,res)=>{
   try {
     const {rating,review} = req.body
     const username = await User.findOne({email:req.user.email})
@@ -58,6 +66,45 @@ export const submitreview = async(req,res)=>{
   
 }
 
+export const getcardetailbooking = async (req,res)=>{
+  try {
+    const {id} = req.params
+    console.log(id)
+    const car = await Car.findOne({id:id})
+    console.log(id)
+    return res.json({success:true,car:car})
+  } catch (error) {
+    console.log(error)
+  }
+  
+}
+
+
+export const submitUserBooking = async (req,res)=>{
+  try {
+    const {id} = req.params
+    console.log(id)
+    const booking = await Booking.create(req.body);
+
+    return res.json({success: true,booking:booking});
+  } catch (error) {
+    console.log(error)
+  }
+  
+}
+
+
+export const userViewreview = async(req,res)=>{
+    
+    try {
+        const bookings = await Booking.find()
+        
+        return res.json({bookings:bookings,success:true})
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 // export const deleteUser = async (req, res) => {
 //   const { id } = req.params;
 
@@ -75,3 +122,4 @@ export const submitreview = async(req,res)=>{
 //     return res.status(500).json({ success: false, message: "Server error. Could not delete user." });
 //   }
 // };
+
