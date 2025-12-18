@@ -10,7 +10,7 @@ exports.adminAuth = (req, res) => {
 exports.addCar =async (req,res)=>{
     try {
         const{name,seats,doors,luggage,transmission,brand,color,modelName,modelYear,manufactureYear,registrationNumber,pricePerDay,engine,type,mileage,fuelType,equipments,available,maintenance,description,damageNotes}=req.body
-    const carImages = []
+        const carImages = []
     if (Array.isArray(req.files.images)) {
         for (const file of req.files.images) {
             const uploaded = await fileUploadToCloudinary(file);
@@ -57,6 +57,7 @@ exports.addCar =async (req,res)=>{
     }
 }
 
+
 exports.editDetails = async (req,res)=>{
     try {
         const id = req.params.id
@@ -81,10 +82,36 @@ exports.deleteCar = async(req,res)=>{
 
 
 exports.viewReviews = async(req,res)=>{
+    
     try {
         const reviews = await Review.find()
-        console.log(reviews)
+        
         return res.json({reviews:reviews,success:true})
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.viewsingleReview = async(req,res)=>{
+    
+    try {
+        const {id} = req.params
+        const review = await Review.findOne({id:id})
+        console.log(review)
+        
+        return res.json({review:review,success:true})
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
+exports.deleteReview = async(req,res)=>{
+    try {
+        const {id} = req.params
+        await Review.deleteOne({id:id})
+        console.log("deleted!!!!!!!!!")
+        return res.json({success:true})
     } catch (error) {
         console.log(error)
     }

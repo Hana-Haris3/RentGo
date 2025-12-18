@@ -1,8 +1,62 @@
-import {Link} from "react-router"
+import {Link, useNavigate, useParams} from "react-router"
 import { Container, Form, Button } from "react-bootstrap";
 import "../../../css/admin/adminViewReview.css";
+import { useEffect, useState } from "react";
 
-const AdminViewReview=()=> {
+export default function AdminViewReview() {
+  const [userReview,setuserReview]=useState([])
+  const {id} = useParams()
+  const navigate = useNavigate()
+
+
+  useEffect(()=>{
+      const getReviews = async()=> {
+        try {
+            const res = await fetch(`http://localhost:3000/admin/viewreviews/${id}`,
+              {credentials: "include"}
+            );
+            const data = await res.json();
+            const review = data.review
+            setuserReview(review)
+            if(!data.success){
+              alert("something went wrong!!!")
+            }
+            // else{
+            //   alert("something went wrong!!!")
+            // }
+        } catch (error) {
+            console.log(error)
+        } 
+      }
+      getReviews()
+    },[])
+
+
+    async function deleteReview(e){
+        e.preventDefault();
+        alert("do you want to delete?")
+
+        try {
+            const res =await fetch(`http://localhost:3000/admin/deletereview/${id}`,{
+                method:"POST",
+                credentials:"include"
+
+            })
+
+            const data =await res.json()
+            
+            if (data.success) {
+                navigate("/admin/reviews")
+            } else {
+                alert("deletion failed!!")
+            }
+        } catch (error) {
+           console.log(error) 
+        }
+
+    }
+
+
   return (
     <Container fluid className="review-page d-flex align-items-center justify-content-center">
       <Form method="post" className="review-card">
@@ -14,27 +68,20 @@ const AdminViewReview=()=> {
           </div>
 
           <div className="user-info">
-            <h2>Michael</h2>
-            <p>ID : 12</p>
-            <p>Email : abc@gmail.com</p>
-            <p>Phone no : 4556646488</p>
+            <h2>{userReview?.name}</h2>
+            <p>Email : {userReview?.email}</p>
           </div>
         </div>
 
         
-        <div className="stars">
-          ★ ★ ★ ★ ☆
-        </div>
-
+        <div className="stars">Ratings : {userReview?.ratings}</div>
        
         <div className="review-box">
-          Booking was quick and straightforward. The car was spotless and
-          performed perfectly throughout the trip. Customer support was
-          responsive and helpful.
+          {userReview?.review}
         </div>
 
         <div className="action-buttons">
-          <Button type="submit" name="action" value="delete" className="delete-btn">
+          <Button  name="action" value="delete" className="delete-btn" onClick={deleteReview}>
             delete
           </Button>
 
@@ -47,4 +94,3 @@ const AdminViewReview=()=> {
     </Container>
   );
 }
-export default AdminViewReview

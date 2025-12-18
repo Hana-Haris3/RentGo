@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import { Container, Row, Col, Table, Form, Button, InputGroup, Dropdown } from "react-bootstrap";
 import "../../../css/admin/adminReview.css";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 export default function AdminReview() {
-  const [userreview,setuserreview]= useState()
+  const [userreview,setuserreview]= useState([])
   const navigate = useNavigate()
   // const reviews = [
   //   { id: 1, name: "Michael", email: "abc@gmail.com", date: "04/17/23" },
@@ -20,16 +20,19 @@ export default function AdminReview() {
   useEffect(()=>{
     const getReviews = async()=> {
       try {
-          const res = await fetch(`http://localhost:3000/admin/reviews`);
+          const res = await fetch(`http://localhost:3000/admin/reviews`,
+            {credentials: "include"}
+          );
           const data = await res.json();
           const reviews = data.reviews
           setuserreview(reviews)
           console.log(reviews)
-          if(data.success){
-            navigate('/admin/reviews')
-          }else{
+          if(!data.success){
             alert("something went wrong!!!")
           }
+          // else{
+          //   alert("something went wrong!!!")
+          // }
       } catch (error) {
           console.log(error)
       } 
@@ -69,7 +72,7 @@ export default function AdminReview() {
           <Table responsive borderless className="review-table align-middle">
             <thead>
               <tr>
-                <th>ID</th>
+                {/* <th>ID</th> */}
                 <th>Customer</th>
                 <th>Email</th>
                 <th>date</th>
@@ -80,12 +83,12 @@ export default function AdminReview() {
             <tbody>
               {userreview?.map((item) => (
                 <tr key={item.id}>
-                  <td>{item.id}</td>
+                  {/* <td>{item.id}</td> */}
                   <td>{item.name}</td>
                   <td>{item.email}</td>
                   <td>{item.date}</td>
                   <td>
-                    <Button className="view-btn" as={Link} to="/admin/viewreviews">View</Button>
+                    <Link className="view-btn" as={Link} to={`/admin/viewreviews/${item.id}`}>View</Link>
                   </td>
                 </tr>
               ))}

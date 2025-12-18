@@ -28,14 +28,14 @@ exports.getUserProfile = async (req, res) => {
 
 exports.submitreview = async(req,res)=>{
   try {
-    const {ratings,review} = req.body
-    const username = await User.find({email:req.user.email})
+    const {rating,review} = req.body
+    const username = await User.findOne({email:req.user.email})
     await Review.create({
       id:Date.now(),
       name:username.name,
       email:username.email,
       review:review,
-      ratings:ratings,
+      ratings:rating,
       date:Date.now()
     })
     console.log('review created!!')

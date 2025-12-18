@@ -1,4 +1,4 @@
-const { adminAuth, addCars, addCar, deleteCar, editDetails, viewReviews } = require('../controllers/admin')
+const { adminAuth, addCars, addCar, deleteCar, editDetails, viewReviews, viewsingleReview, deleteReview, viewCarDetails } = require('../controllers/admin')
 
 const router = require('express').Router()
 
@@ -21,5 +21,13 @@ router
 router
     .route('/reviews')
     .get(viewReviews)
+
+router
+    .route('/viewreviews/:id')
+    .get(viewsingleReview)
+
+router
+    .route('/deletereview/:id')
+    .post(deleteReview)
 
 module.exports = router

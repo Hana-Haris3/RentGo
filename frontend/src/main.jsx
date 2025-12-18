@@ -139,7 +139,7 @@ const appRoutes = createBrowserRouter([
             element:< AdminReview />
           },
           {
-            path:('viewreviews'),
+            path:('viewreviews/:id'),
             element:< AdminViewReview />
           }
         ]
