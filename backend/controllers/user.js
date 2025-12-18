@@ -83,8 +83,31 @@ export const getcardetailbooking = async (req,res)=>{
 export const submitUserBooking = async (req,res)=>{
   try {
     const {id} = req.params
-    console.log(id)
-    const booking = await Booking.create(req.body);
+    const {pickupDate,pickupTime,returnDate,returnTime,payment,price} = req.body
+
+    const car = await Car.findOne({id:id})
+    const user = await User.findOne({email:req.user.email})
+
+    const booking = await Booking.create({
+      id:Date.now(),
+      name:user?.name,
+      phoneNumber:user?.phoneNumber,
+      email:user?.email,
+      carName:car?.name,
+      Model:car?.modelName,
+      Year:car?.modelYear,
+      registrationNumber:car?.registrationNumber,
+      pickupDate:pickupDate,
+      pickupTime:pickupTime,
+      returnDate:returnDate,
+      returnTime:returnTime,
+      license:user?.drivingLiscenceNumber,
+      adhaar:user?.AadharNumber,
+      adhaarImage:user?.AadharImage,
+      payment:payment,
+      totalPrice:price,
+      licenseImg:user?.drivingLiscenceImg
+    })
 
     return res.json({success: true,booking:booking});
   } catch (error) {
@@ -94,10 +117,12 @@ export const submitUserBooking = async (req,res)=>{
 }
 
 
-export const userViewreview = async(req,res)=>{
+export const viewuserBookings = async(req,res)=>{
     
     try {
-        const bookings = await Booking.find()
+        const user = req.user.email
+        const bookings = await Booking.findOne({email:user})
+        console.log(bookings)
         
         return res.json({bookings:bookings,success:true})
     } catch (error) {

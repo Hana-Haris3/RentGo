@@ -2,50 +2,53 @@ import React, { useState } from "react";
 import { Container, Table, Button, Form, Row, Col, Badge } from "react-bootstrap";
 import "../../../css/user/userbookings.css";
 import { useParams } from "react-router";
+import { useEffect } from "react";
 
-const bookingsData = [
-  { id: 1, car: "Toyota Corolla", price: 20, pickup: "04/17/23 at 8:25 PM", drop: "04/17/23 at 8:25 PM", status: "Booked" },
-  { id: 2, car: "Honda Civic", price: 20, pickup: "04/17/23 at 8:25 PM", drop: "04/17/23 at 8:25 PM", status: "Booked" },
-  { id: 3, car: "Hyundai Elantra", price: 20, pickup: "04/17/23 at 8:25 PM", drop: "04/17/23 at 8:25 PM", status: "Booked" },
-  { id: 4, car: "Nissan Altima", price: 20, pickup: "04/17/23 at 8:25 PM", drop: "04/17/23 at 8:25 PM", status: "Booked" },
-  { id: 5, car: "Hyundai i20", price: 20, pickup: "04/17/23 at 8:25 PM", drop: "04/17/23 at 8:25 PM", status: "Booked" }
-];
 
 export default function UserViewBookings()  {
   const [search, setSearch] = useState("");
 
-  //   const [userReview,setuserReview]=useState([])
-  // const {id} = useParams()
-  // const navigate = useNavigate()
+    const [userbooking,setbooking]=useState([])
 
 
-  // useEffect(()=>{
-  //     const getUserBookings = async()=> {
-  //       try {
-  //           const res = await fetch(`http://localhost:3000/admin/viewreviews/${id}`,
-  //             {credentials: "include"}
-  //           );
-  //           const data = await res.json();
-  //           const review = data.review
-  //           setuserReview(review)
-  //           if(!data.success){
-  //             alert("something went wrong!!!")
-  //           }
-  //           // else{
-  //           //   alert("something went wrong!!!")
-  //           // }
-  //       } catch (error) {
-  //           console.log(error)
-  //       } 
-  //     }
-  //     getUserBookings()
-  //   },[])
+  useEffect(() => {
+  const getUserBookings = async () => {
+    try {
+      const res = await fetch("http://localhost:3000/user/bookings", {
+        credentials: "include",
+      });
 
-  const filteredData = bookingsData.filter(
-    (b) =>
-      b.car.toLowerCase().includes(search.toLowerCase()) ||
-      b.id.toString().includes(search)
-  );
+      const data = await res.json();
+      console.log("API RESPONSE:", data);
+
+      if (data.success) {
+        if (Array.isArray(data.bookings)) {
+          setbooking(data.bookings);
+        } else if (data.bookings) {
+          setbooking([data.bookings]);
+        } else {
+          setbooking([]);
+        }
+      } else {
+        setbooking([]);
+        alert("Something went wrong!");
+      }
+    } catch (error) {
+      console.log(error);
+      setbooking([]);
+    }
+  };
+
+  getUserBookings();
+}, []);
+
+
+
+  // const filteredData = booking.filter(
+  //   (b) =>
+  //     b.car.toLowerCase().includes(search.toLowerCase()) ||
+  //     b.id.toString().includes(search)
+  // );
 
   return (
     <Container fluid className="booking-wrapper py-4">
@@ -66,33 +69,31 @@ export default function UserViewBookings()  {
         <Table bordered hover className="booking-table text-center align-middle">
           <thead>
             <tr>
-              <th>Booking ID</th>
               <th>Car</th>
               <th>Price</th>
-              <th>Pick Up Date</th>
-              <th>Return Date</th>
+              <th>Pick Up </th>
+              <th>Return </th>
               <th>Status</th>
-              <th>Action</th>
+              {/* <th>Action</th> */}
             </tr>
           </thead>
           <tbody>
-            {filteredData.map((item) => (
+            {userbooking?.map((item) => (
               <tr key={item.id}>
-                <td>{item.id}</td>
-                <td>{item.car}</td>
-                <td>${item.price}.00</td>
-                <td>{item.pickup}</td>
-                <td>{item.drop}</td>
+                <td>{item.carName}</td>
+                <td>₹{item.totalPrice}.00</td>
+                <td>{item.pickupDate},{item.pickupTime}</td>
+                <td>{item.returnDate},{item.returnTime}</td>
                 <td>
                   <Badge bg="success" className="status-badge">
-                    {item.status}
+                    {(item.status?"booked":"cancelled")}
                   </Badge>
                 </td>
-                <td>
+                {/* <td>
                   <Button size="sm" className="cancel-btn">
                     Cancel
                   </Button>
-                </td>
+                </td> */}
               </tr>
             ))}
           </tbody>

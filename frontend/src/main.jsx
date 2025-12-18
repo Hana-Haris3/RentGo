@@ -136,7 +136,7 @@ const appRoutes = createBrowserRouter([
             element: <AdminBookings />
           },
           {
-            path:('viewbooking'),
+            path:('viewbooking/:id'),
             element:< AdminViewBooking />
           },
           {

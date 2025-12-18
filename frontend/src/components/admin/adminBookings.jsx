@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router-dom";
 import { Container, Table, Button, Form, Row, Col } from "react-bootstrap";
 import "../../../css/admin/adminBookings.css";
 
@@ -33,15 +33,31 @@ const AdminBookings = () => {
   },[])
 
   
-  const handleStatusClick = (index) => {
-    if (bookings[index].status === true) {
-      alert("cancel current booking?");
+  const handleStatusClick = async (bookingId, index) => {
+    const confirmCancel = window.confirm("Cancel this booking?");
+    if (!confirmCancel) return;
 
-      const updatedBookings = [...bookings];
-      updatedBookings[index].status = false;
-      setBookings(updatedBookings);
+    try {
+      const res = await fetch(
+        `http://localhost:3000/admin/cancel-booking/${bookingId}`,
+        {
+          method: "POST",
+          credentials: "include",
+        }
+      );
+
+      const data = await res.json();
+
+      if (data.success) {
+        const updatedBookings = [...bookings];
+        updatedBookings[index].status = false;
+        setbookings(updatedBookings); 
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
+
 
   return (
     <div className="booking-page w-100">
@@ -73,7 +89,7 @@ const AdminBookings = () => {
           <Table bordered responsive className="booking-table">
             <thead>
               <tr>
-                <th>Booking ID</th>
+                {/* <th>Booking ID</th> */}
                 <th>Customer</th>
                 <th>Car</th>
                 <th>Price</th>
@@ -85,9 +101,9 @@ const AdminBookings = () => {
             </thead>
 
             <tbody id="table-background">
-              {bookings.map((item, index) => (
+              {bookings?.map((item, index) => (
                 <tr key={item.id}>
-                  <td>{item.id}</td>
+                  {/* <td>{item.id}</td> */}
                   <td>{item.name}</td>
                   <td>{item.carName}</td>
                   <td>{item.totalPrice}</td>
@@ -96,17 +112,20 @@ const AdminBookings = () => {
 
                   <td>
                     <Button
-                      className={
-                        item.status ? "status-booked" : "status-cancelled"
-                      }
-                      onClick={() => handleStatusClick(index)}
+                      className={item.status ? "status-booked" : "status-cancelled"}
+                      onClick={() => handleStatusClick(item._id, index)}
+                      disabled={!item.status}
+                      // defaultValue={}
                     >
                       {item.status ? "Booked" : "Cancelled"}
                     </Button>
+
                   </td>
 
                   <td>
-                    <Button className="view-btn"  as={Link} to="/admin/viewbooking">View</Button>
+                    <Button className="view-btn"  as={Link} to={`/admin/viewbooking/${item.id}`}>View</Button>
+                    {/* <Link to="/admin/viewbooking"> <Button className="view-btn">View</Button></Link> */}
+
                   </td>
                 </tr>
               ))}

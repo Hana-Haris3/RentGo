@@ -129,3 +129,33 @@ exports.viewBookings = async(req,res)=>{
         console.log(error)
     }
 }
+
+
+exports.cancelBooking = async (req, res) => {
+  try {
+    const {bookingId} = req.params
+    const booking = await Booking.findOne({id:bookingId})
+    await Booking.updateOne({
+        status:false
+    })
+
+
+    res.json({ success: true, booking });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false });
+  }
+};
+
+
+exports.viewsingleBooking = async(req,res)=>{
+    try {
+        const {id} = req.params
+        const booking = await Booking.findOne({id:id})
+        console.log(booking)
+        
+        return res.json({booking:booking,success:true})
+    } catch (error) {
+        console.log(error)
+    }
+}

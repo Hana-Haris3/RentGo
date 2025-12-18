@@ -79,22 +79,32 @@ export default function AboutUs() {
         </Row>
 
         <Row className="review-row mb-5">
-          {[1, 2, 3].map((x) => (
-            <Col md={4} key={x} className="d-flex justify-content-center">
-              <Card className="review-card">
+          {[
+            {
+              text: "Really enjoyed the ride! The car was clean and the service was excellent.",
+              name: "Rahul Sharma"
+            },
+            {
+              text: "Smooth booking process and great customer support. Highly recommended!",
+              name: "Anjali Verma"
+            },
+            {
+              text: "Affordable pricing and well-maintained cars. Will book again!",
+              name: "Amit Patel"
+            },
+          ].map((review, index) => (
+            <Col md={4} key={index} className="d-flex justify-content-center">
+              <Card className="review-card text-center p-4">
                 <p className="review-text">
-                  “Really enjoyed the ride! Service was excellent.”
+                  “{review.text}”
                 </p>
-                <img
-                  src="/images/about/user.png"
-                  alt="user"
-                  className="review-user"
-                />
-                <h6 className="review-name">Customer {x}</h6>
+
+                <h6 className="review-name">{review.name}</h6>
               </Card>
             </Col>
           ))}
         </Row>
+
 
         <Row className="text-center mb-3">
           <Col>

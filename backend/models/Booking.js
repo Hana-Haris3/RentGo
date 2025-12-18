@@ -40,6 +40,9 @@ const bookingSchema = mongoose.Schema({
     license: {
         type: String
     },
+    licenseImg: {
+        type: String
+    },
     adhaar: {
         type: String
     },
@@ -54,11 +57,10 @@ const bookingSchema = mongoose.Schema({
         type:Number
     },
     status:{
-        type:String,
-        default:"Booked"
+        type:Boolean,
+        default:true
     }
 
-},
-    { timestamps: true }
+}
 )
 module.exports = mongoose.model('Booking', bookingSchema)
